@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FA-Tshirt</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <style>
         /* General Reset */
         * {
@@ -12,55 +11,35 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             color: #333;
         }
-
         /* Header Section */
         header {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
             background-color: #1d1d1d;
             color: white;
         }
-
         header .logo h1 {
-            font-family: 'Orbitron', sans-serif;
             font-size: 36px;
             font-weight: bold;
             color: #fff;
-            margin-right: 20px;
         }
-
         header .search-bar input {
             padding: 12px;
             width: 350px;
             border-radius: 20px;
             border: 1px solid #ccc;
             font-size: 16px;
-            margin-right: 20px;
         }
-
         header .search-bar input::placeholder {
-            color: #bbb;
+            color: #888;
         }
-
-        header .search-bar {
-            display: flex;
-            align-items: center;
-        }
-
-        header .search-bar input::before {
-            content: '\1F50D';  /* Magnifying Glass Unicode */
-            position: absolute;
-            padding-left: 10px;
-        }
-
         header .header-right a {
             text-decoration: none;
             color: white;
@@ -71,66 +50,169 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
-
         header .header-right a:hover {
-            background-color: #ff6347; /* Red color on hover */
+            background-color: #ff6347;
         }
-
+        /* New "Contact Us" added */
+        .contact-us {
+            position: absolute;
+            right: 30px;
+            top: 15px;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+        }
+        .contact-us:hover {
+            color: #ff6347;
+        }
         /* Main Navigation Menu */
         .main-nav {
-            background-color: #222;
+            background-color: lightgreen;
             padding: 10px 0;
             text-align: center;
         }
-
         .main-nav ul {
             list-style-type: none;
             display: flex;
             justify-content: center;
+            gap: 30px;
         }
-
-        .main-nav ul li {
-            margin-right: 30px;
-        }
-
         .main-nav ul li a {
             color: white;
             text-decoration: none;
             font-size: 18px;
             text-transform: uppercase;
         }
-
         .main-nav ul li a:hover {
             color: #ff6347;
+        }
+        /* Banner Section */
+        .banner {
+            background-color: #333;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .banner h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .banner p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .banner button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .banner button:hover {
+            background-color: #e5533f;
+        }
+        /* Featured Products Section */
+        .featured-products {
+            padding: 50px 20px;
+            text-align: center;
+        }
+        .featured-products h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .product-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .product-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-item h3 {
+            font-size: 18px;
+            margin-top: 15px;
+        }
+        .product-item p {
+            font-size: 16px;
+            color: #ff6347;
+            margin-top: 10px;
+        }
+        .product-item button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6347;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .product-item button:hover {
+            background-color: #e5533f;
         }
     </style>
 </head>
 <body>
-
-    <!-- Header Section -->
     <header>
         <div class="logo">
             <h1>FA-Tshirt</h1>
         </div>
         <div class="search-bar">
-            <input type="text" placeholder="Search your products">
+            <input type="text" placeholder="Search your products...">
         </div>
         <div class="header-right">
             <a href="#">Login</a>
             <a href="#">Cart</a>
         </div>
+        <a href="#" class="contact-us">Contact Us</a>
     </header>
-
-    <!-- Main Navigation Menu -->
     <nav class="main-nav">
         <ul>
             <li><a href="#">Men</a></li>
             <li><a href="#">Women</a></li>
+            <li><a href="#">Kids</a></li>
             <li><a href="#">Plus Size</a></li>
             <li><a href="#">Accessories</a></li>
-            <li><a href="#">Official Merch</a></li>
+            <li><a href="#">Latest Collection</a></li>
         </ul>
     </nav>
-
+    <div class="banner">
+        <h2>Welcome to FA-Tshirt</h2>
+        <p>Your one-stop shop for trendy t-shirts!</p>
+        <button>Shop Now</button>
+    </div>
+    <div class="featured-products">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+            <div class="product-item">
+                <img src="https://via.placeholder.com/300" alt="Product 1">
+                <h3>T-Shirt 1</h3>
+                <p>$19.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="https://via.placeholder.com/300" alt="Product 2">
+                <h3>T-Shirt 2</h3>
+                <p>$22.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="https://via.placeholder.com/300" alt="Product 3">
+                <h3>T-Shirt 3</h3>
+                <p>$18.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

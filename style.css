@@ -1,0 +1,129 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Fonts */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header (Top Search Bar) */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+.search-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.search-bar input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    width: 15%;
+    padding: 10px;
+    background-color: #f7c623;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+/* Left Sidebar */
+.left-sidebar {
+    width: 20%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Product List */
+.product-list {
+    width: 55%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product-card h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.product-card button {
+    background-color: #f7c623;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Right Sidebar */
+.right-sidebar {
+    width: 20%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.right-sidebar h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.right-sidebar ul {
+    list-style-type: none;
+}
+
+.right-sidebar ul li {
+    margin: 10px 0;
+}
+
+.right-sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+.right-sidebar ul li a:hover {
+    color: #f7c623;
+}

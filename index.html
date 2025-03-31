@@ -22,15 +22,14 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
-            background-color: #ff0800; /* Candy Apple Red */
+            background-color: #1d1d1d;
             color: white;
         }
         header .logo h1 {
             font-size: 36px;
             font-weight: bold;
             color: #fff;
-            margin-right: 15px; /* Bring it closer to the search bar */
-            font-family: 'Snap ITC', sans-serif;
+            margin-right: 15px;
         }
         header .search-bar input {
             padding: 12px;
@@ -55,18 +54,6 @@
         header .header-right a:hover {
             background-color: #ff6347;
         }
-        /* New "Contact Us" added */
-        .contact-us {
-            position: absolute;
-            right: 30px;
-            top: 15px;
-            font-size: 16px;
-            color: white;
-            text-decoration: none;
-        }
-        .contact-us:hover {
-            color: #ff6347;
-        }
         /* Main Navigation Menu */
         .main-nav {
             background-color: white;
@@ -90,7 +77,7 @@
         }
         /* Banner Section */
         .banner {
-            background-color: #ff0800; /* Candy Apple Red */
+            background-color: #333;
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -162,9 +149,50 @@
         .product-item button:hover {
             background-color: #e5533f;
         }
+        /* Footer Section */
+        footer {
+            background-color: #1d1d1d;
+            color: white;
+            padding: 40px 20px;
+        }
+        footer .footer-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        footer .footer-content .about, footer .footer-content .quick-links {
+            flex: 1;
+        }
+        footer h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        footer p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 0;
+            display: block;
+            font-size: 14px;
+        }
+        footer a:hover {
+            color: #ff6347;
+        }
+        footer .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+        }
+        footer .footer-bottom p {
+            font-size: 14px;
+            color: #888;
+        }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="logo">
             <h1>FA-Tshirt</h1>
@@ -176,8 +204,9 @@
             <a href="#">Login</a>
             <a href="#">Cart</a>
         </div>
-        <a href="#" class="contact-us">Contact Us</a>
     </header>
+
+    <!-- Navigation -->
     <nav class="main-nav">
         <ul>
             <li><a href="#">Men</a></li>
@@ -188,11 +217,15 @@
             <li><a href="#">Latest Collection</a></li>
         </ul>
     </nav>
+
+    <!-- Banner -->
     <div class="banner">
         <h2>Welcome to FA-Tshirt</h2>
         <p>Your one-stop shop for trendy t-shirts!</p>
         <button>Shop Now</button>
     </div>
+
+    <!-- Featured Products -->
     <div class="featured-products">
         <h2>Featured Products</h2>
         <div class="product-grid">
@@ -216,71 +249,26 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="about">
+                <h2>About FA-Tshirt</h2>
+                <p>We provide high-quality, affordable t-shirts for every fashion lover. With stylish and trendy designs, we aim to be India's number one clothing brand!</p>
+            </div>
+            <div class="quick-links">
+                <h2>Quick Links</h2>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Shipping & Returns</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 FA-Tshirt. All rights reserved. | Designed with ❤️ in India.</p>
+        </div>
+    </footer>
 </body>
 </html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FA-Tshirt</title>
-    <!-- Your CSS and other links -->
-</head>
-<body>
-    <!-- Your existing content (header, search bar, product grid, etc.) -->
-
-    <!-- Footer Section -->
-    <footer style="background-color: #e4e4e4; padding: 40px 0; font-family: Arial, sans-serif; color: #333;">
-        <div class="footer-content" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between;">
-            <!-- About Us Section -->
-            <div class="about-us" style="flex: 1; padding-right: 20px;">
-                <h3 style="font-size: 24px; font-weight: bold; color: #ff6347;">About FA-Tshirt</h3>
-                <p style="font-size: 16px; line-height: 1.6;">
-                    At FA-Tshirt, we believe that great fashion shouldn't come with a hefty price tag. We're on a mission to provide high-quality, stylish, and trendy t-shirts that anyone can afford. Our vision is to become India’s number one clothing brand by offering products that combine the best of fashion and value.
-                </p>
-                <p style="font-size: 16px; line-height: 1.6;">
-                    We are committed to providing you with a wide range of t-shirts made from premium, comfortable fabrics, designed to last and feel great. Our products are created with Indian customers in mind, ensuring you get the latest trends at prices that suit every budget.
-                </p>
-                <p style="font-size: 16px; line-height: 1.6;">
-                    We understand the value of good clothing. That’s why we work hard to maintain the perfect balance between quality and price, delivering you luxury-level products without the luxury-level prices.
-                </p>
-            </div>
-            
-
-<footer style="background-color: #fff; padding: 30px 0; text-align: center; border-top: 2px solid #e0e0e0;">
-    <!-- About FA-Tshirt Section (with smaller text and less height) -->
-    <div class="about-us" style="margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
-        <h3 style="font-size: 20px; color: #000; margin-bottom: 10px;">About FA-Tshirt</h3>
-        <p style="font-size: 14px; color: #666; line-height: 1.6; text-align: center;">FA-Tshirt is dedicated to providing the best quality t-shirts at affordable prices. We believe that everyone deserves to wear stylish and trendy clothing without breaking the bank. Our mission is to become India’s number one quality clothing brand, focusing on sustainability and affordability for all.</p>
-    </div>
-
-    <!-- Quick Links Section -->
-    <div class="footer-links" style="margin-bottom: 20px;">
-        <ul style="list-style-type: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 50px;">
-            <li>
-                <h4 style="font-size: 18px; color: #000;">Privacy Policy</h4>
-                <p style="font-size: 14px; color: #666;">This Privacy Policy explains how we handle your data and protect your privacy when you visit our website.</p>
-            </li>
-            <li>
-                <h4 style="font-size: 18px; color: #000;">Terms & Conditions</h4>
-                <p style="font-size: 14px; color: #666;">By accessing this site, you agree to follow the terms and conditions of use. Please read carefully before proceeding.</p>
-            </li>
-            <li>
-                <h4 style="font-size: 18px; color: #000;">FAQ</h4>
-                <p style="font-size: 14px; color: #666;">Here you can find answers to the most frequently asked questions, like how to place an order, how to track your purchase, etc.</p>
-            </li>
-        </ul>
-    </div>
-
-    <!-- Contact Us Section -->
-    <div class="footer-contact" style="margin-bottom: 20px;">
-        <a href="mailto:contact@fatshirt.com" style="text-decoration: none; color: #000; font-size: 18px;">Contact Us</a>
-        <p style="font-size: 14px; color: #666;">For any inquiries, feel free to reach out to us via email or call us at +91 123 456 7890</p>
-    </div>
-
-    <!-- Copyright and Design Section -->
-    <div class="footer-bottom">
-        <p style="color: #666; font-size: 14px;">© 2025 FA-Tshirt. All rights reserved. | Designed with ❤️ in India.</p>
-    </div>
-</footer>

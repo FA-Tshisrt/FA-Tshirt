@@ -13,26 +13,51 @@ body {
 
 /* Header Section */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background-color: #1d1d1d;
+  background-color: #333;
+  padding: 10px 30px;
   color: white;
 }
 
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 header .logo h1 {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: bold;
-  color: #fff;
+  color: #ff6347; /* Orange-Red */
+  font-family: 'Roboto', sans-serif; /* Funky font for logo */
+}
+
+header .search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #d3d3d3; /* Grey color for search bar */
+  padding: 5px 15px;
+  border-radius: 20px;
 }
 
 header .search-bar input {
-  padding: 12px;
-  width: 350px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
+  padding: 10px;
+  width: 300px;
+  border: none;
+  outline: none;
+  background-color: transparent;
   font-size: 16px;
+  color: #333;
+}
+
+header .search-bar button {
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+}
+
+header .search-bar button img {
+  width: 20px;
+  height: 20px;
 }
 
 header .header-right a {
@@ -47,24 +72,13 @@ header .header-right a {
 }
 
 header .header-right a:hover {
-  background-color: #ff6347; /* Red color on hover */
+  background-color: #ff6347;
 }
 
-/* Main Navigation Menu */
+header .search-bar input::placeholder {
+  color: #888; /* Placeholder text */
+}
+
+/* Navigation Menu */
 .main-nav {
-  background-color: #222;
-  padding: 10px 0;
-  text-align: center;
-}
-
-.main-nav ul {
-  list-style-type: none;
-}
-
-.main-nav ul li {
-  display: inline;
-  margin-right: 30px;
-}
-
-.main-nav ul li a {
-  color: white
+  background-color: #1d1d

@@ -13,7 +13,7 @@
         }
         body {
             font-family: 'Arial', sans-serif;
-            background-color: red; /* Page background color */
+            background-color: #f9cccc; /* Light Red background */
             color: #333;
         }
         /* Header Section */
@@ -22,7 +22,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
-            background-color: red; /* Header background */
+            background-color: #f9cccc; /* Light Red background */
             color: white;
         }
         header .logo h1 {
@@ -60,18 +60,6 @@
         header .header-right a:hover {
             background-color: #ff6347;
         }
-        /* New "Contact Us" added */
-        .contact-us {
-            position: absolute;
-            right: 30px;
-            top: 15px;
-            font-size: 16px;
-            color: white;
-            text-decoration: none;
-        }
-        .contact-us:hover {
-            color: #ff6347;
-        }
         /* Main Navigation Menu */
         .main-nav {
             background-color: white;
@@ -93,9 +81,21 @@
         .main-nav ul li a:hover {
             color: #ff6347;
         }
+        /* Contact Us moved to top-right corner of nav */
+        .contact-us {
+            position: absolute;
+            right: 30px;
+            top: 12px;
+            font-size: 16px;
+            color: black;
+            text-decoration: none;
+        }
+        .contact-us:hover {
+            color: #ff6347;
+        }
         /* Banner Section */
         .banner {
-            background-color: #333;
+            background-color: #f9cccc; /* Light Red background */
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -181,7 +181,6 @@
             <a href="#">Login</a>
             <a href="#">Cart</a>
         </div>
-        <a href="#" class="contact-us">Contact Us</a>
     </header>
     <nav class="main-nav">
         <ul>
@@ -192,6 +191,7 @@
             <li><a href="#">Accessories</a></li>
             <li><a href="#">Latest Collection</a></li>
         </ul>
+        <a href="#" class="contact-us">Contact Us</a> <!-- Contact Us moved here -->
     </nav>
     <div class="banner">
         <h2>Welcome to FA-Tshirt</h2>

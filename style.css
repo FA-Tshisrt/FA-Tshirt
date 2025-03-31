@@ -6,32 +6,32 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
-/* Header Styling */
+/* Header Section */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #333; /* Dark background */
+  padding: 15px 30px;
+  background-color: #1d1d1d;
   color: white;
 }
 
 header .logo h1 {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: bold;
   color: #fff;
-  letter-spacing: 2px;
 }
 
 header .search-bar input {
-  padding: 8px;
-  width: 250px;
-  border-radius: 4px;
-  border: none;
+  padding: 12px;
+  width: 350px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
   font-size: 16px;
 }
 
@@ -40,12 +40,14 @@ header .header-right a {
   color: white;
   margin-left: 15px;
   font-weight: bold;
-  font-size: 16px;
-  transition: color 0.3s ease;
+  font-size: 18px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 header .header-right a:hover {
-  color: #ff6347; /* On hover, color changes to a red tone */
+  background-color: #ff6347; /* Red color on hover */
 }
 
 /* Main Navigation Menu */
@@ -61,14 +63,8 @@ header .header-right a:hover {
 
 .main-nav ul li {
   display: inline;
-  margin-right: 20px;
+  margin-right: 30px;
 }
 
 .main-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-}
-
-.main-nav ul li a:hover {
-  color:
+  color: white

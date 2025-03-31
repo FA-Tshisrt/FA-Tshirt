@@ -29,7 +29,7 @@
             font-size: 36px;
             font-weight: bold;
             color: #fff;
-            margin-right: 15px; /* Bring it closer to the search bar */
+            margin-right: 15px;
         }
         header .search-bar input {
             padding: 12px;
@@ -79,7 +79,7 @@
             gap: 30px;
         }
         .main-nav ul li a {
-            color: black; /* Text color for navigation items */
+            color: black;
             text-decoration: none;
             font-size: 18px;
             text-transform: uppercase;
@@ -160,6 +160,27 @@
         }
         .product-item button:hover {
             background-color: #e5533f;
+        }
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            header .logo h1 {
+                font-size: 28px;
+            }
+            header .search-bar input {
+                width: 100%;
+                margin-top: 10px;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>

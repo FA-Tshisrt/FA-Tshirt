@@ -13,7 +13,7 @@
         }
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            background-color: red; /* Page background color */
             color: #333;
         }
         /* Header Section */
@@ -22,25 +22,30 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
-            background-color: red; /* Red background for header */
+            background-color: red; /* Header background */
             color: white;
         }
         header .logo h1 {
             font-size: 36px;
             font-weight: bold;
-            color: blue; /* Blue text for FA-Tshirt */
-            margin-right: 15px;
+            color: white;
+            font-family: 'Snap ITC', sans-serif; /* New font for FA-Tshirt */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* 3D effect */
+            margin-right: 15px; /* Bring it closer to the search bar */
         }
         header .search-bar input {
             padding: 12px;
-            width: 450px;
+            width: 450px; /* Stretch the search bar */
             border-radius: 20px;
             border: 1px solid #ccc;
             font-size: 16px;
-            background-color: white;
+            background-color: white; /* White background for search bar */
         }
         header .search-bar input::placeholder {
             color: #888;
+        }
+        header .search-bar input::-webkit-search-cancel-button {
+            display: none;
         }
         header .header-right a {
             text-decoration: none;
@@ -55,9 +60,21 @@
         header .header-right a:hover {
             background-color: #ff6347;
         }
+        /* New "Contact Us" added */
+        .contact-us {
+            position: absolute;
+            right: 30px;
+            top: 15px;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+        }
+        .contact-us:hover {
+            color: #ff6347;
+        }
         /* Main Navigation Menu */
         .main-nav {
-            background-color: white; /* White background for nav */
+            background-color: white;
             padding: 10px 0;
             text-align: center;
         }
@@ -68,7 +85,7 @@
             gap: 30px;
         }
         .main-nav ul li a {
-            color: black; /* Black text for nav items */
+            color: black; /* Text color for navigation items */
             text-decoration: none;
             font-size: 18px;
             text-transform: uppercase;
@@ -78,7 +95,7 @@
         }
         /* Banner Section */
         .banner {
-            background-color: red; /* Red background for banner */
+            background-color: #333;
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -164,6 +181,7 @@
             <a href="#">Login</a>
             <a href="#">Cart</a>
         </div>
+        <a href="#" class="contact-us">Contact Us</a>
     </header>
     <nav class="main-nav">
         <ul>

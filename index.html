@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FA-Tshirt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Snap+ITC&display=swap" rel="stylesheet">
     <style>
         /* General Reset */
         * {
@@ -13,7 +14,7 @@
         }
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            background-color: red;
             color: #333;
         }
         /* Header Section */
@@ -29,25 +30,30 @@
         header .logo h1 {
             font-size: 36px;
             font-weight: bold;
-            color: #fff;
-            margin-right: 15px;
-            animation: funkiFont 1.5s ease infinite;
+            color: blue;
+            font-family: 'Snap ITC', sans-serif;
         }
-        @keyframes funkiFont {
-            0% { transform: rotate(0deg); color: #ff6347; }
-            25% { transform: rotate(10deg); color: #ffb6c1; }
-            50% { transform: rotate(-10deg); color: #8a2be2; }
-            75% { transform: rotate(5deg); color: #32cd32; }
-            100% { transform: rotate(0deg); color: #ff6347; }
+        header .search-bar {
+            position: relative;
         }
         header .search-bar input {
             padding: 12px;
-            width: 450px; /* Stretch the search bar */
+            width: 450px;
             border-radius: 20px;
             border: 1px solid #ccc;
             font-size: 16px;
+            background-color: white;
         }
         header .search-bar input::placeholder {
+            color: #888;
+        }
+        header .search-bar::before {
+            content: '🔍'; /* Magnifying glass icon */
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            font-size: 20px;
             color: #888;
         }
         header .header-right {
@@ -71,7 +77,7 @@
         .contact-us {
             position: absolute;
             right: 30px;
-            top: 75px; /* Move it down a bit */
+            top: 75px;
             font-size: 16px;
             color: white;
             text-decoration: none;
@@ -81,7 +87,7 @@
         }
         /* Main Navigation Menu */
         .main-nav {
-            background-color: white;
+            background-color: grey;
             padding: 10px 0;
             text-align: center;
         }
@@ -92,7 +98,7 @@
             gap: 30px;
         }
         .main-nav ul li a {
-            color: black;
+            color: white;
             text-decoration: none;
             font-size: 18px;
             text-transform: uppercase;

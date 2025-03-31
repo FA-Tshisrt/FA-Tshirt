@@ -1,58 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FA-Tshirt</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- Header Section -->
-  <header>
-    <div class="logo">
-      <h1>FA-Tshirt</h1>
-    </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search for products...">
-    </div>
-    <div class="header-right">
-      <a href="#" class="login">Login</a>
-      <a href="#" class="cart">Cart</a>
-    </div>
-  </header>
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
 
-  <!-- Main Navigation Menu -->
-  <nav class="main-nav">
-    <ul>
-      <li><a href="#">Men</a></li>
-      <li><a href="#">Women</a></li>
-      <li><a href="#">Plus Size</a></li>
-      <li><a href="#">Accessories</a></li>
-    </ul>
-  </nav>
+/* Header Section */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #1d1d1d;
+  color: white;
+}
 
-  <!-- Main Content Section -->
-  <main class="main-content">
-    <section class="featured-products">
-      <h2>Featured Products</h2>
-      <div class="product-grid">
-        <!-- Add product images and details here -->
-        <div class="product-item">
-          <img src="product1.jpg" alt="Product 1">
-          <p>Product Name</p>
-          <p>Price</p>
-        </div>
-        <div class="product-item">
-          <img src="product2.jpg" alt="Product 2">
-          <p>Product Name</p>
-          <p>Price</p>
-        </div>
-        <!-- Repeat for more products -->
-      </div>
-    </section>
-  </main>
+header .logo h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #fff;
+}
 
-  <!-- Footer Section -->
-  <footer>
-    <
+header .search-bar input {
+  padding: 12px;
+  width: 350px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+header .header-right a {
+  text-decoration: none;
+  color: white;
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+header .header-right a:hover {
+  background-color: #ff6347; /* Red color on hover */
+}
+
+/* Main Navigation Menu */
+.main-nav {
+  background-color: #222;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.main-nav ul {
+  list-style-type: none;
+}
+
+.main-nav ul li {
+  display: inline;
+  margin-right: 30px;
+}
+
+.main-nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.main-nav ul li a:hover {
+  color: #ff6347;
+}
+
+/* Banner Section */
+.banner {
+  background-color: #333;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.banner h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.banner button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.banner button:hover {
+  background-color: #e5533f;
+}
+
+/* Featured Products Section */
+.featured-products {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.featured-products h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.product-item {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-item h3 {
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.product-item p {
+  font-size: 16px;
+  color: #ff6347;
+  margin-top: 10px;
+}
+
+.product-item button {
+  padding: 10px 20px;
+  font

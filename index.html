@@ -13,7 +13,7 @@
         }
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f9cccc; /* Light Red background */
+            background-color: #f4f4f4;
             color: #333;
         }
         /* Header Section */
@@ -22,16 +22,15 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
-            background-color: #f9cccc; /* Light Red background */
+            background-color: #ff0800; /* Candy Apple Red */
             color: white;
         }
         header .logo h1 {
             font-size: 36px;
             font-weight: bold;
-            color: white;
-            font-family: 'Snap ITC', sans-serif; /* New font for FA-Tshirt */
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); /* 3D effect */
+            color: #fff;
             margin-right: 15px; /* Bring it closer to the search bar */
+            font-family: 'Snap ITC', sans-serif;
         }
         header .search-bar input {
             padding: 12px;
@@ -39,13 +38,9 @@
             border-radius: 20px;
             border: 1px solid #ccc;
             font-size: 16px;
-            background-color: white; /* White background for search bar */
         }
         header .search-bar input::placeholder {
             color: #888;
-        }
-        header .search-bar input::-webkit-search-cancel-button {
-            display: none;
         }
         header .header-right a {
             text-decoration: none;
@@ -59,6 +54,18 @@
         }
         header .header-right a:hover {
             background-color: #ff6347;
+        }
+        /* New "Contact Us" added */
+        .contact-us {
+            position: absolute;
+            right: 30px;
+            top: 15px;
+            font-size: 16px;
+            color: white;
+            text-decoration: none;
+        }
+        .contact-us:hover {
+            color: #ff6347;
         }
         /* Main Navigation Menu */
         .main-nav {
@@ -81,21 +88,9 @@
         .main-nav ul li a:hover {
             color: #ff6347;
         }
-        /* Contact Us moved to top-right corner of nav */
-        .contact-us {
-            position: absolute;
-            right: 30px;
-            top: 12px;
-            font-size: 16px;
-            color: black;
-            text-decoration: none;
-        }
-        .contact-us:hover {
-            color: #ff6347;
-        }
         /* Banner Section */
         .banner {
-            background-color: #f9cccc; /* Light Red background */
+            background-color: #ff0800; /* Candy Apple Red */
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -181,6 +176,7 @@
             <a href="#">Login</a>
             <a href="#">Cart</a>
         </div>
+        <a href="#" class="contact-us">Contact Us</a>
     </header>
     <nav class="main-nav">
         <ul>
@@ -191,7 +187,6 @@
             <li><a href="#">Accessories</a></li>
             <li><a href="#">Latest Collection</a></li>
         </ul>
-        <a href="#" class="contact-us">Contact Us</a> <!-- Contact Us moved here -->
     </nav>
     <div class="banner">
         <h2>Welcome to FA-Tshirt</h2>

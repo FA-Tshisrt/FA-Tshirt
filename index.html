@@ -22,7 +22,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
-            background-color: #ff3030; /* Candy Apple Red */
+            background-color: #ff3030;
             color: white;
         }
         header .logo h1 {
@@ -31,7 +31,7 @@
             font-weight: bold;
             color: #fff;
             margin-right: 15px;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); /* 3D effect */
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
         }
         header .search-bar input {
             padding: 12px;
@@ -39,9 +39,6 @@
             border-radius: 20px;
             border: 1px solid #ccc;
             font-size: 16px;
-        }
-        header .search-bar input::placeholder {
-            color: #888;
         }
         header .header-right a {
             text-decoration: none;
@@ -54,7 +51,7 @@
             transition: background-color 0.3s ease;
         }
         header .header-right a:hover {
-            background-color: #b32222; /* Darker red for hover */
+            background-color: #b32222;
         }
         /* Main Navigation Menu */
         .main-nav {
@@ -67,143 +64,48 @@
             display: flex;
             justify-content: center;
             gap: 30px;
+            position: relative;
+        }
+        .main-nav ul li {
+            position: relative;
         }
         .main-nav ul li a {
             color: black;
             text-decoration: none;
             font-size: 18px;
             text-transform: uppercase;
-        }
-        .main-nav ul li a:hover {
-            color: #ff3030; /* Candy Apple Red */
-        }
-        /* Banner Section */
-        .banner {
-            background-color: #ff3030; /* Candy Apple Red */
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .banner h2 {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-        .banner p {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-        .banner button {
-            padding: 12px 20px;
-            font-size: 16px;
-            background-color: #ff3030; /* Candy Apple Red */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        .banner button:hover {
-            background-color: #b32222; /* Darker red for hover */
-            transform: scale(1.1);
-        }
-        /* Featured Products Section */
-        .featured-products {
-            padding: 50px 20px;
-            text-align: center;
-            background-color: #ff3030; /* Candy Apple Red */
-        }
-        .featured-products h2 {
-            font-size: 32px;
-            margin-bottom: 30px;
-            color: white;
-        }
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        .product-item {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        .product-item img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .product-item h3 {
-            font-size: 18px;
-            margin-top: 15px;
-        }
-        .product-item p {
-            font-size: 16px;
-            color: #ff3030; /* Candy Apple Red */
-            margin-top: 10px;
-        }
-        .product-item button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #ff3030; /* Candy Apple Red */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        .product-item button:hover {
-            background-color: #b32222; /* Darker red for hover */
-            transform: scale(1.1);
-        }
-        /* Footer Section */
-        footer {
-            background-color: #1d1d1d;
-            color: white;
-            padding: 40px 20px;
-        }
-        footer .footer-content {
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-        }
-        footer .footer-content .about, footer .footer-content .quick-links {
-            flex: 1;
-        }
-        footer h2 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-        footer p {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-        footer a {
-            color: white;
-            text-decoration: none;
-            margin: 5px 0;
+            padding: 10px;
             display: block;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            text-align: left;
+            z-index: 1000;
+        }
+        .dropdown a {
+            display: block;
+            padding: 8px 15px;
             font-size: 14px;
+            color: black;
+            text-decoration: none;
         }
-        footer a:hover {
-            color: #ff3030; /* Candy Apple Red */
+        .dropdown a:hover {
+            background-color: #ff3030;
+            color: white;
         }
-        footer .footer-bottom {
-            text-align: center;
-            margin-top: 30px;
-        }
-        footer .footer-bottom p {
-            font-size: 14px;
-            color: #888;
+        .main-nav ul li:hover .dropdown {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="logo">
-            <h1 style="font-family: 'Snap ITC', cursive; text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);">FA-Tshirt</h1> <!-- 3D effect added -->
+            <h1>FA-Tshirt</h1>
         </div>
         <div class="search-bar">
             <input type="text" placeholder="Search your products...">
@@ -213,70 +115,45 @@
             <a href="#">Cart</a>
         </div>
     </header>
-
-    <!-- Navigation -->
     <nav class="main-nav">
         <ul>
-            <li><a href="#">Men</a></li>
-            <li><a href="#">Women</a></li>
-            <li><a href="#">Kids</a></li>
+            <li>
+                <a href="#">Men</a>
+                <div class="dropdown">
+                    <a href="#">T-Shirts</a>
+                    <a href="#">Oversized T-Shirts</a>
+                    <a href="#">Shirts</a>
+                    <a href="#">Hoodies</a>
+                    <a href="#">Sweatshirts</a>
+                    <a href="#">Jackets</a>
+                    <a href="#">Plus Size</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">Women</a>
+                <div class="dropdown">
+                    <a href="#">Tops</a>
+                    <a href="#">Dresses</a>
+                    <a href="#">Co-ord Sets</a>
+                    <a href="#">Hoodies</a>
+                    <a href="#">Sweaters</a>
+                    <a href="#">Plus Size</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">Kids</a>
+                <div class="dropdown">
+                    <a href="#">T-Shirts</a>
+                    <a href="#">Shirts</a>
+                    <a href="#">Hoodies</a>
+                    <a href="#">Sweatshirts</a>
+                    <a href="#">Jackets</a>
+                </div>
+            </li>
             <li><a href="#">Plus Size</a></li>
             <li><a href="#">Accessories</a></li>
             <li><a href="#">Latest Collection</a></li>
         </ul>
     </nav>
-
-    <!-- Banner -->
-    <div class="banner">
-        <h2>Welcome to FA-Tshirt</h2>
-        <p>Your one-stop shop for trendy t-shirts!</p>
-        <button>Shop Now</button>
-    </div>
-
-    <!-- Featured Products -->
-    <div class="featured-products">
-        <h2>Featured Products</h2>
-        <div class="product-grid">
-            <div class="product-item">
-                <img src="https://via.placeholder.com/300" alt="Product 1">
-                <h3>T-Shirt 1</h3>
-                <p>$19.99</p>
-                <button>Add to Cart</button>
-            </div>
-            <div class="product-item">
-                <img src="https://via.placeholder.com/300" alt="Product 2">
-                <h3>T-Shirt 2</h3>
-                <p>$22.99</p>
-                <button>Add to Cart</button>
-            </div>
-            <div class="product-item">
-                <img src="https://via.placeholder.com/300" alt="Product 3">
-                <h3>T-Shirt 3</h3>
-                <p>$18.99</p>
-                <button>Add to Cart</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="about">
-                <h2>About FA-Tshirt</h2>
-                <p>We provide high-quality, affordable t-shirts for every fashion lover. With stylish and trendy designs, we aim to be India's number one clothing brand!</p>
-            </div>
-            <div class="quick-links">
-                <h2>Quick Links</h2>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
-                <a href="#">Shipping & Returns</a>
-                <a href="#">FAQ</a>
-                <a href="#">Contact Us</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 FA-Tshirt. All rights reserved. | Designed with ❤️ in India.</p>
-        </div>
-    </footer>
 </body>
 </html>

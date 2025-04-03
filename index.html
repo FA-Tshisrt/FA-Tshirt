@@ -40,6 +40,9 @@
             border: 1px solid #ccc;
             font-size: 16px;
         }
+        header .search-bar input::placeholder {
+            color: #888;
+        }
         header .header-right a {
             text-decoration: none;
             color: white;
@@ -74,31 +77,32 @@
             text-decoration: none;
             font-size: 18px;
             text-transform: uppercase;
-            padding: 10px;
+        }
+        .main-nav ul li:hover .dropdown {
             display: block;
         }
         .dropdown {
             display: none;
             position: absolute;
+            top: 100%;
+            left: 0;
             background-color: white;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            min-width: 200px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 180px;
             text-align: left;
             z-index: 1000;
         }
         .dropdown a {
             display: block;
-            padding: 8px 15px;
+            padding: 10px;
             font-size: 14px;
             color: black;
             text-decoration: none;
+            border-bottom: 1px solid #ddd;
         }
         .dropdown a:hover {
             background-color: #ff3030;
             color: white;
-        }
-        .main-nav ul li:hover .dropdown {
-            display: block;
         }
     </style>
 </head>
@@ -117,37 +121,31 @@
     </header>
     <nav class="main-nav">
         <ul>
-            <li>
-                <a href="#">Men</a>
+            <li><a href="#">Men</a>
                 <div class="dropdown">
                     <a href="#">T-Shirts</a>
-                    <a href="#">Oversized T-Shirts</a>
                     <a href="#">Shirts</a>
-                    <a href="#">Hoodies</a>
-                    <a href="#">Sweatshirts</a>
+                    <a href="#">Jeans</a>
                     <a href="#">Jackets</a>
-                    <a href="#">Plus Size</a>
+                    <a href="#">Hoodies</a>
                 </div>
             </li>
-            <li>
-                <a href="#">Women</a>
+            <li><a href="#">Women</a>
                 <div class="dropdown">
-                    <a href="#">Tops</a>
                     <a href="#">Dresses</a>
-                    <a href="#">Co-ord Sets</a>
-                    <a href="#">Hoodies</a>
-                    <a href="#">Sweaters</a>
-                    <a href="#">Plus Size</a>
+                    <a href="#">Tops</a>
+                    <a href="#">Skirts</a>
+                    <a href="#">Jeans</a>
+                    <a href="#">Jackets</a>
                 </div>
             </li>
-            <li>
-                <a href="#">Kids</a>
+            <li><a href="#">Kids</a>
                 <div class="dropdown">
                     <a href="#">T-Shirts</a>
-                    <a href="#">Shirts</a>
-                    <a href="#">Hoodies</a>
+                    <a href="#">Shorts</a>
+                    <a href="#">Jeans</a>
                     <a href="#">Sweatshirts</a>
-                    <a href="#">Jackets</a>
+                    <a href="#">Accessories</a>
                 </div>
             </li>
             <li><a href="#">Plus Size</a></li>

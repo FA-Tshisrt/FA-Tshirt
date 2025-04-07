@@ -6,11 +6,6 @@
   <title>FA-Tshirt</title>
   <link href="https://fonts.googleapis.com/css2?family=Bahnschrift&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'Snap ITC';
-      src: local('Snap ITC'), url('https://fonts.cdnfonts.com/s/12187/Snap%20ITC.woff') format('woff');
-    }
-
     * {
       margin: 0;
       padding: 0;
@@ -34,7 +29,6 @@
       top: 0;
       z-index: 1000;
       animation: fadeDown 1s ease;
-      flex-wrap: wrap;
     }
 
     @keyframes fadeDown {
@@ -45,60 +39,65 @@
     .logo {
       font-size: 32px;
       font-weight: 700;
-      font-family: 'Snap ITC', cursive;
       color: #e63946;
-      text-shadow: 2px 2px 4px #000;
+      font-family: 'Snap ITC', cursive;
+      text-shadow: 2px 2px 3px #000;
     }
 
-    .search-bar {
-      flex: 1;
+    .search-container {
+      flex-grow: 1;
       text-align: center;
-      margin: 10px 0;
     }
 
-    .search-bar input {
-      width: 50%;
-      padding: 8px 15px;
+    .search-container input {
+      padding: 8px;
+      width: 300px;
       border-radius: 20px;
       border: none;
-      font-size: 16px;
+      outline: none;
     }
 
-    .nav-main {
-      width: 100%;
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .nav-main a {
-      color: black;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
-      background: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      transition: 0.3s;
-    }
-
-    .nav-main a:hover {
-      background-color: #e63946;
-      color: white;
-    }
-
-    .nav-right {
+    .nav-links {
       display: flex;
+      align-items: center;
       gap: 15px;
     }
 
-    .nav-right a {
+    .nav-links a {
       color: white;
       text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ff6b6b;
+    }
+
+    .sub-nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 0;
+    }
+
+    .sub-nav a {
+      color: black;
+      background-color: #fff;
+      padding: 5px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .sub-nav a:hover {
+      background-color: #ddd;
     }
 
     .hero {
       text-align: center;
-      padding: 100px 20px 60px;
+      padding: 100px 20px 50px;
       background: rgba(0,0,0,0.5);
       animation: fadeUp 1s ease;
     }
@@ -149,14 +148,6 @@
       text-align: center;
     }
 
-    .product-info h3 {
-      margin-bottom: 10px;
-    }
-
-    .product-info p {
-      margin-bottom: 10px;
-    }
-
     .buy-btn {
       background-color: #e63946;
       border: none;
@@ -171,32 +162,6 @@
       background-color: #d90429;
     }
 
-    .filter-cart {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 40px;
-      background: rgba(0,0,0,0.6);
-    }
-
-    .about-section {
-      display: none;
-      padding: 40px;
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-
-    .login-popup {
-      display: none;
-      position: fixed;
-      top: 20%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #fff;
-      color: #000;
-      padding: 20px;
-      border-radius: 10px;
-      z-index: 2000;
-    }
-
     footer {
       background: rgba(0, 0, 0, 0.8);
       padding: 20px;
@@ -204,81 +169,98 @@
       color: white;
       margin-top: 20px;
     }
+
+    .login-btn {
+      color: white;
+      margin-left: 20px;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      color: black;
+      padding: 30px;
+      border-radius: 10px;
+      z-index: 2000;
+    }
+
+    .popup input {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+    }
+
+    .popup button {
+      padding: 10px;
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">FA-Tshirt</div>
-    <div class="nav-right">
-      <a href="#" onclick="toggleLogin()">Login</a>
-      <a href="#">Cart</a>
+    <div class="search-container">
+      <input type="text" placeholder="Search for t-shirts..." />
     </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search for t-shirts...">
-    </div>
-    <div class="nav-main">
-      <a href="#">Home</a>
-      <a href="#products">Products</a>
-      <a href="#about" onclick="showAbout()">About</a>
-      <a href="#contact">Contact</a>
-      <a href="#">Men</a>
-      <a href="#">Women</a>
-      <a href="#">Kids</a>
+    <div class="nav-links">
+      <a href="#">Login</a>
+      <a href="#cart">Cart</a>
     </div>
   </header>
+
+  <div class="sub-nav">
+    <a href="#">Men</a>
+    <a href="#">Women</a>
+    <a href="#">Kids</a>
+  </div>
+  <div class="sub-nav">
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
 
   <section class="hero">
     <h1>Welcome to FA-Tshirt</h1>
     <p>Trendy | Comfortable | Affordable</p>
   </section>
 
-  <section class="filter-cart">
-    <div>Filter: <select><option>All</option><option>Men</option><option>Women</option><option>Kids</option></select></div>
-    <div>Cart: 0 items</div>
-  </section>
-
   <section class="products" id="products">
-    <!-- product cards repeat -->
-    <!-- repeat 6+ products like before -->
-    <!-- for brevity only 3 shown here -->
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1618354691549-6d8b1b464986?auto=format&fit=crop&w=400&q=80" alt="Tshirt 1">
-      <div class="product-info">
-        <h3>Black Round Neck</h3>
-        <p>₹299</p>
-        <button class="buy-btn" onclick="addToCart('Black Round Neck')">Add to Cart</button>
-      </div>
-    </div>
-    <!-- Add more products here -->
+    <!-- Multiple products go here -->
   </section>
 
-  <section class="about-section" id="about-section">
-    <h2>Our Story</h2>
-    <p>FA-Tshirt is not just a brand — it's a dream that started from the ground. With limited resources but unlimited passion, we aimed to bring high-quality, stylish, and affordable clothing to every wardrobe. Join us as we continue building India’s no.1 quality brand, born from pure hustle and vision!</p>
+  <section class="about" id="about" style="padding:40px; background-color:rgba(0,0,0,0.7);">
+    <h2 style="text-align:center; margin-bottom:20px;">Our Story</h2>
+    <p style="max-width:800px; margin:auto; text-align:center;">
+      FA-Tshirt started from a small dream to build India’s most affordable and quality-driven clothing brand. Through challenges, hustle, and passion, our goal is to bring stylish t-shirts for everyone — from the college student to the working professional. Our brand is not just about clothes, it’s about confidence, comfort, and creativity.
+    </p>
   </section>
-
-  <div class="login-popup" id="loginPopup">
-    <h3>Login</h3>
-    <input type="text" placeholder="Username" style="display:block;margin:10px 0;padding:8px;width:100%;">
-    <input type="password" placeholder="Password" style="display:block;margin:10px 0;padding:8px;width:100%;">
-    <button onclick="toggleLogin()" style="padding:10px 20px;background:#e63946;color:white;border:none;border-radius:5px;">Submit</button>
-  </div>
 
   <footer>
     &copy; 2025 FA-Tshirt. All rights reserved.
   </footer>
 
+  <div class="popup" id="loginPopup">
+    <h3>Login to FA-Tshirt</h3>
+    <input type="text" placeholder="Username or Email">
+    <input type="password" placeholder="Password">
+    <button onclick="closeLogin()">Login</button>
+  </div>
+
   <script>
-    function addToCart(productName) {
-      alert(productName + " added to cart!");
-    }
-    function showAbout() {
-      document.getElementById('about-section').style.display = 'block';
-      document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
-    }
-    function toggleLogin() {
-      const popup = document.getElementById('loginPopup');
-      popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+    document.querySelector('.nav-links a[href="#"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('loginPopup').style.display = 'block';
+    });
+
+    function closeLogin() {
+      document.getElementById('loginPopup').style.display = 'none';
     }
   </script>
 </body>

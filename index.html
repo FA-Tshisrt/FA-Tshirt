@@ -6,6 +6,11 @@
   <title>FA-Tshirt</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'SnapITC';
+      src: local('Snap ITC'), url('https://fonts.cdnfonts.com/s/22228/SNAP____.TTF') format('truetype');
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,182 +19,218 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      background: url('https://wallpapercave.com/wp/wp5128415.jpg') no-repeat center center fixed;
+      background: url('https://wallpaperaccess.com/full/5651991.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: #fff;
+      color: #000;
     }
 
     header {
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 15px 30px;
+      background-color: rgba(217, 4, 41, 0.9);
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
       position: sticky;
       top: 0;
       z-index: 1000;
-      animation: fadeDown 1s ease;
-    }
-
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     .logo {
+      font-family: 'SnapITC', sans-serif;
       font-size: 32px;
-      font-weight: 700;
-      color: #e63946;
-      text-shadow: 2px 2px 0 #000;
-    }
-
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
       font-weight: bold;
-      transition: color 0.3s ease;
+      color: white;
+      text-shadow: 3px 3px 0 #000, -1px -1px 0 #fff;
     }
 
-    .nav-links a:hover {
-      color: #ff6b6b;
+    .search-bar {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 60%;
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .icons a {
+      color: white;
+      font-size: 24px;
+      text-decoration: none;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .icons a:hover {
+      transform: scale(1.2);
+    }
+
+    .nav-categories {
+      background-color: rgba(255, 255, 255, 0.95);
+      text-align: center;
+      padding: 10px 0;
+      font-weight: bold;
+    }
+
+    .nav-categories a {
+      margin: 0 15px;
+      color: #d90429;
+      text-decoration: none;
+      font-size: 14px;
     }
 
     .hero {
       text-align: center;
-      padding: 100px 20px;
-      background: rgba(0,0,0,0.5);
-      animation: fadeUp 1s ease;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      padding: 50px 20px 20px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      animation: fadeIn 2s ease-out;
     }
 
     .hero h1 {
       font-size: 48px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .hero p {
       font-size: 20px;
     }
 
-    .products {
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-      padding: 40px;
-      background: rgba(0,0,0,0.7);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
     }
 
     .product {
-      background: #fff;
-      color: #000;
+      background: rgba(255,255,255,0.9);
       border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      padding: 15px;
+      transition: 0.3s;
     }
 
     .product:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #000;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      transform: scale(1.03);
     }
 
     .product img {
       width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    .product-info {
-      padding: 15px;
-      text-align: center;
-    }
-
-    .product-info h3 {
-      margin-bottom: 10px;
-    }
-
-    .product-info p {
-      margin-bottom: 10px;
-    }
-
-    .buy-btn {
-      background-color: #e63946;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    .buy-btn:hover {
-      background-color: #d90429;
+      height: auto;
+      border-radius: 10px;
     }
 
     footer {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 20px;
-      text-align: center;
-      color: white;
-      margin-top: 20px;
+      background:#d90429;
+      color:white;
+      text-align:center;
+      padding:15px 0;
+      margin-top:20px;
+    }
+
+    .about-section {
+      background-color: rgba(255,255,255,0.95);
+      padding: 30px;
+      margin: 30px 10px;
+      border-radius: 10px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @media screen and (max-width: 768px) {
+      .search-bar input {
+        width: 90%;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">FA-Tshirt</div>
-    <nav class="nav-links">
-      <a href="#">Home</a>
-      <a href="#products">Products</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for t-shirts..." />
+    </div>
+    <div class="icons">
+      <a href="#">❤️</a>
+      <a href="#">🛒</a>
+      <a href="#">👤</a>
+    </div>
   </header>
+
+  <nav class="nav-categories">
+    <a href="#men">Men</a>
+    <a href="#women">Women</a>
+    <a href="#kids">Kids</a>
+    <a href="#about">About</a>
+  </nav>
 
   <section class="hero">
     <h1>Welcome to FA-Tshirt</h1>
-    <p>Trendy | Comfortable | Affordable</p>
+    <p>Style that speaks your vibe — for Men, Women & Kids</p>
   </section>
 
-  <section class="products" id="products">
+  <section class="product-grid" id="men">
     <div class="product">
-      <img src="https://images.unsplash.com/photo-1618354691549-6d8b1b464986?auto=format&fit=crop&w=400&q=80" alt="Tshirt 1">
-      <div class="product-info">
-        <h3>Black Round Neck</h3>
-        <p>₹299</p>
-        <button class="buy-btn" onclick="addToCart('Black Round Neck')">Add to Cart</button>
-      </div>
+      <img src="https://via.placeholder.com/250x300?text=Round+Neck+Tee" alt="Tshirt 1">
+      <h3>Men's Round Neck Tee</h3>
+      <p>₹299</p>
     </div>
     <div class="product">
-      <img src="https://images.unsplash.com/photo-1598032894623-e81c3e5d7cda?auto=format&fit=crop&w=400&q=80" alt="Tshirt 2">
-      <div class="product-info">
-        <h3>White Graphic Tee</h3>
-        <p>₹349</p>
-        <button class="buy-btn" onclick="addToCart('White Graphic Tee')">Add to Cart</button>
-      </div>
+      <img src="https://via.placeholder.com/250x300?text=Oversized+Drop+Shoulder" alt="Tshirt 2">
+      <h3>Drop Shoulder Tee</h3>
+      <p>₹349</p>
     </div>
     <div class="product">
-      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80" alt="Tshirt 3">
-      <div class="product-info">
-        <h3>Red Street Style</h3>
-        <p>₹399</p>
-        <button class="buy-btn" onclick="addToCart('Red Street Style')">Add to Cart</button>
-      </div>
+      <img src="https://via.placeholder.com/250x300?text=Street+Style" alt="Tshirt 3">
+      <h3>Street Style Tee</h3>
+      <p>₹399</p>
     </div>
+  </section>
+
+  <section class="product-grid" id="women">
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300?text=Women's+Tee+1" alt="Tshirt 4">
+      <h3>Women's Casual Tee</h3>
+      <p>₹279</p>
+    </div>
+  </section>
+
+  <section class="product-grid" id="kids">
+    <div class="product">
+      <img src="https://via.placeholder.com/250x300?text=Kids+Tshirt" alt="Tshirt 5">
+      <h3>Kids Printed Tee</h3>
+      <p>₹249</p>
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <h2>About FA-Tshirt</h2>
+    <p>FA-Tshirt isn't just a brand, it's a dream. A dream of a simple guy who wanted to make high-quality, stylish, and affordable fashion accessible to everyone — especially those who don’t have a huge budget but deserve to look their best.
+    <br><br>
+    Starting from scratch, every design is made with passion, keeping in mind the real people and their real stories. FA-Tshirt is for every youth out there hustling with a fire inside.
+    <br><br>
+    Your support builds this dream. One t-shirt at a time.
+    </p>
   </section>
 
   <footer>
-    &copy; 2025 FA-Tshirt. All rights reserved.
+    © 2025 FA-Tshirt | All rights reserved.
   </footer>
-
-  <script>
-    function addToCart(productName) {
-      alert(productName + " added to cart!");
-    }
-  </script>
 </body>
 </html>

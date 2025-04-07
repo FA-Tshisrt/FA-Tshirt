@@ -4,8 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FA-Tshirt</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bahnschrift&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Snap ITC';
+      src: local('Snap ITC');
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -38,34 +43,22 @@
 
     .logo {
       font-size: 32px;
+      font-family: 'Snap ITC';
       font-weight: 700;
       color: #e63946;
-      font-family: 'Snap ITC', cursive;
-      text-shadow: 2px 2px 3px #000;
+      text-shadow: 2px 2px 0 #000;
     }
 
-    .search-container {
-      flex-grow: 1;
-      text-align: center;
-    }
-
-    .search-container input {
-      padding: 8px;
-      width: 300px;
-      border-radius: 20px;
-      border: none;
-      outline: none;
-    }
-
-    .nav-links {
+    .nav-right {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
     }
 
     .nav-links a {
       color: white;
       text-decoration: none;
+      margin: 0 10px;
       font-weight: bold;
       transition: color 0.3s ease;
     }
@@ -74,30 +67,36 @@
       color: #ff6b6b;
     }
 
-    .sub-nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 10px 0;
+    .search-filter {
+      text-align: center;
+      margin: 20px auto 5px;
     }
 
-    .sub-nav a {
-      color: black;
-      background-color: #fff;
-      padding: 5px 15px;
+    .search-filter input[type="text"] {
+      padding: 8px;
+      width: 300px;
       border-radius: 5px;
-      text-decoration: none;
-      transition: 0.3s;
+      border: none;
     }
 
-    .sub-nav a:hover {
-      background-color: #ddd;
+    .category-bar {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .category-bar span {
+      color: black;
+      background: white;
+      padding: 5px 15px;
+      margin: 0 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
     }
 
     .hero {
       text-align: center;
-      padding: 100px 20px 50px;
+      padding: 80px 20px 40px;
       background: rgba(0,0,0,0.5);
       animation: fadeUp 1s ease;
     }
@@ -148,6 +147,10 @@
       text-align: center;
     }
 
+    .product-info h3 {
+      margin-bottom: 10px;
+    }
+
     .buy-btn {
       background-color: #e63946;
       border: none;
@@ -167,17 +170,16 @@
       padding: 20px;
       text-align: center;
       color: white;
-      margin-top: 20px;
     }
 
-    .login-btn {
-      color: white;
-      margin-left: 20px;
-      cursor: pointer;
-      text-decoration: underline;
+    #about-content {
+      padding: 20px;
+      display: none;
+      background: rgba(255, 255, 255, 0.9);
+      color: black;
     }
 
-    .popup {
+    #loginPopup {
       display: none;
       position: fixed;
       top: 50%;
@@ -185,82 +187,125 @@
       transform: translate(-50%, -50%);
       background: white;
       color: black;
-      padding: 30px;
+      padding: 20px;
       border-radius: 10px;
-      z-index: 2000;
+      box-shadow: 0 0 15px #000;
     }
 
-    .popup input {
+    #loginPopup input {
       display: block;
       width: 100%;
-      margin-bottom: 15px;
+      margin: 10px 0;
       padding: 10px;
     }
 
-    .popup button {
-      padding: 10px;
+    #loginPopup button {
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">FA-Tshirt</div>
-    <div class="search-container">
-      <input type="text" placeholder="Search for t-shirts..." />
-    </div>
-    <div class="nav-links">
-      <a href="#">Login</a>
-      <a href="#cart">Cart</a>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about" onclick="showAbout()">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#" onclick="showLogin()" style="color:white">Login</a>
+      <a href="#" style="color:white">Cart</a>
     </div>
   </header>
 
-  <div class="sub-nav">
-    <a href="#">Men</a>
-    <a href="#">Women</a>
-    <a href="#">Kids</a>
-  </div>
-  <div class="sub-nav">
-    <a href="#">Home</a>
-    <a href="#products">Products</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+  <div class="search-filter">
+    <input type="text" placeholder="Search for t-shirts...">
   </div>
 
-  <section class="hero">
+  <div class="category-bar">
+    <span>Men</span>
+    <span>Women</span>
+    <span>Kids</span>
+  </div>
+
+  <section class="hero" id="home">
     <h1>Welcome to FA-Tshirt</h1>
     <p>Trendy | Comfortable | Affordable</p>
   </section>
 
-  <section class="products" id="products">
-    <!-- Multiple products go here -->
+  <section id="about-content">
+    <h2>Our Story</h2>
+    <p>FA-Tshirt is not just a brand, it's a dream. It started with a passion to create high-quality, stylish, and affordable fashion that represents youth and ambition. Our journey began with a single vision — to bring creativity, comfort, and confidence into every thread we stitch. Thank you for being a part of this journey.</p>
   </section>
 
-  <section class="about" id="about" style="padding:40px; background-color:rgba(0,0,0,0.7);">
-    <h2 style="text-align:center; margin-bottom:20px;">Our Story</h2>
-    <p style="max-width:800px; margin:auto; text-align:center;">
-      FA-Tshirt started from a small dream to build India’s most affordable and quality-driven clothing brand. Through challenges, hustle, and passion, our goal is to bring stylish t-shirts for everyone — from the college student to the working professional. Our brand is not just about clothes, it’s about confidence, comfort, and creativity.
-    </p>
+  <section class="products" id="products">
+    <!-- Repeat product blocks to ensure scrolling -->
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1618354691549-6d8b1b464986?auto=format&fit=crop&w=400&q=80" alt="Tshirt 1">
+      <div class="product-info">
+        <h3>Black Round Neck</h3>
+        <p>₹299</p>
+        <button class="buy-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1598032894623-e81c3e5d7cda?auto=format&fit=crop&w=400&q=80" alt="Tshirt 2">
+      <div class="product-info">
+        <h3>White Graphic Tee</h3>
+        <p>₹349</p>
+        <button class="buy-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80" alt="Tshirt 3">
+      <div class="product-info">
+        <h3>Red Street Style</h3>
+        <p>₹399</p>
+        <button class="buy-btn">Add to Cart</button>
+      </div>
+    </div>
+    <!-- More product blocks -->
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1536148935331-408321065b18?auto=format&fit=crop&w=400&q=80" alt="Tshirt 4">
+      <div class="product-info">
+        <h3>Classic Blue Tee</h3>
+        <p>₹289</p>
+        <button class="buy-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1542062703-5a5d2aa0f71b?auto=format&fit=crop&w=400&q=80" alt="Tshirt 5">
+      <div class="product-info">
+        <h3>Urban White</h3>
+        <p>₹320</p>
+        <button class="buy-btn">Add to Cart</button>
+      </div>
+    </div>
   </section>
 
   <footer>
     &copy; 2025 FA-Tshirt. All rights reserved.
   </footer>
 
-  <div class="popup" id="loginPopup">
-    <h3>Login to FA-Tshirt</h3>
-    <input type="text" placeholder="Username or Email">
+  <div id="loginPopup">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username">
     <input type="password" placeholder="Password">
-    <button onclick="closeLogin()">Login</button>
+    <button onclick="alert('Login Successful')">Login</button>
   </div>
 
   <script>
-    document.querySelector('.nav-links a[href="#"]').addEventListener('click', function(e) {
-      e.preventDefault();
+    function showAbout() {
+      document.getElementById('about-content').style.display = 'block';
+      window.scrollTo(0, document.getElementById('about-content').offsetTop);
+    }
+    function showLogin() {
       document.getElementById('loginPopup').style.display = 'block';
-    });
-
-    function closeLogin() {
-      document.getElementById('loginPopup').style.display = 'none';
     }
   </script>
 </body>

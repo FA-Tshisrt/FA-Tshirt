@@ -39,8 +39,9 @@
     .logo {
       font-size: 32px;
       font-weight: 700;
+      font-family: 'Snap ITC', cursive;
       color: #e63946;
-      text-shadow: 2px 2px 0 #000;
+      text-shadow: 2px 2px 4px #000;
     }
 
     .nav-links a {
@@ -55,9 +56,23 @@
       color: #ff6b6b;
     }
 
+    .search-bar {
+      margin: 10px auto;
+      text-align: center;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      width: 60%;
+      max-width: 400px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+    }
+
     .hero {
       text-align: center;
-      padding: 100px 20px;
+      padding: 100px 20px 40px;
       background: rgba(0,0,0,0.5);
       animation: fadeUp 1s ease;
     }
@@ -69,11 +84,32 @@
 
     .hero h1 {
       font-size: 48px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .hero p {
       font-size: 20px;
+    }
+
+    .categories {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .categories span {
+      margin: 0 10px;
+      background: #fff;
+      color: #000;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .categories span:hover {
+      background: #ff6b6b;
+      color: #fff;
     }
 
     .products {
@@ -130,6 +166,24 @@
       background-color: #d90429;
     }
 
+    #about {
+      padding: 60px 30px;
+      background: rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+
+    #about h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    #about p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
     footer {
       background: rgba(0, 0, 0, 0.8);
       padding: 20px;
@@ -150,9 +204,18 @@
     </nav>
   </header>
 
+  <div class="search-bar">
+    <input type="text" placeholder="Search for T-shirts...">
+  </div>
+
   <section class="hero">
     <h1>Welcome to FA-Tshirt</h1>
     <p>Trendy | Comfortable | Affordable</p>
+    <div class="categories">
+      <span>Men</span>
+      <span>Women</span>
+      <span>Kids</span>
+    </div>
   </section>
 
   <section class="products" id="products">
@@ -180,6 +243,11 @@
         <button class="buy-btn" onclick="addToCart('Red Street Style')">Add to Cart</button>
       </div>
     </div>
+  </section>
+
+  <section id="about">
+    <h2>About FA-Tshirt</h2>
+    <p>FA-Tshirt is not just a clothing brand, it's a dream turned reality. Born from humble beginnings and a burning passion for creativity, FA-Tshirt aims to deliver affordable yet stylish wear for everyone. Our mission is to make fashion accessible while keeping it uniquely expressive. Whether you're a student, an artist, or a dreamer — there's a tee for every story here.</p>
   </section>
 
   <footer>

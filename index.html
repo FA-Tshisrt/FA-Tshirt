@@ -6,11 +6,8 @@
   <title>FA-Tshirt</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'SnapITC';
-      src: local('Snap ITC'), url('https://fonts.cdnfonts.com/s/14657/SNAP____.TTF') format('truetype');
-    }
-
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    
     * {
       margin: 0;
       padding: 0;
@@ -18,7 +15,7 @@
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Snap ITC', 'Roboto', sans-serif;
       background: url('https://wallpapercave.com/wp/wp5128415.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #fff;
@@ -42,44 +39,40 @@
     }
 
     .logo {
-      font-family: 'SnapITC', cursive;
       font-size: 32px;
       font-weight: 700;
       color: #e63946;
       text-shadow: 2px 2px 0 #000;
+      font-family: 'Snap ITC';
     }
 
-    .nav-links {
+    .nav-left, .nav-right {
       display: flex;
       align-items: center;
     }
 
-    .nav-links a {
+    .nav-links a, .category-links a {
       color: white;
       text-decoration: none;
-      margin: 0 15px;
+      margin: 0 10px;
       font-weight: bold;
       transition: color 0.3s ease;
+      font-size: 16px;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover, .category-links a:hover {
       color: #ff6b6b;
     }
 
-    .login-btn {
-      background-color: transparent;
-      color: white;
-      border: 2px solid white;
-      padding: 6px 12px;
-      margin-left: 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s ease;
+    .search-bar {
+      margin: 0 20px;
     }
 
-    .login-btn:hover {
-      background-color: #fff;
-      color: #000;
+    .search-bar input {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
     }
 
     .hero {
@@ -101,6 +94,12 @@
 
     .hero p {
       font-size: 20px;
+    }
+
+    .category-links {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px;
     }
 
     .products {
@@ -168,15 +167,28 @@
 </head>
 <body>
   <header>
-    <div class="logo">FA-Tshirt</div>
-    <nav class="nav-links">
-      <a href="#">Home</a>
-      <a href="#products">Products</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <button class="login-btn" onclick="openLogin()">Login / Sign Up</button>
-    </nav>
+    <div class="nav-left">
+      <div class="logo">FA-Tshirt</div>
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+      </div>
+      <button class="buy-btn" onclick="loginPopup()">Login / Sign Up</button>
+    </div>
   </header>
+
+  <div class="category-links">
+    <a href="#">Men</a>
+    <a href="#">Women</a>
+    <a href="#">Kids</a>
+  </div>
 
   <section class="hero">
     <h1>Welcome to FA-Tshirt</h1>
@@ -210,6 +222,11 @@
     </div>
   </section>
 
+  <section class="hero" id="about">
+    <h1>About FA-Tshirt</h1>
+    <p>Ek sapna jo Delhi ki galiyon se shuru hua. FA-Tshirt sirf ek brand nahi, ek junoon hai jo har ek youth ko fashionable aur comfortable banane ka irada rakhta hai. Aapka support hi hamari taqat hai. Aao, milke banaye FA-Tshirt ko India ka sabse bada fashion naam!</p>
+  </section>
+
   <footer>
     &copy; 2025 FA-Tshirt. All rights reserved.
   </footer>
@@ -219,7 +236,7 @@
       alert(productName + " added to cart!");
     }
 
-    function openLogin() {
+    function loginPopup() {
       alert("Login / Sign Up functionality coming soon!");
     }
   </script>

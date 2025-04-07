@@ -1,129 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FA-Tshirt</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      color: #333;
-    }
-
-    header {
-      background-color: #d32f2f; /* Candy Red */
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 30px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .logo {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 30px;
-      font-weight: bold;
-      color: white;
-      text-shadow: 2px 2px 4px #000;
-    }
-
-    .search-bar {
-      flex-grow: 1;
-      max-width: 400px;
-      margin: 0 40px;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 8px;
-      border: none;
-      border-radius: 20px;
-      font-size: 16px;
-    }
-
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: 30px;
-      background-color: #fff;
-      color: #000;
-      padding: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-    }
-
-    .icons {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-    }
-
-    .icons i {
-      font-size: 20px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .icons i:hover {
-      transform: scale(1.2);
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo">FA-Tshirt</div>
-    <nav>
-      <div class="dropdown">
-        <span>Men</span>
-        <div class="dropdown-content">
-          <p>T-Shirts</p>
-          <p>Shirts</p>
-          <p>Jackets</p>
-        </div>
-      </div>
-      <div class="dropdown">
-        <span>Women</span>
-        <div class="dropdown-content">
-          <p>Tops</p>
-          <p>Jeans</p>
-          <p>Dresses</p>
-        </div>
-      </div>
-      <div class="dropdown">
-        <span>Mobile Covers</span>
-        <div class="dropdown-content">
-          <p>iPhone</p>
-          <p>Samsung</p>
-          <p>Realme</p>
-        </div>
-      </div>
-    </nav>
-    <div class="search-bar">
-      <input type="text" placeholder="Search for products...">
+<header class="flex items-center justify-between px-4 py-2 bg-red-600 text-white shadow-md">
+  <!-- Logo -->
+  <div class="flex items-center space-x-2">
+    <div class="text-2xl font-bold" style="font-family: 'Snap ITC', cursive; text-shadow: 2px 2px #000;">
+      FA-Tshirt
     </div>
-    <div class="icons">
-      <i class="fas fa-heart" title="Wishlist"></i>
-      <i class="fas fa-shopping-cart" title="Cart"></i>
-      <i class="fas fa-user" title="Login"></i>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="flex-1 mx-8">
+    <input type="text" placeholder="Search for products..." class="w-full px-4 py-2 rounded-lg text-black" />
+  </div>
+
+  <!-- Right Icons -->
+  <div class="flex items-center space-x-6">
+    <div class="cursor-pointer hover:text-gray-200">❤️</div>
+    <div class="relative group cursor-pointer">
+      🛒
+      <!-- Cart Popup -->
+      <div class="absolute right-0 mt-2 hidden group-hover:block w-64 bg-white text-black p-4 shadow-xl rounded-lg z-50">
+        <p class="font-semibold">Your Cart is empty</p>
+      </div>
     </div>
-  </header>
-</body>
-</html>
+    <div class="relative group cursor-pointer">
+      👤
+      <!-- Login Popup -->
+      <div class="absolute right-0 mt-2 hidden group-hover:block w-64 bg-white text-black p-4 shadow-xl rounded-lg z-50">
+        <p class="font-semibold mb-2">Login to your account</p>
+        <input type="text" placeholder="Email" class="w-full mb-2 px-2 py-1 border rounded" />
+        <input type="password" placeholder="Password" class="w-full mb-2 px-2 py-1 border rounded" />
+        <button class="w-full bg-red-600 text-white py-1 rounded">Login</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Navigation Bar with Hover Popups -->
+<nav class="bg-red-500 text-white px-6 py-2 shadow">
+  <ul class="flex space-x-6">
+    <li class="relative group">
+      <span class="cursor-pointer">Men</span>
+      <ul class="absolute hidden group-hover:block bg-white text-black mt-2 p-2 shadow-lg rounded z-50">
+        <li class="px-4 py-1 hover:bg-gray-200 cursor-pointer">T-Shirts</li>
+        <li class="px-4 py-1 hover:bg-gray-200 cursor-pointer">Shirts</li>
+        <li class="px-4 py-1 hover:bg-gray-200 cursor-pointer">Jeans</li>
+      </ul>
+    </li>
+    <li class="relative group">
+      <span class="cursor-pointer">Women</span>
+      <ul class="absolute hidden group-hover:block bg-white text-black mt-2 p-2 shadow-lg rounded z-50">
+        <li class="px-4 py-1 hover:bg-gray-200 cursor-pointer">Tops</li>
+        <li class="px-4 py-1 hover:bg-gray-200 cursor-pointer">Kurtis</li>
+        <li class="px-4 py-1 hover:bg-gray-200 cursor-pointer">Jeans</li>
+      </ul>
+    </li>
+    <li class="relative group">
+      <span class="cursor-pointer">Mobile Covers</span>
+      <ul class="absolute hidden group-hover:block bg-white text-black mt-2 p-2 shadow-lg rounded z-50">
+        <li class="px-4 py-1 hover:bg-gray-200 cursor-pointer">iPhone</li>
+        <li class="px-4 py-1 hover:bg-gray-200 cursor-pointer">Samsung</li>
+        <li class="px-4 py-1 hover:bg-gray-200 cursor-pointer">Xiaomi</li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<!-- Add any other sections here -->
+<main class="p-4">
+  <h1 class="text-3xl font-bold text-center text-red-700">Welcome to FA-Tshirt</h1>
+</main>

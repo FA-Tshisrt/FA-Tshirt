@@ -1,74 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FA-Tshirt | Home</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FA-Tshirt</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'SnapITC';
+      src: local('Snap ITC'), url('https://fonts.cdnfonts.com/s/22228/SNAP____.TTF') format('truetype');
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #fff;
+      color: #000;
+    }
+
+    header {
+      background-color: #d90429;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-family: 'SnapITC', sans-serif;
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .search-bar {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .search-bar input {
+      width: 60%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .nav-categories {
+      width: 100%;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      gap: 30px;
+    }
+
+    .nav-categories a {
+      color: #d90429;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .nav-categories a:hover::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: #d90429;
+      bottom: -5px;
+      left: 0;
+    }
+
+    .icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .icons a {
+      color: white;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      .search-bar input {
+        width: 90%;
+      }
+      .nav-categories {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Header/Navbar -->
-  <nav>
+  <header>
     <div class="logo">FA-Tshirt</div>
-
     <div class="search-bar">
-      <input type="text" placeholder="Search for products, brands and more...">
+      <input type="text" placeholder="Search for products..." />
     </div>
-
-    <ul>
-      <li>
-        Men
-        <div class="dropdown">
-          <p>T-Shirts</p>
-          <p>Oversized</p>
-          <p>Jackets</p>
-        </div>
-      </li>
-      <li>
-        Women
-        <div class="dropdown">
-          <p>Tops</p>
-          <p>Tees</p>
-          <p>Hoodies</p>
-        </div>
-      </li>
-      <li>
-        Mobile Covers
-        <div class="dropdown">
-          <p>iPhone</p>
-          <p>Samsung</p>
-          <p>Others</p>
-        </div>
-      </li>
-    </ul>
-
     <div class="icons">
-      <span class="icon">❤️</span>
-      <span class="icon">🛒</span>
-      <span class="icon">👤</span>
+      <a href="#">❤️</a>
+      <a href="#">🛒</a>
+      <a href="#">👤</a>
     </div>
+  </header>
+
+  <nav class="nav-categories">
+    <a href="#">Men</a>
+    <a href="#">Women</a>
+    <a href="#">Kids</a>
   </nav>
-
-  <!-- Banner Section -->
-  <div class="banner">Welcome to FA-Tshirt – Trendy Tees for Everyone</div>
-
-  <!-- Homepage Highlights (Trending, Hot Deals etc.) -->
-  <section class="product-grid">
-    <div class="product-card">
-      <img src="https://via.placeholder.com/150" alt="Product 1">
-      <h3>Oversized Tee</h3>
-      <p>₹299</p>
-    </div>
-    <div class="product-card">
-      <img src="https://via.placeholder.com/150" alt="Product 2">
-      <h3>Couple T-shirt</h3>
-      <p>₹499</p>
-    </div>
-    <div class="product-card">
-      <img src="https://via.placeholder.com/150" alt="Product 3">
-      <h3>Graphic Tee</h3>
-      <p>₹399</p>
-    </div>
-  </section>
 </body>
 </html>

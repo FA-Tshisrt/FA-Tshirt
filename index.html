@@ -4,179 +4,155 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FA-Tshirt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #fff;
-      color: #000;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
     }
-    header {
-      background-color: #d32f2f;
-      padding: 10px 20px;
+    body {
+      background-color: white;
+      color: black;
+    }
+    .top-bar {
+      background: black;
+      color: white;
+      padding: 8px 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+    .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
+      padding: 15px 20px;
+      border-bottom: 1px solid #ddd;
     }
     .logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: white;
-      font-weight: bold;
-      font-size: 24px;
+      font-size: 28px;
+      color: red;
+      font-family: 'Snap ITC', cursive;
     }
     .logo small {
-      font-size: 12px;
-      color: white;
+      font-size: 10px;
+      display: block;
+      margin-top: -5px;
     }
     .search-bar {
       flex: 1;
-      max-width: 500px;
       margin: 0 20px;
     }
     .search-bar input {
       width: 100%;
-      padding: 8px;
-      border: none;
+      padding: 10px;
       border-radius: 5px;
-      font-size: 16px;
+      border: 1px solid #ccc;
     }
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
-    }
-    .nav-buttons button {
-      background-color: white;
-      color: #d32f2f;
+    .actions button {
+      margin-left: 10px;
+      padding: 8px 14px;
       border: none;
-      padding: 8px 12px;
+      background-color: red;
+      color: white;
       border-radius: 5px;
       cursor: pointer;
-      font-weight: bold;
+      transition: 0.3s ease;
     }
-    nav {
-      background-color: #f44336;
+    .actions button:hover {
+      background-color: darkred;
+    }
+    .nav-categories {
       display: flex;
       justify-content: center;
       gap: 40px;
-      padding: 10px 0;
-    }
-    nav div {
-      color: white;
+      padding: 15px;
+      background-color: #f9f9f9;
       position: relative;
     }
-    nav div:hover .dropdown {
+    .nav-categories > div {
+      position: relative;
+    }
+    .nav-categories div:hover .dropdown {
       display: block;
     }
     .dropdown {
       display: none;
       position: absolute;
-      top: 30px;
+      top: 35px;
       background-color: white;
-      color: #d32f2f;
+      border: 1px solid #ddd;
       padding: 10px;
-      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 100;
     }
     .dropdown a {
       display: block;
-      margin-bottom: 5px;
-      color: #d32f2f;
+      padding: 5px 10px;
+      color: black;
       text-decoration: none;
     }
-    .product-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-      gap: 20px;
-    }
-    .product {
-      border: 1px solid #ccc;
-      padding: 10px;
-      border-radius: 10px;
-      width: 250px;
-      text-align: center;
-    }
-    .product img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .product button {
-      background-color: #d32f2f;
-      color: white;
-      border: none;
-      padding: 8px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    @media (max-width: 768px) {
-      .search-bar {
-        order: 3;
-        width: 100%;
-        margin-top: 10px;
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    .dropdown a:hover {
+      background-color: #f0f0f0;
     }
   </style>
 </head>
 <body>
-  <header>
+  <div class="top-bar">
+    <div>Free Shipping | Return To Store | Gift Cards</div>
+    <div>Help | Download App</div>
+  </div>
+
+  <div class="header">
     <div class="logo">
-      <div>👕</div>
+      FA-Tshirt
       <small>FA-Tshirt</small>
     </div>
     <div class="search-bar">
-      <input type="text" placeholder="Search for t-shirts..." />
+      <input type="text" placeholder="What are you looking for?">
     </div>
-    <div class="nav-buttons">
+    <div class="actions">
       <button onclick="showLogin()">Login</button>
       <button onclick="showCart()">Cart</button>
     </div>
-  </header>
-  <nav>
-    <div>Men
+  </div>
+
+  <div class="nav-categories">
+    <div>
+      Men
       <div class="dropdown">
         <a href="#">T-Shirts</a>
         <a href="#">Shirts</a>
+        <a href="#">Jeans</a>
       </div>
     </div>
-    <div>Women
+    <div>
+      Women
       <div class="dropdown">
         <a href="#">Tops</a>
+        <a href="#">Kurtis</a>
+        <a href="#">Jeans</a>
+      </div>
+    </div>
+    <div>
+      Kids
+      <div class="dropdown">
+        <a href="#">T-Shirts</a>
+        <a href="#">Shorts</a>
         <a href="#">Dresses</a>
       </div>
     </div>
-    <div>Kids
-      <div class="dropdown">
-        <a href="#">Boys</a>
-        <a href="#">Girls</a>
-      </div>
-    </div>
-  </nav>
-  <section class="product-list">
-    <div class="product">
-      <img src="https://via.placeholder.com/250x250.png?text=Red+Tshirt" alt="Red Tshirt" />
-      <h3>Red Classic Tee</h3>
-      <p>₹249</p>
-      <button>Add to Cart</button>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/250x250.png?text=White+Tshirt" alt="White Tshirt" />
-      <h3>White Bold Tee</h3>
-      <p>₹299</p>
-      <button>Add to Cart</button>
-    </div>
-    <div class="product">
-      <img src="https://via.placeholder.com/250x250.png?text=Printed+Tshirt" alt="Printed Tshirt" />
-      <h3>Printed Streetwear</h3>
-      <p>₹349</p>
-      <button>Add to Cart</button>
-    </div>
-  </section>
+  </div>
+
+  <script>
+    function showLogin() {
+      alert("Login popup will open here.");
+    }
+    function showCart() {
+      alert("Cart popup with items will show here.");
+    }
+  </script>
 </body>
 </html>

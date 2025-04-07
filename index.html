@@ -1,101 +1,74 @@
-<header class="bg-red-600 text-white shadow-md p-4 flex items-center justify-between">
-  <!-- Logo -->
-  <div class="flex items-center">
-    <h1 class="text-3xl font-bold" style="font-family: 'Snap ITC', cursive; text-shadow: 2px 2px #000">FA_Tshirt</h1>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FA-Tshirt | Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header/Navbar -->
+  <nav>
+    <div class="logo">FA-Tshirt</div>
 
-  <!-- Search Bar -->
-  <div class="flex-1 px-6">
-    <input type="text" placeholder="Search products..." class="w-full p-2 rounded-full text-black" />
-  </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for products, brands and more...">
+    </div>
 
-  <!-- Icons -->
-  <div class="flex items-center space-x-4">
-    <button class="hover:text-yellow-300">❤️ Wishlist</button>
-    <button class="hover:text-yellow-300">🛒 Cart</button>
-    <button class="hover:text-yellow-300">👤 Login</button>
-  </div>
-</header>
+    <ul>
+      <li>
+        Men
+        <div class="dropdown">
+          <p>T-Shirts</p>
+          <p>Oversized</p>
+          <p>Jackets</p>
+        </div>
+      </li>
+      <li>
+        Women
+        <div class="dropdown">
+          <p>Tops</p>
+          <p>Tees</p>
+          <p>Hoodies</p>
+        </div>
+      </li>
+      <li>
+        Mobile Covers
+        <div class="dropdown">
+          <p>iPhone</p>
+          <p>Samsung</p>
+          <p>Others</p>
+        </div>
+      </li>
+    </ul>
 
-<main class="bg-white text-black">
-  <!-- Homepage Highlights -->
-  <section class="my-4">
-    <div class="bg-red-100 p-4 rounded-lg text-center text-xl font-semibold">Big Banner Slider (Sales | New Launches | Offers)</div>
-  </section>
+    <div class="icons">
+      <span class="icon">❤️</span>
+      <span class="icon">🛒</span>
+      <span class="icon">👤</span>
+    </div>
+  </nav>
 
-  <section class="my-4">
-    <h2 class="text-lg font-bold mb-2">Trending Now</h2>
-    <div class="flex space-x-4 overflow-x-auto">
-      <div class="w-40 h-60 bg-gray-200 flex items-center justify-center">Product 1</div>
-      <div class="w-40 h-60 bg-gray-200 flex items-center justify-center">Product 2</div>
-      <div class="w-40 h-60 bg-gray-200 flex items-center justify-center">Product 3</div>
+  <!-- Banner Section -->
+  <div class="banner">Welcome to FA-Tshirt – Trendy Tees for Everyone</div>
+
+  <!-- Homepage Highlights (Trending, Hot Deals etc.) -->
+  <section class="product-grid">
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="Product 1">
+      <h3>Oversized Tee</h3>
+      <p>₹299</p>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="Product 2">
+      <h3>Couple T-shirt</h3>
+      <p>₹499</p>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="Product 3">
+      <h3>Graphic Tee</h3>
+      <p>₹399</p>
     </div>
   </section>
-
-  <section class="my-4">
-    <h2 class="text-lg font-bold mb-2">Hot Deals</h2>
-    <div class="flex space-x-4 overflow-x-auto">
-      <div class="w-40 h-60 bg-gray-200 flex items-center justify-center">Deal 1</div>
-      <div class="w-40 h-60 bg-gray-200 flex items-center justify-center">Deal 2</div>
-    </div>
-  </section>
-
-  <section class="my-4">
-    <h2 class="text-lg font-bold mb-2">Top Picks</h2>
-    <div class="flex space-x-4 overflow-x-auto">
-      <div class="w-40 h-60 bg-gray-200 flex items-center justify-center">Top 1</div>
-      <div class="w-40 h-60 bg-gray-200 flex items-center justify-center">Top 2</div>
-    </div>
-  </section>
-
-  <section class="my-4 text-sm space-x-2">
-    <span class="bg-red-600 text-white px-2 py-1 rounded">Under ₹299</span>
-    <span class="bg-red-600 text-white px-2 py-1 rounded">Best Sellers</span>
-    <span class="bg-red-600 text-white px-2 py-1 rounded">Buy 1 Get 1</span>
-  </section>
-
-  <!-- Product Grid -->
-  <section class="grid grid-cols-4 gap-4 my-6">
-    <div class="relative group bg-gray-100 rounded-lg overflow-hidden">
-      <img src="https://via.placeholder.com/300x400" alt="Product" class="w-full h-full object-cover group-hover:opacity-0 transition duration-300"/>
-      <img src="https://via.placeholder.com/300x400/000000/ffffff?text=Alt+View" alt="Hover View" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition duration-300" />
-      <div class="p-2">Men's Tshirt</div>
-    </div>
-    <!-- Repeat above product block as needed -->
-  </section>
-
-  <!-- Filters & Sorting (Mock) -->
-  <aside class="p-4 bg-gray-50">
-    <h3 class="font-bold mb-2">Filters</h3>
-    <div>Size | Price | Category</div>
-    <h3 class="font-bold mt-4 mb-2">Sort By</h3>
-    <select class="border p-1">
-      <option>Popularity</option>
-      <option>Price: Low to High</option>
-      <option>Price: High to Low</option>
-    </select>
-  </aside>
-
-  <!-- Quick View Mockup -->
-  <div class="p-4 mt-6 bg-gray-100 text-center">Quick View modal trigger area</div>
-</main>
-
-<!-- Footer Menu -->
-<footer class="fixed bottom-0 w-full bg-red-600 text-white p-2 flex justify-around">
-  <button>Home</button>
-  <button>Categories</button>
-  <button>Search</button>
-  <button>Wishlist</button>
-  <button>Cart</button>
-</footer>
-
-<!-- Checkout Steps (Mock) -->
-<section class="my-6 p-4 bg-yellow-100">
-  <h2 class="font-bold text-lg mb-2">Checkout Steps</h2>
-  <ol class="list-decimal ml-4">
-    <li>Cart Review</li>
-    <li>Shipping Info</li>
-    <li>Payment</li>
-  </ol>
-  <p class="mt-2">Guest Checkout ✅ | Multiple Payment Options ✅ | Coupon Code Field ✅</p>
-</section>
+</body>
+</html>

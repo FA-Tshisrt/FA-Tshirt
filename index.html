@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,42 +7,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #d90000;
-      color: white;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #333;
     }
 
     header {
+      background-color: #d32f2f; /* Candy Red */
+      color: white;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #d90000;
-      padding: 10px 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      padding: 10px 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       font-family: 'Orbitron', sans-serif;
-      font-size: 24px;
+      font-size: 30px;
       font-weight: bold;
-      text-shadow: 1px 1px 4px #000;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
     }
 
-    .logo small {
-      font-size: 12px;
+    .search-bar {
+      flex-grow: 1;
+      max-width: 400px;
+      margin: 0 40px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
     }
 
     nav {
@@ -51,126 +51,79 @@
       gap: 20px;
     }
 
-    nav div {
+    .dropdown {
       position: relative;
     }
 
-    nav button {
-      background: none;
-      border: none;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    nav div:hover .dropdown {
+    .dropdown:hover .dropdown-content {
       display: block;
     }
 
-    .dropdown {
+    .dropdown-content {
       display: none;
       position: absolute;
       top: 30px;
-      background-color: white;
-      color: black;
+      background-color: #fff;
+      color: #000;
       padding: 10px;
-      border-radius: 5px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1;
     }
 
-    .searchbar {
-      flex-grow: 1;
-      max-width: 400px;
-      margin: 0 20px;
-    }
-
-    .searchbar input {
-      width: 100%;
-      padding: 8px 10px;
-      border-radius: 20px;
-      border: none;
-      font-size: 14px;
-    }
-
-    .actions {
+    .icons {
       display: flex;
       gap: 15px;
-    }
-
-    .actions button {
-      background: white;
-      color: #d90000;
-      padding: 5px 10px;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .main-banner {
-      background: url('https://via.placeholder.com/1200x400/ff0000/ffffff?text=FA-Tshirt+Banner') no-repeat center center/cover;
-      height: 400px;
-      display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
     }
 
-    .main-banner h1 {
-      font-size: 40px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 20px;
-      border-radius: 10px;
+    .icons i {
+      font-size: 20px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .icons i:hover {
+      transform: scale(1.2);
     }
   </style>
 </head>
-
 <body>
   <header>
-    <div class="logo">
-      FA-Tshirt
-      <small>FA-Tshirt</small>
-    </div>
+    <div class="logo">FA-Tshirt</div>
     <nav>
-      <div>
-        <button><i class="fas fa-male"></i> Men</button>
-        <div class="dropdown">
+      <div class="dropdown">
+        <span>Men</span>
+        <div class="dropdown-content">
           <p>T-Shirts</p>
           <p>Shirts</p>
-          <p>Bottomwear</p>
+          <p>Jackets</p>
         </div>
       </div>
-      <div>
-        <button><i class="fas fa-female"></i> Women</button>
-        <div class="dropdown">
+      <div class="dropdown">
+        <span>Women</span>
+        <div class="dropdown-content">
           <p>Tops</p>
+          <p>Jeans</p>
           <p>Dresses</p>
-          <p>Bottomwear</p>
         </div>
       </div>
-      <div>
-        <button><i class="fas fa-child"></i> Kids</button>
-        <div class="dropdown">
-          <p>Boys</p>
-          <p>Girls</p>
+      <div class="dropdown">
+        <span>Mobile Covers</span>
+        <div class="dropdown-content">
+          <p>iPhone</p>
+          <p>Samsung</p>
+          <p>Realme</p>
         </div>
       </div>
     </nav>
-    <div class="searchbar">
-      <input type="text" placeholder="Search for products..." />
+    <div class="search-bar">
+      <input type="text" placeholder="Search for products...">
     </div>
-    <div class="actions">
-      <button onclick="alert('Login Popup')">Login</button>
-      <button onclick="alert('Cart View')">Cart</button>
+    <div class="icons">
+      <i class="fas fa-heart" title="Wishlist"></i>
+      <i class="fas fa-shopping-cart" title="Cart"></i>
+      <i class="fas fa-user" title="Login"></i>
     </div>
   </header>
-
-  <section class="main-banner">
-    <h1>Welcome to FA-Tshirt</h1>
-  </section>
 </body>
-
 </html>

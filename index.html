@@ -1,295 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FA-Tshirt - Home</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f5f5f5;
-    }
-    header {
-      background: black;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-    }
-    header img {
-      height: 40px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-    .search-bar {
-      text-align: center;
-      margin: 10px auto;
-    }
-    .search-bar input {
-      width: 60%;
-      padding: 10px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .product-card {
-      background: white;
-      padding: 10px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .product-card img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .product-title {
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    .product-description {
-      font-size: 14px;
-      color: #555;
-    }
-    .product-price {
-      font-size: 18px;
-      color: #e91e63;
-      margin: 5px 0;
-    }
-    .add-to-cart {
-      background: #e91e63;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-    .add-to-cart:hover {
-      background: #c2185b;
-    }
-    .cart-popup {
-      position: fixed;
-      top: 60px;
-      right: 20px;
-      width: 300px;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      padding: 15px;
-      display: none;
-      z-index: 1000;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      margin: 10px 0;
-    }
-    .cart-item-name {
-      font-weight: bold;
-    }
-    .cart-total {
-      font-size: 16px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    .btn {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .login-popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      display: none;
-      z-index: 1001;
-      width: 300px;
-    }
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      z-index: 1000;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FA-Tshirt</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header .logo img {
+            height: 40px;
+        }
+
+        header .logo span {
+            font-size: 12px;
+        }
+
+        header .search-bar {
+            flex: 1;
+            text-align: center;
+        }
+
+        header input[type="text"] {
+            width: 50%;
+            padding: 5px;
+        }
+
+        header .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 15px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .main-content {
+            margin-left: 200px;
+            padding: 20px;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product {
+            background-color: #fff;
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ccc;
+        }
+
+        .product img {
+            width: 100%;
+        }
+
+        .product h3, .product p {
+            margin: 10px 0;
+        }
+
+        .product button {
+            padding: 5px 10px;
+            background-color: red;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .product .buy-now {
+            background-color: green;
+            margin-left: 10px;
+        }
+
+        .cart-page {
+            display: none;
+        }
+
+        #loginPopup {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 40%;
+            background-color: white;
+            border: 2px solid #000;
+            padding: 20px;
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="FA-Tshirt">
+            <span>FA-Tshirt</span>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for t-shirts...">
+        </div>
+        <div class="buttons">
+            <button onclick="showLoginPopup()">Login</button>
+            <button onclick="toggleCartPage()">Cart (<span id="cart-count">0</span>)</button>
+        </div>
+    </header>
 
-  <!-- Header -->
-  <header>
-    <div>
-      <img src="https://via.placeholder.com/40" alt="FA-Tshirt Logo">
-      <div style="font-size: 10px;">FA-Tshirt</div>
+    <div class="sidebar">
+        <a href="#" onclick="filterCategory('all')">All</a>
+        <a href="#" onclick="filterCategory('men')">Men</a>
+        <a href="#" onclick="filterCategory('women')">Women</a>
+        <a href="#" onclick="filterCategory('kids')">Kids</a>
     </div>
-    <h1>FA-Tshirt</h1>
-    <div>
-      <button class="btn" onclick="openLogin()">Login</button>
-      <button class="btn" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
+
+    <div class="main-content">
+        <div class="products" id="product-list">
+            <!-- Products added dynamically here -->
+        </div>
+        <div class="cart-page" id="cart-page">
+            <h2>Your Cart</h2>
+            <div id="cart-items"></div>
+            <button onclick="checkout()">Checkout</button>
+        </div>
     </div>
-  </header>
 
-  <!-- Search Bar -->
-  <div class="search-bar">
-    <input type="text" placeholder="Search for products...">
-  </div>
+    <div id="loginPopup">
+        <h3>Login with Email OTP</h3>
+        <input type="email" id="email" placeholder="Enter your email"><br><br>
+        <button onclick="sendOTP()">Send OTP</button><br><br>
+        <input type="text" id="otp" placeholder="Enter OTP"><br><br>
+        <button onclick="verifyOTP()">Verify</button>
+    </div>
 
-  <!-- Products Grid -->
-  <div class="product-grid" id="product-list"></div>
+    <script>
+        let cart = [];
+        let products = [
+            {id: 1, title: "Cool Black Tee", category: "men", price: 299, img: "https://www.dropbox.com/scl/fi/d31svz2gl8gfcqzk7eibz/black.png?rlkey=bsv7pm1nh9ohtv69p6f7oh6ey&dl=1"},
+            {id: 2, title: "Trendy Red Tee", category: "women", price: 299, img: "https://www.dropbox.com/scl/fi/qslhc8rlqgbdtltmllh6j/red.png?rlkey=k7rx0s3lmrc94f8b3v3uuw8cf&dl=1"},
+            {id: 3, title: "Funky Graphic Tee", category: "kids", price: 299, img: "https://www.dropbox.com/scl/fi/cipz3hxoplyjwkdl7phxq/graphic.png?rlkey=3ug0d8azxkeo5k3gfu2fkn4ty&dl=1"},
+            {id: 4, title: "Plain White Tee", category: "men", price: 299, img: "https://www.dropbox.com/scl/fi/v1ul8asbjyrlmr7k5i6h5/white.png?rlkey=83m4ksv0iyljr4cgpzq7q1qce&dl=1"},
+            {id: 5, title: "Yellow Summer Tee", category: "women", price: 299, img: "https://www.dropbox.com/scl/fi/tjla54jwxqoyk6y12ghz0/yellow.png?rlkey=rq4l4o2tch8z5w0ymgmknn4mm&dl=1"},
+            {id: 6, title: "Blue Chill Tee", category: "kids", price: 299, img: "https://www.dropbox.com/scl/fi/jgms3ws8p7asfqumz2gy6/blue.png?rlkey=ox59fexhe8tmdq2i7ggtynkrx&dl=1"},
+        ];
 
-  <!-- Cart Popup -->
-  <div class="cart-popup" id="cart-popup">
-    <h3>Your Cart</h3>
-    <div id="cart-items"></div>
-    <div class="cart-total" id="cart-total">Total: ₹0</div>
-  </div>
+        function displayProducts(productArray) {
+            const container = document.getElementById('product-list');
+            container.innerHTML = '';
+            productArray.forEach(product => {
+                const div = document.createElement('div');
+                div.className = 'product';
+                div.innerHTML = `
+                    <img src="${product.img}" alt="${product.title}">
+                    <h3>${product.title}</h3>
+                    <p>₹${product.price}</p>
+                    <button onclick="addToCart(${product.id})">Add to Cart</button>
+                    <button class="buy-now" onclick="buyNow(${product.id})">Buy Now</button>
+                `;
+                container.appendChild(div);
+            });
+        }
 
-  <!-- Login Popup -->
-  <div class="overlay" id="overlay" onclick="closeLogin()"></div>
-  <div class="login-popup" id="login-popup">
-    <h3>Login via Email OTP</h3>
-    <input type="email" id="email" placeholder="Enter email" style="width: 100%; padding: 10px; margin-bottom: 10px;" />
-    <button onclick="sendOTP()" class="btn" style="background: #2196F3; color: white;">Send OTP</button>
-    <input type="text" id="otp" placeholder="Enter OTP" style="width: 100%; padding: 10px; margin-top: 10px;" />
-    <button onclick="verifyOTP()" class="btn" style="background: #4CAF50; color: white; margin-top: 10px;">Verify</button>
-  </div>
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            document.getElementById('cart-count').innerText = cart.length;
+            alert('Added to cart');
+        }
 
-  <script>
-    const products = [
-      {
-        name: "Striped Off Shoulder Top",
-        desc: "Nautical Chic Style – Ideal for Trendy Looks",
-        price: 279,
-        img: "https://www.dropbox.com/scl/fi/qg23nbgt17v3c1fjmz9yd/Top-Fashionista-__-Striped-Off-Shoulder-Tops-for-Nautical-Chic.jfif?rlkey=bpy2gearchgh7q2qqn9wnb1jo&raw=1"
-      },
-      {
-        name: "Vintage Vertical Painting T-Shirt",
-        desc: "Bold & Artistic Design – Over Fit Style",
-        price: 299,
-        img: "https://www.dropbox.com/scl/fi/jtsaogqxtxzg5llso50j2/Vintage-Vertical-Painting-Over-Fit-T-Shirt.jfif?rlkey=if3qhrugq8p04uoawamc3uovl&raw=1"
-      },
-      {
-        name: "Unisex Fashion Combo",
-        desc: "Stylish Outfits for Both Men & Women",
-        price: 249,
-        img: "https://www.dropbox.com/scl/fi/uuigb0k9n6514zebl6h35/Women-s-Men-s-Clothing-Shop-Online-Fashion.jfif?rlkey=mlq1ccpq251z26z3c3ka0tp4r&raw=1"
-      },
-      {
-        name: "Oversized Cotton T-Shirt",
-        desc: "Black – Short Sleeve Comfort",
-        price: 269,
-        img: "https://www.dropbox.com/scl/fi/8imuntoe8pyurqcsjt16b/Oversized-T-Shirt-Short-Sleeve-Cotton-T-Shirt-In-Black.jfif?rlkey=55r3q8jh0u0qz1p3csz4o3sqo&raw=1"
-      },
-      {
-        name: "Drop Shoulders Delight",
-        desc: "Men's Best Outfits for Stylish Looks",
-        price: 289,
-        img: "https://www.dropbox.com/scl/fi/kbelphqsfmkatwno9zzbk/_Ultimate-Style_-Men-s-Best-Outfits-with-Drop-Shoulders_-_Drop-Shoulders-Delight_-Men-s-Best-Outfits.jfif?rlkey=vs6x7vfq3a3fm0iseultaobzg&raw=1"
-      },
-      {
-        name: "Drop Shoulder T-Shirt",
-        desc: "Charcoal Grey – XXS Oversized Fit",
-        price: 259,
-        img: "https://www.dropbox.com/scl/fi/w35xp71onk4s5p9hqq40w/Oversized-Drop-Shoulder-T-Shirt-Charcoal-Grey-_-XXS.jfif?rlkey=h56tbbgnasz6jdt2b9lsh405j&raw=1"
-      },
-    ];
+        function toggleCartPage() {
+            const page = document.getElementById('cart-page');
+            page.style.display = page.style.display === 'block' ? 'none' : 'block';
+            updateCartView();
+        }
 
-    const cart = [];
-    let generatedOTP = "";
+        function updateCartView() {
+            const cartDiv = document.getElementById('cart-items');
+            cartDiv.innerHTML = '';
+            cart.forEach((item, index) => {
+                cartDiv.innerHTML += `<p>${item.title} - ₹${item.price} <button onclick="removeFromCart(${index})">Remove</button></p>`;
+            });
+        }
 
-    function renderProducts() {
-      const container = document.getElementById("product-list");
-      products.forEach((p, index) => {
-        container.innerHTML += `
-          <div class="product-card">
-            <img src="${p.img}" alt="${p.name}">
-            <div class="product-title">${p.name}</div>
-            <div class="product-description">${p.desc}</div>
-            <div class="product-price">₹${p.price}</div>
-            <button class="add-to-cart" onclick="addToCart(${index})">Add to Cart</button>
-          </div>
-        `;
-      });
-    }
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            document.getElementById('cart-count').innerText = cart.length;
+            updateCartView();
+        }
 
-    function addToCart(index) {
-      cart.push(products[index]);
-      document.getElementById("cart-count").innerText = cart.length;
-      renderCart();
-    }
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Cart is empty!');
+            } else {
+                alert('Order placed successfully!');
+                cart = [];
+                document.getElementById('cart-count').innerText = '0';
+                updateCartView();
+                toggleCartPage();
+            }
+        }
 
-    function toggleCart() {
-      const popup = document.getElementById("cart-popup");
-      popup.style.display = popup.style.display === "block" ? "none" : "block";
-    }
+        function filterCategory(cat) {
+            if (cat === 'all') displayProducts(products);
+            else displayProducts(products.filter(p => p.category === cat));
+        }
 
-    function renderCart() {
-      const items = document.getElementById("cart-items");
-      const total = document.getElementById("cart-total");
-      items.innerHTML = "";
-      let sum = 0;
-      cart.forEach((item) => {
-        items.innerHTML += `
-          <div class="cart-item">
-            <span class="cart-item-name">${item.name}</span>
-            <span>₹${item.price}</span>
-          </div>
-        `;
-        sum += item.price;
-      });
-      total.innerText = `Total: ₹${sum}`;
-    }
+        function buyNow(id) {
+            const product = products.find(p => p.id === id);
+            alert(`Proceeding to buy: ${product.title}`);
+        }
 
-    function openLogin() {
-      document.getElementById("overlay").style.display = "block";
-      document.getElementById("login-popup").style.display = "block";
-    }
+        function showLoginPopup() {
+            document.getElementById('loginPopup').style.display = 'block';
+        }
 
-    function closeLogin() {
-      document.getElementById("overlay").style.display = "none";
-      document.getElementById("login-popup").style.display = "none";
-    }
+        function sendOTP() {
+            const email = document.getElementById('email').value;
+            alert(`OTP sent to ${email}`); // Simulated
+        }
 
-    function sendOTP() {
-      const email = document.getElementById("email").value;
-      if (!email || !email.includes("@")) {
-        alert("Please enter a valid email address.");
-        return;
-      }
-      generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
-      alert(`OTP sent to ${email} (Demo OTP: ${generatedOTP})`);
-    }
+        function verifyOTP() {
+            const otp = document.getElementById('otp').value;
+            alert(`OTP Verified: ${otp}`); // Simulated
+            document.getElementById('loginPopup').style.display = 'none';
+        }
 
-    function verifyOTP() {
-      const enteredOTP = document.getElementById("otp").value;
-      if (enteredOTP === generatedOTP) {
-        alert("OTP Verified! Login Successful");
-        closeLogin();
-      } else {
-        alert("Invalid OTP. Please try again.");
-      }
-    }
-
-    renderProducts();
-  </script>
-
+        // Init load
+        displayProducts(products);
+    </script>
 </body>
 </html>

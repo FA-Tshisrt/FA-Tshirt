@@ -2,194 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FA-Tshirt</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FA-Tshirt Login with OTP</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <style>
-    @font-face {
-      font-family: 'Snap ITC';
-      src: local('Snap ITC');
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
+      margin: 0;
       font-family: 'Bahnschrift', sans-serif;
-      background: url('https://www.dropbox.com/scl/fi/6scs34cfiffalea8m5r6k/download.jfif?rlkey=9me88jua5fx4vxiizskj1lk3e&st=js2tc74z&raw=1') no-repeat center center fixed;
-      background-size: cover;
+      background: #121212;
       color: #fff;
     }
 
     header {
-      background-color: rgba(0, 0, 0, 0.5);
+      background: #000;
       padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
 
     .logo {
-      font-size: 32px;
-      font-family: 'Snap ITC';
-      font-weight: 700;
+      font-size: 28px;
       color: #e63946;
-      text-shadow: 2px 2px 0 #000;
+      font-weight: bold;
     }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .nav-links a {
+    .nav-right a {
       color: white;
+      margin-left: 20px;
       text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
     }
 
-    .nav-links a:hover {
-      color: #ff6b6b;
+    .nav-right a:hover {
+      color: #ff5252;
     }
 
-    .search-filter {
-      text-align: center;
-      margin: 20px auto 5px;
-    }
-
-    .search-filter input[type="text"] {
-      padding: 8px;
-      width: 300px;
-      border-radius: 5px;
-      border: none;
-    }
-
-    .category-bar {
-      text-align: center;
-      margin: 10px 0;
-    }
-
-    .category-bar span {
-      color: black;
-      background: rgba(255,255,255,0.8);
-      padding: 5px 15px;
-      margin: 0 5px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 80px 20px 40px;
-      background: rgba(0,0,0,0.4);
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 20px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-      padding: 40px;
-      background: rgba(0,0,0,0.3);
-    }
-
-    .product {
-      background: rgba(255,255,255,0.85);
-      color: #000;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .product:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #000;
-    }
-
-    .product img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    .product-info {
-      padding: 15px;
-      text-align: center;
-    }
-
-    .product-info h3 {
-      margin-bottom: 10px;
-    }
-
-    .buy-btn {
-      background-color: #e63946;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .buy-btn:hover {
-      background-color: #d90429;
-    }
-
-    #about-content {
-      padding: 20px;
-      margin-top: 40px;
-      background: rgba(255, 255, 255, 0.9);
-      color: black;
-      display: none;
-    }
-
-    footer {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      text-align: center;
-      color: white;
-    }
-
+    /* Login Popup */
     #loginPopup {
       display: none;
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(255,255,255,0.95);
+      transform: translate(-50%, -50%) scale(0.8);
+      background: #fff;
       color: black;
-      padding: 20px;
+      padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 15px #000;
       width: 300px;
-      animation: fadeIn 0.3s ease;
+      box-shadow: 0 0 15px #000;
+      transition: 0.3s ease;
+      z-index: 1000;
     }
 
-    #loginPopup h2 {
-      margin-top: 0;
+    #loginPopup.show {
+      display: block;
+      transform: translate(-50%, -50%) scale(1);
     }
 
     #loginPopup input {
-      display: block;
       width: 100%;
-      margin: 10px 0;
       padding: 10px;
+      margin: 10px 0;
     }
 
     #loginPopup button {
@@ -197,151 +70,110 @@
       color: white;
       border: none;
       padding: 10px 15px;
+      width: 100%;
       cursor: pointer;
     }
 
-    .close-btn {
+    #loginPopup .close-btn {
       position: absolute;
-      top: 10px;
-      right: 15px;
-      font-size: 18px;
+      top: 5px;
+      right: 10px;
+      font-size: 20px;
+      color: #444;
       cursor: pointer;
-      font-weight: bold;
     }
 
-    .error {
+    #profile {
+      display: none;
+      padding: 20px;
+      background: #222;
+      color: white;
+      text-align: center;
+    }
+
+    #error-msg {
       color: red;
       font-size: 14px;
-      margin-top: 10px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      50% { transform: translateX(5px); }
-      75% { transform: translateX(-5px); }
-      100% { transform: translateX(0); }
-    }
-
-    #profilePage, #otpPage {
-      display: none;
-      background: rgba(255,255,255,0.95);
-      color: black;
-      padding: 30px;
-      border-radius: 10px;
-      width: 300px;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 15px #000;
-      animation: fadeIn 0.3s ease;
+      margin-top: 5px;
     }
 
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">FA-Tshirt</div>
-    <div class="nav-right">
-      <nav class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#about" onclick="showAbout()">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a href="#" onclick="showLogin()" style="color:white">Login</a>
-      <a href="#" style="color:white">Cart</a>
-    </div>
-  </header>
 
-  <div class="search-filter">
-    <input type="text" placeholder="Search for t-shirts...">
+<header>
+  <div class="logo">FA-Tshirt</div>
+  <div class="nav-right">
+    <a href="#" onclick="showLogin()">Login</a>
+    <a href="#">Cart</a>
   </div>
+</header>
 
-  <div class="category-bar">
-    <span>Men</span>
-    <span>Women</span>
-    <span>Kids</span>
-  </div>
+<div id="profile">
+  <h2>Welcome to FA-Tshirt</h2>
+  <p>You are now logged in 🎉</p>
+</div>
 
-  <section class="hero" id="home">
-    <h1>Welcome to FA-Tshirt</h1>
-    <p>Trendy | Comfortable | Affordable</p>
-  </section>
+<!-- Login Popup -->
+<div id="loginPopup">
+  <span class="close-btn" onclick="hideLogin()">✖️</span>
+  <h3>Login with Email OTP</h3>
+  <input type="email" id="email" placeholder="Enter your Gmail">
+  <button onclick="sendOTP()">Send OTP</button>
+  <input type="text" id="otp" placeholder="Enter OTP" style="display:none;">
+  <button onclick="verifyOTP()" id="verifyBtn" style="display:none;">Verify & Login</button>
+  <div id="error-msg"></div>
+</div>
 
-  <section class="products" id="products">
-    <!-- Product Items -->
-  </section>
+<script>
+  emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS User ID
 
-  <section id="about-content">
-    <h2>Our Story</h2>
-    <p>FA-Tshirt is not just a brand...</p>
-  </section>
+  let generatedOTP = "";
 
-  <footer>
-    &copy; 2025 FA-Tshirt. All rights reserved.
-  </footer>
+  function showLogin() {
+    document.getElementById('loginPopup').classList.add('show');
+  }
 
-  <div id="loginPopup">
-    <span class="close-btn" onclick="closeLogin()">X</span>
-    <h2>Login</h2>
-    <input type="text" id="loginEmail" placeholder="Email">
-    <input type="password" id="loginPassword" placeholder="Password">
-    <button onclick="validateLogin()">Login</button>
-    <div class="error" id="loginError"></div>
-  </div>
+  function hideLogin() {
+    document.getElementById('loginPopup').classList.remove('show');
+  }
 
-  <div id="otpPage">
-    <h2>Enter OTP</h2>
-    <input type="text" placeholder="Enter OTP">
-    <button onclick="showProfile()">Verify OTP</button>
-  </div>
+  function sendOTP() {
+    const email = document.getElementById("email").value;
+    const errorMsg = document.getElementById("error-msg");
 
-  <div id="profilePage">
-    <h2>Welcome, User!</h2>
-    <p>This is your profile page.</p>
-  </div>
-
-  <script>
-    function showAbout() {
-      document.getElementById('about-content').style.display = 'block';
-      window.scrollTo(0, document.getElementById('about-content').offsetTop);
+    if (!email.endsWith("@gmail.com")) {
+      errorMsg.textContent = "Invalid Gmail address!";
+      return;
     }
 
-    function showLogin() {
-      document.getElementById('loginPopup').style.display = 'block';
-    }
+    generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
 
-    function closeLogin() {
-      document.getElementById('loginPopup').style.display = 'none';
-      document.getElementById('loginError').textContent = '';
-    }
+    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+      to_email: email,
+      otp_code: generatedOTP
+    }).then(() => {
+      document.getElementById("otp").style.display = "block";
+      document.getElementById("verifyBtn").style.display = "block";
+      errorMsg.style.color = "green";
+      errorMsg.textContent = "OTP sent successfully!";
+    }, () => {
+      errorMsg.textContent = "Failed to send OTP. Try again.";
+    });
+  }
 
-    function validateLogin() {
-      const email = document.getElementById('loginEmail').value;
-      const pass = document.getElementById('loginPassword').value;
-      const errorBox = document.getElementById('loginError');
+  function verifyOTP() {
+    const otp = document.getElementById("otp").value;
+    const errorMsg = document.getElementById("error-msg");
 
-      if (email === 'user@gmail.com' && pass === '1234') {
-        document.getElementById('loginPopup').style.display = 'none';
-        document.getElementById('otpPage').style.display = 'block';
-      } else {
-        errorBox.textContent = 'Invalid Gmail or Password';
-        document.getElementById('loginPopup').style.animation = 'shake 0.3s';
-        setTimeout(() => document.getElementById('loginPopup').style.animation = '', 300);
-      }
+    if (otp === generatedOTP) {
+      document.getElementById("loginPopup").style.display = "none";
+      document.getElementById("profile").style.display = "block";
+    } else {
+      errorMsg.textContent = "Invalid OTP. Please try again.";
     }
+  }
+</script>
 
-    function showProfile() {
-      document.getElementById('otpPage').style.display = 'none';
-      document.getElementById('profilePage').style.display = 'block';
-    }
-  </script>
 </body>
 </html>

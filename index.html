@@ -2,230 +2,179 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FA-Tshirt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FA-Tshirt Product Uploader</title>
   <style>
-    * {
+    body {
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      background: #f1f2f4;
     }
-    body {
-      display: flex;
-      min-height: 100vh;
-      background-color: #f5f5f5;
-    }
+
     header {
-      position: fixed;
-      top: 0;
-      left: 200px;
-      right: 0;
-      background: #111;
-      color: #fff;
-      padding: 10px 20px;
+      background-color: #2874f0;
+      color: white;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      z-index: 1000;
-    }
-    .logo {
-      display: flex;
-      flex-direction: column;
       align-items: center;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
-    .logo img {
-      width: 40px;
-      height: 40px;
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
     }
-    .logo span {
-      font-size: 12px;
-    }
-    .search-box input {
-      width: 400px;
-      padding: 5px 10px;
-      border-radius: 5px;
-      border: none;
-    }
-    .header-right button {
-      background: #e50914;
-      color: #fff;
+
+    header .actions button {
+      background-color: white;
+      color: #2874f0;
       border: none;
       padding: 8px 12px;
       margin-left: 10px;
-      cursor: pointer;
       border-radius: 5px;
-    }
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      width: 200px;
-      background: #333;
-      color: white;
-      padding: 20px 10px;
-      z-index: 1000;
-    }
-    nav h3 {
-      margin-bottom: 20px;
-    }
-    nav ul {
-      list-style: none;
-    }
-    nav ul li {
-      margin: 15px 0;
       cursor: pointer;
     }
-    main {
-      margin-left: 200px;
-      margin-top: 60px;
+
+    .container {
       padding: 20px;
-      flex: 1;
     }
-    .product-grid {
+
+    .upload-box {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 20px;
     }
-    .product {
-      background: #fff;
+
+    .product-card {
+      background: white;
       border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease;
     }
-    .product:hover {
-      transform: scale(1.02);
+
+    .product-card:hover {
+      transform: translateY(-5px);
     }
-    .product img {
+
+    .product-card img {
       width: 100%;
-      height: 220px;
+      height: 200px;
       object-fit: cover;
     }
-    .product-content {
-      padding: 10px;
+
+    .product-details {
+      padding: 15px;
     }
-    .product-content h4 {
-      margin-bottom: 5px;
-      color: #222;
+
+    .product-details h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
     }
-    .product-content p {
+
+    .product-details p {
+      margin: 0 0 10px;
       font-size: 14px;
-      margin-bottom: 8px;
+      color: #555;
     }
-    .product-content .price {
+
+    .price {
+      color: green;
       font-weight: bold;
-      color: #e50914;
     }
-    .product-content button {
-      background: #111;
-      color: #fff;
-      border: none;
-      padding: 8px;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100%;
-    }
-    /* Detail page & cart placeholder */
-    #detail-page, #cart-page {
-      display: none;
-      margin-top: 20px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-    }
+
     footer {
       text-align: center;
       padding: 20px;
-      background: #111;
-      color: #fff;
-      margin-top: 40px;
+      color: #555;
     }
+
+    input[type="file"] {
+      margin-top: 10px;
+    }
+
   </style>
 </head>
 <body>
-  <nav>
-    <h3>Categories</h3>
-    <ul>
-      <li>All</li>
-      <li>Men</li>
-      <li>Women</li>
-      <li>Unisex</li>
-    </ul>
-  </nav>
-  <div style="flex: 1;">
-    <header>
-      <div class="logo">
-        <img src="https://via.placeholder.com/40" alt="FA-Tshirt" />
-        <span>FA-Tshirt</span>
-      </div>
-      <div class="search-box">
-        <input type="text" placeholder="Search for products..." />
-      </div>
-      <div class="header-right">
-        <button onclick="showLogin()">Login</button>
-        <button onclick="showCart()">Cart</button>
-      </div>
-    </header>
-    <main>
-      <section id="product-list">
-        <div class="product-grid">
-          <div class="product" onclick="showDetail('Tshirt 1')">
-            <img src="https://via.placeholder.com/300x220" alt="Tshirt 1">
-            <div class="product-content">
-              <h4>Tshirt 1</h4>
-              <p>Premium cotton, round neck</p>
-              <div class="price">₹299</div>
-              <button>Add to Cart</button>
-            </div>
-          </div>
-          <div class="product" onclick="showDetail('Tshirt 2')">
-            <img src="https://via.placeholder.com/300x220" alt="Tshirt 2">
-            <div class="product-content">
-              <h4>Tshirt 2</h4>
-              <p>Stylish and comfortable</p>
-              <div class="price">₹279</div>
-              <button>Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="detail-page">
-        <h2>Product Detail</h2>
-        <p>This is where the product details will show when clicked.</p>
-        <button onclick="goBack()">Back</button>
-      </section>
-      <section id="cart-page">
-        <h2>Your Cart</h2>
-        <p>Cart is currently empty.</p>
-        <button onclick="goBack()">Back</button>
-      </section>
-    </main>
-    <footer>
-      &copy; 2025 FA-Tshirt. All rights reserved.
-    </footer>
+
+  <header>
+    <div class="logo">FA-Tshirt</div>
+    <div class="actions">
+      <button>Login</button>
+      <button>Cart</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="upload-box">
+      <h2>📦 Upload Your Product CSV</h2>
+      <input type="file" id="csvFile" accept=".csv" />
+    </div>
+    <div class="products" id="productList"></div>
   </div>
 
+  <footer>
+    &copy; 2025 FA-Tshirt. All rights reserved.
+  </footer>
+
   <script>
-    function showDetail(name) {
-      document.getElementById('product-list').style.display = 'none';
-      document.getElementById('detail-page').style.display = 'block';
-      document.getElementById('cart-page').style.display = 'none';
-    }
-    function showCart() {
-      document.getElementById('product-list').style.display = 'none';
-      document.getElementById('detail-page').style.display = 'none';
-      document.getElementById('cart-page').style.display = 'block';
-    }
-    function goBack() {
-      document.getElementById('product-list').style.display = 'block';
-      document.getElementById('detail-page').style.display = 'none';
-      document.getElementById('cart-page').style.display = 'none';
-    }
-    function showLogin() {
-      alert('Login functionality coming soon!');
+    document.getElementById('csvFile').addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const text = e.target.result;
+        const lines = text.trim().split('\n');
+        const headers = lines[0].split(',');
+
+        const products = lines.slice(1).map(line => {
+          const values = line.split(',');
+          const product = {};
+          headers.forEach((header, i) => {
+            product[header.trim()] = values[i]?.trim();
+          });
+          return product;
+        });
+
+        displayProducts(products);
+      };
+      reader.readAsText(file);
+    });
+
+    function displayProducts(products) {
+      const container = document.getElementById('productList');
+      container.innerHTML = '';
+
+      products.forEach(prod => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${prod.ImageURL}" alt="${prod.Title}" />
+          <div class="product-details">
+            <h3>${prod.Title}</h3>
+            <p>${prod.Description}</p>
+            <p class="price">₹${prod.Price}</p>
+            <p>Category: ${prod.Category}</p>
+            <p>Stock: ${prod.Stock}</p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
     }
   </script>
+
 </body>
 </html>

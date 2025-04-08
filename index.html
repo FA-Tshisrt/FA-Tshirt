@@ -120,6 +120,7 @@
       box-shadow: 0 0 15px rgba(0,0,0,0.3);
       display: none;
       z-index: 1001;
+      width: 300px;
     }
     .overlay {
       position: fixed;
@@ -152,9 +153,7 @@
   </div>
 
   <!-- Products Grid -->
-  <div class="product-grid" id="product-list">
-    <!-- Product Cards will be inserted here via JS -->
-  </div>
+  <div class="product-grid" id="product-list"></div>
 
   <!-- Cart Popup -->
   <div class="cart-popup" id="cart-popup">
@@ -214,6 +213,7 @@
     ];
 
     const cart = [];
+    let generatedOTP = "";
 
     function renderProducts() {
       const container = document.getElementById("product-list");
@@ -246,7 +246,7 @@
       const total = document.getElementById("cart-total");
       items.innerHTML = "";
       let sum = 0;
-      cart.forEach((item, i) => {
+      cart.forEach((item) => {
         items.innerHTML += `
           <div class="cart-item">
             <span class="cart-item-name">${item.name}</span>
@@ -269,12 +269,23 @@
     }
 
     function sendOTP() {
-      alert("OTP sent to email (demo only)");
+      const email = document.getElementById("email").value;
+      if (!email || !email.includes("@")) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+      generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
+      alert(`OTP sent to ${email} (Demo OTP: ${generatedOTP})`);
     }
 
     function verifyOTP() {
-      alert("OTP Verified! Login Successful");
-      closeLogin();
+      const enteredOTP = document.getElementById("otp").value;
+      if (enteredOTP === generatedOTP) {
+        alert("OTP Verified! Login Successful");
+        closeLogin();
+      } else {
+        alert("Invalid OTP. Please try again.");
+      }
     }
 
     renderProducts();

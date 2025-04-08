@@ -1,126 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FA-Tshirt</title>
-  <style>
-    :root {
-      --bg-color: #ffffff;
-      --text-color: #000000;
-    }
-    [data-theme="dark"] {
-      --bg-color: #121212;
-      --text-color: #f0f0f0;
-    }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      background-image: url('https://wallpapercave.com/wp/wp10504290.jpg');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-      position: relative;
-      z-index: 10;
-    }
-    .logo {
-      position: absolute;
-      left: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .logo img {
-      height: 40px;
-    }
-    .logo span {
-      font-size: 12px;
-      margin-top: 2px;
-    }
-    .search-bar {
-      margin: 0 auto;
-      width: 50%;
-    }
-    .search-bar input {
-      width: 100%;
-      padding: 8px;
-      border-radius: 5px;
-      border: none;
-    }
-    .auth-cart {
-      display: flex;
-      gap: 10px;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 10px;
-      position: relative;
-      z-index: 5;
-    }
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-    }
-    .theme-toggle {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 100;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FA-Tshirt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #000;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        header .search-bar input {
+            padding: 5px;
+            width: 300px;
+            border-radius: 4px;
+            border: none;
+        }
+
+        header .menu-buttons button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            border: none;
+            background: red;
+            color: white;
+            cursor: pointer;
+        }
+
+        nav {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            right: 0;
+            top: 60px;
+            width: 150px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .container {
+            margin-right: 160px;
+            padding: 20px;
+        }
+
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            width: 250px;
+            position: relative;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin: 10px 0 5px;
+        }
+
+        .card .price {
+            color: green;
+        }
+
+        .card .desc {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .card select, .card button {
+            margin-top: 10px;
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .cart-section, .checkout-section {
+            margin-top: 40px;
+        }
+
+        .checkout-section input {
+            display: block;
+            margin: 10px 0;
+            padding: 8px;
+            width: 300px;
+        }
+
+        .checkout-section button {
+            background: green;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body data-theme="light">
-  <div class="theme-toggle">
-    <label>
-      <input type="checkbox" id="theme-switch" /> Dark Mode
-    </label>
-  </div>
 
-  <header>
-    <div class="logo">
-      <img src="https://via.placeholder.com/40x40?text=FA" alt="FA-Tshirt Logo" />
-      <span>FA-Tshirt</span>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://via.placeholder.com/40" alt="FA-Tshirt Logo">
+            <div>FA-Tshirt</div>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for t-shirts...">
+        </div>
+        <div class="menu-buttons">
+            <button onclick="toggleCart()">Cart (<span id="cartCount">0</span>)</button>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">New Arrivals</a>
+        <a href="#">Sale</a>
+    </nav>
+
+    <div class="container">
+        <div class="product" id="productList"></div>
+
+        <div class="cart-section" id="cartSection" style="display:none;">
+            <h2>Your Cart</h2>
+            <ul id="cartItems"></ul>
+        </div>
+
+        <div class="checkout-section" id="checkoutSection" style="display:none;">
+            <h2>Checkout</h2>
+            <input type="text" id="name" placeholder="Full Name">
+            <input type="text" id="address" placeholder="Delivery Address">
+            <input type="text" id="mobile" placeholder="Mobile Number">
+            <button onclick="placeOrder()">Place Order</button>
+        </div>
     </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search for products..." />
-    </div>
-    <div class="auth-cart">
-      <button>Login</button>
-      <button>Cart</button>
-    </div>
-  </header>
 
-  <nav>
-    <a href="#">Men</a>
-    <a href="#">Women</a>
-    <a href="#">Kids</a>
-  </nav>
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "Classic Black T-shirt",
+                price: 299,
+                image: "https://via.placeholder.com/250",
+                desc: "Premium cotton, round neck, stylish fit.",
+                stock: 5
+            },
+            {
+                id: 2,
+                name: "Bold Red Graphic Tee",
+                price: 279,
+                image: "https://via.placeholder.com/250",
+                desc: "Trendy graphic print, breathable fabric.",
+                stock: 3
+            }
+        ];
 
-  <script>
-    const switchToggle = document.getElementById('theme-switch');
-    const body = document.body;
+        const cart = [];
 
-    switchToggle.addEventListener('change', () => {
-      if (switchToggle.checked) {
-        body.setAttribute('data-theme', 'dark');
-      } else {
-        body.setAttribute('data-theme', 'light');
-      }
-    });
-  </script>
+        function renderProducts() {
+            const container = document.getElementById('productList');
+            container.innerHTML = '';
+            products.forEach(p => {
+                container.innerHTML += `
+                <div class="card">
+                    <img src="${p.image}" alt="${p.name}">
+                    <h3>${p.name}</h3>
+                    <p class="price">₹${p.price}</p>
+                    <p class="desc">${p.desc}</p>
+                    <p>Stock: ${p.stock}</p>
+                    <select id="size-${p.id}">
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                    </select>
+                    <button onclick="addToCart(${p.id})">Add to Cart</button>
+                    <button onclick="buyNow(${p.id})">Buy Now</button>
+                </div>`;
+            });
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            if (product.stock <= 0) return alert("Out of stock!");
+            cart.push(product);
+            product.stock--;
+            updateCart();
+            renderProducts();
+        }
+
+        function updateCart() {
+            document.getElementById('cartCount').innerText = cart.length;
+            const list = document.getElementById('cartItems');
+            list.innerHTML = '';
+            cart.forEach((item, i) => {
+                list.innerHTML += `<li>${item.name} - ₹${item.price}</li>`;
+            });
+        }
+
+        function toggleCart() {
+            const sec = document.getElementById('cartSection');
+            sec.style.display = sec.style.display === 'none' ? 'block' : 'none';
+            document.getElementById('checkoutSection').style.display = 'none';
+        }
+
+        function buyNow(id) {
+            const product = products.find(p => p.id === id);
+            if (product.stock <= 0) return alert("Out of stock!");
+            cart.length = 0;
+            cart.push(product);
+            product.stock--;
+            updateCart();
+            document.getElementById('cartSection').style.display = 'block';
+            document.getElementById('checkoutSection').style.display = 'block';
+        }
+
+        function placeOrder() {
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const mobile = document.getElementById('mobile').value;
+
+            if (!name || !address || !mobile) {
+                alert("Please fill all details");
+                return;
+            }
+
+            alert(`Thank you ${name}, your order of ${cart.length} item(s) has been placed!`);
+            cart.length = 0;
+            updateCart();
+            document.getElementById('checkoutSection').style.display = 'none';
+            document.getElementById('cartSection').style.display = 'none';
+            renderProducts();
+        }
+
+        renderProducts();
+    </script>
 </body>
+
 </html>

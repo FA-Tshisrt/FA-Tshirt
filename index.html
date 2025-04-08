@@ -1,262 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FA-Tshirt</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FA-Tshirt</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://wallpaperaccess.com/full/5651980.jpg'); /* 3D style wallpaper */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: white;
+        }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: black;
-      color: white;
-      padding: 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    header .logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: bold;
+        }
 
-    header .logo img {
-      height: 40px;
-    }
+        .logo img {
+            width: 50px;
+            height: 50px;
+        }
 
-    header .logo span {
-      font-size: 12px;
-    }
+        .search-bar {
+            flex: 1;
+            margin: 0 20px;
+        }
 
-    header .search-bar {
-      flex: 1;
-      margin: 0 20px;
-    }
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
 
-    header .search-bar input {
-      width: 100%;
-      padding: 8px;
-      border-radius: 20px;
-      border: none;
-    }
+        .nav-icons {
+            display: flex;
+            gap: 10px;
+        }
 
-    header .actions button {
-      margin-left: 10px;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 5px;
-      background-color: red;
-      color: white;
-      cursor: pointer;
-    }
+        .nav-icons button {
+            background-color: #e50914;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-    .container {
-      display: flex;
-      flex-direction: row;
-    }
+        .category-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+        }
 
-    .sidebar {
-      width: 200px;
-      background-color: #e0e0e0;
-      padding: 15px;
-    }
+        .category-bar div {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
 
-    .sidebar h3 {
-      margin-top: 0;
-    }
+        .category-bar div:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 500px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 2000;
+        }
 
-    .sidebar ul li {
-      margin: 10px 0;
-      cursor: pointer;
-    }
+        .popup h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
 
-    .main-content {
-      flex: 1;
-      padding: 20px;
-    }
+        .popup ul {
+            list-style: none;
+            padding: 0;
+            font-size: 14px;
+        }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 20px;
-    }
+        .popup ul li {
+            padding: 5px 0;
+        }
 
-    .product {
-      background-color: white;
-      padding: 10px;
-      text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    #about-content {
-      background-color: #fff;
-      padding: 30px;
-      margin: 40px 10px 0 10px;
-      border-radius: 10px;
-      line-height: 1.6;
-      font-size: 16px;
-    }
-
-    #about-content h2 {
-      margin-top: 0;
-      color: #c70000;
-    }
-
-    #about-content ul {
-      padding-left: 20px;
-    }
-
-    #loginPopup {
-      display: none;
-      position: fixed;
-      top: 20%;
-      left: 35%;
-      width: 30%;
-      background-color: white;
-      padding: 20px;
-      border: 2px solid red;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      z-index: 999;
-    }
-
-    #loginPopup input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 10px;
-    }
-
-    footer {
-      background-color: black;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        width: 100%;
-      }
-
-      header {
-        flex-direction: column;
-      }
-
-      header .search-bar {
-        margin: 10px 0;
-      }
-
-      #loginPopup {
-        left: 10%;
-        width: 80%;
-      }
-    }
-  </style>
+        .popup-close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
-
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="FA-Tshirt">
-      <span>FA-Tshirt</span>
-    </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search for products...">
-    </div>
-    <div class="actions">
-      <button onclick="showLogin()">Login</button>
-      <button>Cart</button>
-    </div>
-  </header>
-
-  <div class="container">
-    <div class="sidebar">
-      <h3>Categories</h3>
-      <ul>
-        <li>T-Shirts</li>
-        <li>Oversized</li>
-        <li>Printed</li>
-        <li>Anime</li>
-        <li>New Drops</li>
-      </ul>
-    </div>
-    <div class="main-content">
-      <h2>Trending Products</h2>
-      <div class="products">
-        <div class="product">
-          <img src="shirt1.jpg" alt="Tshirt" width="100%">
-          <p>Printed T-shirt</p>
-          <p>₹299</p>
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/FAkX0sJ.png" alt="FA-Tshirt Logo">
+            <span>FA-Tshirt</span>
         </div>
-        <div class="product">
-          <img src="shirt2.jpg" alt="Tshirt" width="100%">
-          <p>Oversized Tee</p>
-          <p>₹349</p>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for products...">
         </div>
-      </div>
+        <div class="nav-icons">
+            <button>Login</button>
+            <button>Cart</button>
+        </div>
+    </header>
+
+    <div class="category-bar">
+        <div onclick="togglePopup('mensPopup')">Men's</div>
+        <div onclick="togglePopup('womensPopup')">Women's</div>
+        <div onclick="togglePopup('kidsPopup')">Kid's</div>
     </div>
-  </div>
 
-  <section id="about-content">
-    <h2>About FA-Tshirt</h2>
-    <p>FA-Tshirt is not just a clothing brand — it’s the story of a young dreamer from New Ashok Nagar, Delhi, who decided to rise from scratch.</p>
-    <p>Coming from a middle-class family, I started this journey with limited resources but unlimited determination. After losing my father in August, I became the only earning member of my family with a salary of just ₹18,000. Despite everything, I kept dreaming bigger.</p>
-    <p>I’ve worked in MIS and handled e-commerce data, inventory, and Excel automation for big platforms like Flipkart, Amazon, Meesho, Myntra, and more. Alongside, I explored my passion for trading, technical analysis, and indicators like EMA — not just for earning, but for mastering the craft.</p>
-    <p>My love for stylish, affordable fashion gave birth to FA-Tshirt. The vision was clear — to build <strong>India’s No.1 affordable quality clothing brand</strong> that even a low-income person can wear with pride.</p>
-    <p>Every design you see here is self-made — not just printed, but created with passion. I've created designs 100x better than major platforms, even before I had funds to publish them. I’ve also started building this entire website using just Notepad — line by line, with a vision and zero excuses.</p>
-    <p>FA-Tshirt represents hustle, dreams, and a bold statement — <em>style belongs to everyone</em>. Whether you're a student, a hustler, or someone working hard every day, FA-Tshirt is for you.</p>
-    <h3>My Dreams</h3>
-    <ul>
-      <li>🧠 Build India’s No.1 affordable quality clothing brand</li>
-      <li>📈 Become a professional trader with consistent returns</li>
-      <li>🧑‍💻 Master Excel, SQL, Power BI, and automation tools</li>
-      <li>🌏 Scale FA-Tshirt globally and open my own fashion studio</li>
-      <li>💪 Prove that big things can start from a rented room & laptop</li>
-    </ul>
-    <p>If you’re reading this — remember, it’s never too late to chase what sets your soul on fire.</p>
-    <p><strong>#FromNothingToEverything</strong> | <strong>#FA-Tshirt</strong></p>
-  </section>
+    <!-- Popups -->
+    <div id="mensPopup" class="popup">
+        <button class="popup-close" onclick="togglePopup('mensPopup')">&times;</button>
+        <h3>Men's Categories</h3>
+        <ul>
+            <li>Casual T-Shirts</li>
+            <li>Oversized Tees</li>
+            <li>Graphic Prints</li>
+            <li>Formal Shirts</li>
+            <li>New Arrivals</li>
+        </ul>
+    </div>
 
-  <footer>
-    &copy; 2025 FA-Tshirt. All rights reserved.
-  </footer>
+    <div id="womensPopup" class="popup">
+        <button class="popup-close" onclick="togglePopup('womensPopup')">&times;</button>
+        <h3>Women's Categories</h3>
+        <ul>
+            <li>Cropped Tees</li>
+            <li>Printed Tops</li>
+            <li>Oversized Fits</li>
+            <li>Stylish Basics</li>
+            <li>Best Sellers</li>
+        </ul>
+    </div>
 
-  <div id="loginPopup">
-    <h3>Login</h3>
-    <input type="text" placeholder="Email or Phone">
-    <input type="password" placeholder="Password">
-    <button onclick="hideLogin()">Login</button>
-  </div>
+    <div id="kidsPopup" class="popup">
+        <button class="popup-close" onclick="togglePopup('kidsPopup')">&times;</button>
+        <h3>Kid's Categories</h3>
+        <ul>
+            <li>Cartoon Tees</li>
+            <li>Superhero Prints</li>
+            <li>Combo Offers</li>
+            <li>Seasonal Picks</li>
+            <li>All-Time Favorites</li>
+        </ul>
+    </div>
 
-  <script>
-    function showLogin() {
-      document.getElementById("loginPopup").style.display = "block";
-    }
-
-    function hideLogin() {
-      document.getElementById("loginPopup").style.display = "none";
-    }
-  </script>
-
+    <script>
+        function togglePopup(id) {
+            const popup = document.getElementById(id);
+            popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </body>
+
 </html>

@@ -2,154 +2,216 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FA-Tshirt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    @font-face {
+      font-family: 'Snap ITC';
+      src: local('Snap ITC');
+    }
+
+    * {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f5f5f5;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Bahnschrift', sans-serif;
+      background: url('https://www.dropbox.com/scl/fi/6scs34cfiffalea8m5r6k/download.jfif?rlkey=9me88jua5fx4vxiizskj1lk3e&st=js2tc74z&raw=1') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
     }
 
     header {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #111;
-      padding: 10px 20px;
-      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .logo {
-      font-size: 24px;
+      font-size: 32px;
+      font-family: 'Snap ITC';
+      font-weight: 700;
+      color: #e63946;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
       font-weight: bold;
     }
 
-    .nav-right a {
-      margin-left: 20px;
-      color: white;
-      text-decoration: none;
+    .nav-links a:hover {
+      color: #ff6b6b;
     }
 
     .search-filter {
       text-align: center;
-      padding: 15px;
+      margin: 20px auto 5px;
     }
 
-    .search-filter input {
-      width: 60%;
+    .search-filter input[type="text"] {
       padding: 8px;
+      width: 300px;
+      border-radius: 5px;
+      border: none;
     }
 
     .category-bar {
-      display: flex;
-      justify-content: space-around;
-      background-color: #eee;
-      padding: 10px;
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .category-bar span {
+      color: black;
+      background: rgba(255,255,255,0.8);
+      padding: 5px 15px;
+      margin: 0 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
     }
 
     .hero {
       text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(to right, #ff5757, #ff9d2f);
-      color: white;
+      padding: 80px 20px 40px;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
     }
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      background: rgba(0,0,0,0.3);
     }
 
     .product {
-      background-color: white;
+      background: rgba(255,255,255,0.85);
+      color: #000;
       border-radius: 10px;
       overflow: hidden;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .product:hover {
-      transform: scale(1.03);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #000;
     }
 
     .product img {
       width: 100%;
-      height: 200px;
+      height: 250px;
       object-fit: cover;
     }
 
     .product-info {
       padding: 15px;
+      text-align: center;
+    }
+
+    .product-info h3 {
+      margin-bottom: 10px;
     }
 
     .buy-btn {
-      background-color: #ff5757;
-      color: white;
+      background-color: #e63946;
       border: none;
-      padding: 8px 12px;
+      color: white;
+      padding: 10px 20px;
       cursor: pointer;
       border-radius: 5px;
-      margin-top: 10px;
     }
 
-    #about-content, #loginPopup, #cartPopup, #productDetail {
-      display: none;
+    .buy-btn:hover {
+      background-color: #d90429;
+    }
+
+    #about-content {
       padding: 20px;
-      background-color: white;
-      margin: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      margin-top: 40px;
+      background: rgba(255, 255, 255, 0.9);
+      color: black;
+      display: none;
     }
 
     footer {
-      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
       padding: 20px;
-      background-color: #111;
+      text-align: center;
       color: white;
-      margin-top: 20px;
     }
 
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    #loginPopup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.95);
+      color: black;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #000;
+    }
 
-      .nav-right {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
+    #loginPopup input {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+    }
 
-      .search-filter input {
-        width: 90%;
-      }
-
-      .products {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      }
+    #loginPopup button {
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-
   <header>
     <div class="logo">FA-Tshirt</div>
     <div class="nav-right">
-      <a href="#" onclick="showSection('home')">Home</a>
-      <a href="#" onclick="showSection('products')">Products</a>
-      <a href="#" onclick="showSection('about')">About</a>
-      <a href="#" onclick="showLogin()">Login</a>
-      <a href="#" onclick="showCart()">Cart</a>
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about" onclick="showAbout()">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#" onclick="showLogin()" style="color:white">Login</a>
+      <a href="#" style="color:white">Cart</a>
     </div>
   </header>
 
   <div class="search-filter">
-    <input type="text" placeholder="Search for t-shirts..." />
+    <input type="text" placeholder="Search for t-shirts...">
   </div>
 
   <div class="category-bar">
@@ -163,119 +225,57 @@
     <p>Trendy | Comfortable | Affordable</p>
   </section>
 
-  <section id="about-content">
-    <h2>Our Story</h2>
-    <p>FA-Tshirt is not just a brand, it's a dream built with quality and affordability for everyone in India.</p>
-  </section>
-
   <section class="products" id="products">
-    <div class="product" onclick="showProductDetail(1)">
-      <img src="https://images.unsplash.com/photo-1618354691549-6d8b1b464986?auto=format&fit=crop&w=400&q=80" />
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1618354691549-6d8b1b464986?auto=format&fit=crop&w=400&q=80" alt="Tshirt 1">
       <div class="product-info">
         <h3>Black Round Neck</h3>
         <p>₹299</p>
-        <button class="buy-btn">View</button>
+        <button class="buy-btn">Add to Cart</button>
       </div>
     </div>
-
-    <div class="product" onclick="showProductDetail(2)">
-      <img src="https://images.unsplash.com/photo-1598032894623-e81c3e5d7cda?auto=format&fit=crop&w=400&q=80" />
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1598032894623-e81c3e5d7cda?auto=format&fit=crop&w=400&q=80" alt="Tshirt 2">
       <div class="product-info">
         <h3>White Graphic Tee</h3>
         <p>₹349</p>
-        <button class="buy-btn">View</button>
+        <button class="buy-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80" alt="Tshirt 3">
+      <div class="product-info">
+        <h3>Red Street Style</h3>
+        <p>₹399</p>
+        <button class="buy-btn">Add to Cart</button>
       </div>
     </div>
   </section>
 
-  <!-- Product Detail Section -->
-  <section id="productDetail">
-    <h2 id="pName"></h2>
-    <img id="pImage" style="max-width: 300px;" />
-    <p id="pPrice"></p>
-    <button class="buy-btn" onclick="addToCart()">Add to Cart</button>
-    <br/><br/>
-    <button onclick="showSection('products')">Back to Products</button>
+  <section id="about-content">
+    <h2>Our Story</h2>
+    <p>FA-Tshirt is not just a brand, it's a dream. It started with a passion to create high-quality, stylish, and affordable fashion that represents youth and ambition. Our journey began with a single vision — to bring creativity, comfort, and confidence into every thread we stitch. Thank you for being a part of this journey.</p>
   </section>
 
-  <!-- Login Popup -->
-  <section id="loginPopup">
+  <footer>
+    &copy; 2025 FA-Tshirt. All rights reserved.
+  </footer>
+
+  <div id="loginPopup">
     <h2>Login</h2>
-    <input type="text" placeholder="Username" /><br/><br/>
-    <input type="password" placeholder="Password" /><br/><br/>
-    <button onclick="alert('Login Successful'); hideAll()">Login</button>
-  </section>
-
-  <!-- Cart Popup -->
-  <section id="cartPopup">
-    <h2>Your Cart</h2>
-    <p id="cartContent">No items in cart.</p>
-    <button onclick="hideAll()">Close</button>
-  </section>
-
-  <footer>&copy; 2025 FA-Tshirt. All rights reserved.</footer>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button onclick="alert('Login Successful')">Login</button>
+  </div>
 
   <script>
-    const products = {
-      1: {
-        name: "Black Round Neck",
-        price: "₹299",
-        image: "https://images.unsplash.com/photo-1618354691549-6d8b1b464986?auto=format&fit=crop&w=400&q=80"
-      },
-      2: {
-        name: "White Graphic Tee",
-        price: "₹349",
-        image: "https://images.unsplash.com/photo-1598032894623-e81c3e5d7cda?auto=format&fit=crop&w=400&q=80"
-      }
-    };
-
-    let cart = [];
-
-    function showSection(id) {
-      hideAll();
-      if (id === 'home') document.getElementById('home').style.display = 'block';
-      else if (id === 'products') document.getElementById('products').style.display = 'grid';
-      else if (id === 'about') document.getElementById('about-content').style.display = 'block';
+    function showAbout() {
+      document.getElementById('about-content').style.display = 'block';
+      window.scrollTo(0, document.getElementById('about-content').offsetTop);
     }
-
     function showLogin() {
-      hideAll();
       document.getElementById('loginPopup').style.display = 'block';
     }
-
-    function showCart() {
-      hideAll();
-      document.getElementById('cartPopup').style.display = 'block';
-      let cartText = cart.length === 0 ? 'No items in cart.' : cart.join(', ');
-      document.getElementById('cartContent').innerText = cartText;
-    }
-
-    function showProductDetail(id) {
-      hideAll();
-      const p = products[id];
-      document.getElementById('pName').innerText = p.name;
-      document.getElementById('pPrice').innerText = p.price;
-      document.getElementById('pImage').src = p.image;
-      document.getElementById('productDetail').style.display = 'block';
-      cart.currentProduct = p.name;
-    }
-
-    function addToCart() {
-      if (cart.currentProduct) cart.push(cart.currentProduct);
-      alert("Added to cart!");
-    }
-
-    function hideAll() {
-      document.getElementById('home').style.display = 'none';
-      document.getElementById('products').style.display = 'none';
-      document.getElementById('about-content').style.display = 'none';
-      document.getElementById('loginPopup').style.display = 'none';
-      document.getElementById('cartPopup').style.display = 'none';
-      document.getElementById('productDetail').style.display = 'none';
-    }
-
-    // By default show home
-    showSection('home');
   </script>
 </body>
 </html>

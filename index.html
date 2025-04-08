@@ -1,179 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FA-Tshirt Login with OTP</title>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FA-Tshirt</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Bahnschrift', sans-serif;
-      background: #121212;
-      color: #fff;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
     }
-
     header {
-      background: #000;
-      padding: 15px 30px;
+      background-color: black;
+      color: white;
+      padding: 10px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-
     .logo {
-      font-size: 28px;
-      color: #e63946;
-      font-weight: bold;
+      display: flex;
+      align-items: center;
     }
-
-    .nav-right a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
+    .logo img {
+      width: 50px;
+      height: 50px;
     }
-
-    .nav-right a:hover {
-      color: #ff5252;
+    .logo span {
+      font-size: 14px;
+      margin-left: 5px;
     }
-
-    /* Login Popup */
-    #loginPopup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.8);
-      background: #fff;
-      color: black;
-      padding: 30px;
-      border-radius: 10px;
-      width: 300px;
-      box-shadow: 0 0 15px #000;
-      transition: 0.3s ease;
-      z-index: 1000;
+    .search-bar {
+      flex: 1;
+      margin: 0 20px;
     }
-
-    #loginPopup.show {
-      display: block;
-      transform: translate(-50%, -50%) scale(1);
-    }
-
-    #loginPopup input {
+    .search-bar input {
       width: 100%;
-      padding: 10px;
-      margin: 10px 0;
+      padding: 8px;
     }
-
-    #loginPopup button {
-      background: #e63946;
+    .menu-buttons button {
+      margin-left: 10px;
+      padding: 8px 12px;
+      background-color: red;
       color: white;
       border: none;
-      padding: 10px 15px;
-      width: 100%;
       cursor: pointer;
     }
-
-    #loginPopup .close-btn {
-      position: absolute;
-      top: 5px;
-      right: 10px;
-      font-size: 20px;
-      color: #444;
-      cursor: pointer;
-    }
-
-    #profile {
-      display: none;
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
       padding: 20px;
-      background: #222;
-      color: white;
-      text-align: center;
     }
-
-    #error-msg {
-      color: red;
+    .product-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .product-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    .product-card .info {
+      padding: 15px;
+    }
+    .product-card h3 {
+      margin: 0 0 10px 0;
+    }
+    .product-card p {
       font-size: 14px;
-      margin-top: 5px;
+      color: #555;
     }
-
+    .product-card .price {
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .product-card button {
+      background-color: black;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+    /* Popup Login */
+    .login-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    .login-popup-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      position: relative;
+      width: 300px;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      color: red;
+    }
+    .login-popup input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+    }
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo">
+      <img src="https://via.placeholder.com/50" alt="FA-Tshirt Logo">
+      <span>FA-Tshirt</span>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for products">
+    </div>
+    <div class="menu-buttons">
+      <button onclick="showLoginPopup()">Login</button>
+      <button>Cart</button>
+    </div>
+  </header>
 
-<header>
-  <div class="logo">FA-Tshirt</div>
-  <div class="nav-right">
-    <a href="#" onclick="showLogin()">Login</a>
-    <a href="#">Cart</a>
+  <div class="products" id="product-list">
+    <!-- Product Cards -->
   </div>
-</header>
 
-<div id="profile">
-  <h2>Welcome to FA-Tshirt</h2>
-  <p>You are now logged in 🎉</p>
-</div>
+  <div class="login-popup" id="loginPopup">
+    <div class="login-popup-content">
+      <span class="close-btn" onclick="hideLoginPopup()">&times;</span>
+      <h3>Login</h3>
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <button>Login</button>
+    </div>
+  </div>
 
-<!-- Login Popup -->
-<div id="loginPopup">
-  <span class="close-btn" onclick="hideLogin()">✖️</span>
-  <h3>Login with Email OTP</h3>
-  <input type="email" id="email" placeholder="Enter your Gmail">
-  <button onclick="sendOTP()">Send OTP</button>
-  <input type="text" id="otp" placeholder="Enter OTP" style="display:none;">
-  <button onclick="verifyOTP()" id="verifyBtn" style="display:none;">Verify & Login</button>
-  <div id="error-msg"></div>
-</div>
+  <script>
+    const products = [
+      {
+        img: 'https://www.dropbox.com/scl/fi/qg23nbgt17v3c1fjmz9yd/Top-Fashionista-__-Striped-Off-Shoulder-Tops-for-Nautical-Chic.jfif?rlkey=bpy2gearchgh7q2qqn9wnb1jo&st=p9p146yu&raw=1',
+        title: 'Striped Off Shoulder Top',
+        desc: 'Perfect for a nautical chic look.',
+        price: '₹499'
+      },
+      {
+        img: 'https://www.dropbox.com/scl/fi/jtsaogqxtxzg5llso50j2/Vintage-Vertical-Painting-Over-Fit-T-Shirt.jfif?rlkey=if3qhrugq8p04uoawamc3uovl&st=m8mq4vyv&raw=1',
+        title: 'Vintage Vertical T-Shirt',
+        desc: 'Unique overfit t-shirt with art design.',
+        price: '₹599'
+      },
+      {
+        img: 'https://www.dropbox.com/scl/fi/uuigb0k9n6514zebl6h35/Women-s-Men-s-Clothing-Shop-Online-Fashion.jfif?rlkey=mlq1ccpq251z26z3c3ka0tp4r&st=7g4kuarg&raw=1',
+        title: 'Unisex Fashion Tee',
+        desc: 'Trendy design for both men and women.',
+        price: '₹699'
+      },
+      {
+        img: 'https://www.dropbox.com/scl/fi/8imuntoe8pyurqcsjt16b/Oversized-T-Shirt-Short-Sleeve-Cotton-T-Shirt-In-Black.jfif?rlkey=55r3q8jh0u0qz1p3csz4o3sqo&st=ol0muq1p&raw=1',
+        title: 'Oversized Black Cotton Tee',
+        desc: 'Short sleeve and super comfy.',
+        price: '₹449'
+      },
+      {
+        img: 'https://www.dropbox.com/scl/fi/kbelphqsfmkatwno9zzbk/_Ultimate-Style_-Men-s-Best-Outfits-with-Drop-Shoulders_-_Drop-Shoulders-Delight_-Men-s-Best-Outfits.jfif?rlkey=vs6x7vfq3a3fm0iseultaobzg&st=ll2cy9mz&raw=1',
+        title: 'Drop Shoulder Men's Tee',
+        desc: 'Stylish drop shoulder design.',
+        price: '₹549'
+      },
+      {
+        img: 'https://www.dropbox.com/scl/fi/w35xp71onk4s5p9hqq40w/Oversized-Drop-Shoulder-T-Shirt-Charcoal-Grey-_-XXS.jfif?rlkey=h56tbbgnasz6jdt2b9lsh405j&st=p5mdldad&raw=1',
+        title: 'Charcoal Grey Oversized Tee',
+        desc: 'XXS size, perfect fit with premium fabric.',
+        price: '₹579'
+      }
+    ];
 
-<script>
-  emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS User ID
-
-  let generatedOTP = "";
-
-  function showLogin() {
-    document.getElementById('loginPopup').classList.add('show');
-  }
-
-  function hideLogin() {
-    document.getElementById('loginPopup').classList.remove('show');
-  }
-
-  function sendOTP() {
-    const email = document.getElementById("email").value;
-    const errorMsg = document.getElementById("error-msg");
-
-    if (!email.endsWith("@gmail.com")) {
-      errorMsg.textContent = "Invalid Gmail address!";
-      return;
-    }
-
-    generatedOTP = Math.floor(100000 + Math.random() * 900000).toString();
-
-    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-      to_email: email,
-      otp_code: generatedOTP
-    }).then(() => {
-      document.getElementById("otp").style.display = "block";
-      document.getElementById("verifyBtn").style.display = "block";
-      errorMsg.style.color = "green";
-      errorMsg.textContent = "OTP sent successfully!";
-    }, () => {
-      errorMsg.textContent = "Failed to send OTP. Try again.";
+    const productList = document.getElementById('product-list');
+    products.forEach(p => {
+      productList.innerHTML += `
+        <div class="product-card">
+          <img src="${p.img}" alt="${p.title}">
+          <div class="info">
+            <h3>${p.title}</h3>
+            <p>${p.desc}</p>
+            <div class="price">${p.price}</div>
+            <button onclick="alert('Added to Cart: ${p.title}')">Add to Cart</button>
+          </div>
+        </div>
+      `;
     });
-  }
 
-  function verifyOTP() {
-    const otp = document.getElementById("otp").value;
-    const errorMsg = document.getElementById("error-msg");
-
-    if (otp === generatedOTP) {
-      document.getElementById("loginPopup").style.display = "none";
-      document.getElementById("profile").style.display = "block";
-    } else {
-      errorMsg.textContent = "Invalid OTP. Please try again.";
+    function showLoginPopup() {
+      document.getElementById('loginPopup').style.display = 'flex';
     }
-  }
-</script>
 
+    function hideLoginPopup() {
+      document.getElementById('loginPopup').style.display = 'none';
+    }
+  </script>
 </body>
 </html>

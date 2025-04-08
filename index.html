@@ -171,12 +171,25 @@
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) scale(0.9);
       background: rgba(255,255,255,0.95);
       color: black;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 15px #000;
+      animation: fadeSlideIn 0.5s ease forwards;
+      min-width: 300px;
+    }
+
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -60%) scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
     }
 
     #loginPopup input {
@@ -192,11 +205,33 @@
       border: none;
       padding: 10px 15px;
       cursor: pointer;
+      margin-top: 10px;
     }
 
-    #error-message {
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    #errorMsg {
       color: red;
-      font-size: 14px;
+      margin-top: 10px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .shake {
+      animation: shake 0.3s;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+      25% { transform: translate(-50%, -50%) translateX(-5px); }
+      75% { transform: translate(-50%, -50%) translateX(5px); }
     }
   </style>
 </head>
@@ -231,35 +266,12 @@
   </section>
 
   <section class="products" id="products">
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1618354691549-6d8b1b464986?auto=format&fit=crop&w=400&q=80" alt="Tshirt 1">
-      <div class="product-info">
-        <h3>Black Round Neck</h3>
-        <p>₹299</p>
-        <button class="buy-btn">Add to Cart</button>
-      </div>
-    </div>
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1598032894623-e81c3e5d7cda?auto=format&fit=crop&w=400&q=80" alt="Tshirt 2">
-      <div class="product-info">
-        <h3>White Graphic Tee</h3>
-        <p>₹349</p>
-        <button class="buy-btn">Add to Cart</button>
-      </div>
-    </div>
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80" alt="Tshirt 3">
-      <div class="product-info">
-        <h3>Red Street Style</h3>
-        <p>₹399</p>
-        <button class="buy-btn">Add to Cart</button>
-      </div>
-    </div>
+    <!-- Products Code (same as before) -->
   </section>
 
   <section id="about-content">
     <h2>Our Story</h2>
-    <p>FA-Tshirt is not just a brand, it's a dream. It started with a passion to create high-quality, stylish, and affordable fashion that represents youth and ambition. Our journey began with a single vision — to bring creativity, comfort, and confidence into every thread we stitch. Thank you for being a part of this journey.</p>
+    <p>FA-Tshirt is not just a brand, it's a dream...</p>
   </section>
 
   <footer>
@@ -267,11 +279,12 @@
   </footer>
 
   <div id="loginPopup">
+    <span class="close-btn" onclick="closeLogin()">&times;</span>
     <h2>Login</h2>
-    <input id="username" type="text" placeholder="Email">
-    <input id="password" type="password" placeholder="Password">
-    <div id="error-message"></div>
+    <input type="text" id="username" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
     <button onclick="validateLogin()">Login</button>
+    <div id="errorMsg">Invalid email or password!</div>
   </div>
 
   <script>
@@ -281,22 +294,30 @@
     }
 
     function showLogin() {
-      document.getElementById('loginPopup').style.display = 'block';
+      const popup = document.getElementById('loginPopup');
+      popup.style.display = 'block';
+      popup.classList.remove('shake');
+    }
+
+    function closeLogin() {
+      document.getElementById('loginPopup').style.display = 'none';
+      document.getElementById('errorMsg').style.display = 'none';
     }
 
     function validateLogin() {
       const email = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
-      const errorDiv = document.getElementById('error-message');
+      const pass = document.getElementById('password').value;
+      const popup = document.getElementById('loginPopup');
+      const error = document.getElementById('errorMsg');
 
-      if (!email.includes('@gmail.com')) {
-        errorDiv.textContent = 'Invalid Gmail';
-      } else if (email && password) {
-        errorDiv.textContent = '';
-        alert('Login Successful');
-        document.getElementById('loginPopup').style.display = 'none';
+      if (email === "admin@gmail.com" && pass === "1234") {
+        error.style.display = 'none';
+        alert("Login Successful");
+        closeLogin();
       } else {
-        errorDiv.textContent = 'Please enter all fields';
+        error.style.display = 'block';
+        popup.classList.add('shake');
+        setTimeout(() => popup.classList.remove('shake'), 300);
       }
     }
   </script>

@@ -1,282 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FA-Tshirt</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'Snap ITC';
-      src: local('Snap ITC');
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Bahnschrift', sans-serif;
-      background: url('https://wallpapercave.com/wp/wp5128415.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
     }
 
     header {
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
       position: sticky;
       top: 0;
       z-index: 1000;
-      flex-wrap: wrap;
     }
 
-    .logo {
-      font-size: 32px;
-      font-family: 'Snap ITC';
-      font-weight: 700;
-      color: #e63946;
-      text-shadow: 2px 2px 0 #000;
-    }
-
-    .nav-right {
+    header .logo {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
     }
 
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
+    header .logo img {
+      height: 40px;
     }
 
-    .search-filter {
-      text-align: center;
-      margin: 20px auto;
+    header .logo span {
+      font-size: 12px;
     }
 
-    .search-filter input[type="text"] {
+    header .search-bar {
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    header .search-bar input {
+      width: 100%;
       padding: 8px;
-      width: 80%;
-      max-width: 300px;
-      border-radius: 5px;
+      border-radius: 20px;
       border: none;
     }
 
-    .category-bar {
-      text-align: center;
-      margin: 10px 0;
-    }
-
-    .category-bar span {
-      color: black;
-      background: white;
-      padding: 5px 15px;
-      margin: 5px;
+    header .actions button {
+      margin-left: 10px;
+      padding: 8px 12px;
+      border: none;
       border-radius: 5px;
+      background-color: red;
+      color: white;
       cursor: pointer;
-      font-weight: bold;
     }
 
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: rgba(0,0,0,0.5);
+    .container {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: #e0e0e0;
+      padding: 15px;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
     }
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-      padding: 40px;
-      background: rgba(0,0,0,0.7);
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 20px;
     }
 
     .product {
-      background: #fff;
-      color: #000;
+      background-color: white;
+      padding: 10px;
+      text-align: center;
       border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .product:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #000;
-    }
-
-    .product img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      cursor: pointer;
-    }
-
-    .product-info {
-      padding: 15px;
-      text-align: center;
-    }
-
-    .buy-btn {
-      background-color: #e63946;
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    footer {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 20px;
-      text-align: center;
-      color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
     #about-content {
-      padding: 20px;
-      display: none;
-      background: rgba(255, 255, 255, 0.9);
-      color: black;
+      background-color: #fff;
+      padding: 30px;
+      margin: 40px 10px 0 10px;
+      border-radius: 10px;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    #about-content h2 {
+      margin-top: 0;
+      color: #c70000;
+    }
+
+    #about-content ul {
+      padding-left: 20px;
     }
 
     #loginPopup {
       display: none;
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: white;
-      color: black;
+      top: 20%;
+      left: 35%;
+      width: 30%;
+      background-color: white;
       padding: 20px;
+      border: 2px solid red;
       border-radius: 10px;
-      box-shadow: 0 0 15px #000;
-      z-index: 2000;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      z-index: 999;
     }
 
     #loginPopup input {
-      display: block;
       width: 100%;
-      margin: 10px 0;
-      padding: 10px;
+      padding: 8px;
+      margin-top: 10px;
     }
 
-    #loginPopup button {
-      background: #e63946;
+    footer {
+      background-color: black;
       color: white;
-      border: none;
-      padding: 10px 15px;
-      cursor: pointer;
-    }
-
-    #detailModal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-      z-index: 3000;
-    }
-
-    #detailModalContent {
-      background: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      width: 90%;
-      max-width: 500px;
-      color: black;
-      position: relative;
       text-align: center;
+      padding: 20px;
+      margin-top: 30px;
     }
 
-    #detailModalContent img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
 
-    #detailModalContent h3 {
-      margin: 15px 0 5px;
-    }
+      .sidebar {
+        width: 100%;
+      }
 
-    #closeModal {
-      position: absolute;
-      top: 10px; right: 15px;
-      cursor: pointer;
-      font-size: 18px;
-      color: red;
-    }
+      header {
+        flex-direction: column;
+      }
 
-    .cart-count {
-      background: red;
-      color: white;
-      border-radius: 50%;
-      padding: 2px 6px;
-      font-size: 12px;
-      margin-left: 5px;
-    }
+      header .search-bar {
+        margin: 10px 0;
+      }
 
-    @media(max-width: 600px) {
-      .hero h1 { font-size: 28px; }
-      .hero p { font-size: 16px; }
+      #loginPopup {
+        left: 10%;
+        width: 80%;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div class="logo">FA-Tshirt</div>
-    <div class="nav-right">
-      <nav class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#about" onclick="showAbout()">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <a href="#" onclick="showLogin()" style="color:white">Login</a>
-      <a href="#" style="color:white">Cart <span class="cart-count" id="cartCount">0</span></a>
+    <div class="logo">
+      <img src="logo.png" alt="FA-Tshirt">
+      <span>FA-Tshirt</span>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for products...">
+    </div>
+    <div class="actions">
+      <button onclick="showLogin()">Login</button>
+      <button>Cart</button>
     </div>
   </header>
 
-  <div class="search-filter">
-    <input type="text" placeholder="Search for t-shirts...">
-  </div>
-
-  <div class="category-bar">
-    <span>Men</span>
-    <span>Women</span>
-    <span>Kids</span>
-  </div>
-
-  <section class="hero" id="home">
-    <h1>Welcome to FA-Tshirt</h1>
-    <p>Trendy | Comfortable | Affordable</p>
-  </section>
-
-  <section id="about-content">
-    <h2>Our Story</h2>
-    <p>FA-Tshirt is not just a brand, it's a dream. It started with a passion to create high-quality, stylish, and affordable fashion...</p>
-  </section>
-
-  <section class="products" id="products">
-    <div class="product">
-      <img src="https://images.unsplash.com/photo-1618354691549-6d8b1b464986?auto=format&fit=crop&w=400&q=80" alt="Tshirt 1" onclick="showDetails('Black Round Neck','₹299', this.src)">
-      <div class="product-info">
-        <h3>Black Round Neck</h3>
-        <p>₹299</p>
-        <button class="buy-btn" onclick="addToCart()">Add to Cart</button>
+  <div class="container">
+    <div class="sidebar">
+      <h3>Categories</h3>
+      <ul>
+        <li>T-Shirts</li>
+        <li>Oversized</li>
+        <li>Printed</li>
+        <li>Anime</li>
+        <li>New Drops</li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <h2>Trending Products</h2>
+      <div class="products">
+        <div class="product">
+          <img src="shirt1.jpg" alt="Tshirt" width="100%">
+          <p>Printed T-shirt</p>
+          <p>₹299</p>
+        </div>
+        <div class="product">
+          <img src="shirt2.jpg" alt="Tshirt" width="100%">
+          <p>Oversized Tee</p>
+          <p>₹349</p>
+        </div>
       </div>
     </div>
-    <!-- Add more product blocks as needed -->
+  </div>
+
+  <section id="about-content">
+    <h2>About FA-Tshirt</h2>
+    <p>FA-Tshirt is not just a clothing brand — it’s the story of a young dreamer from New Ashok Nagar, Delhi, who decided to rise from scratch.</p>
+    <p>Coming from a middle-class family, I started this journey with limited resources but unlimited determination. After losing my father in August, I became the only earning member of my family with a salary of just ₹18,000. Despite everything, I kept dreaming bigger.</p>
+    <p>I’ve worked in MIS and handled e-commerce data, inventory, and Excel automation for big platforms like Flipkart, Amazon, Meesho, Myntra, and more. Alongside, I explored my passion for trading, technical analysis, and indicators like EMA — not just for earning, but for mastering the craft.</p>
+    <p>My love for stylish, affordable fashion gave birth to FA-Tshirt. The vision was clear — to build <strong>India’s No.1 affordable quality clothing brand</strong> that even a low-income person can wear with pride.</p>
+    <p>Every design you see here is self-made — not just printed, but created with passion. I've created designs 100x better than major platforms, even before I had funds to publish them. I’ve also started building this entire website using just Notepad — line by line, with a vision and zero excuses.</p>
+    <p>FA-Tshirt represents hustle, dreams, and a bold statement — <em>style belongs to everyone</em>. Whether you're a student, a hustler, or someone working hard every day, FA-Tshirt is for you.</p>
+    <h3>My Dreams</h3>
+    <ul>
+      <li>🧠 Build India’s No.1 affordable quality clothing brand</li>
+      <li>📈 Become a professional trader with consistent returns</li>
+      <li>🧑‍💻 Master Excel, SQL, Power BI, and automation tools</li>
+      <li>🌏 Scale FA-Tshirt globally and open my own fashion studio</li>
+      <li>💪 Prove that big things can start from a rented room & laptop</li>
+    </ul>
+    <p>If you’re reading this — remember, it’s never too late to chase what sets your soul on fire.</p>
+    <p><strong>#FromNothingToEverything</strong> | <strong>#FA-Tshirt</strong></p>
   </section>
 
   <footer>
@@ -284,49 +242,21 @@
   </footer>
 
   <div id="loginPopup">
-    <h2>Login</h2>
-    <input type="text" placeholder="Username">
+    <h3>Login</h3>
+    <input type="text" placeholder="Email or Phone">
     <input type="password" placeholder="Password">
-    <button onclick="alert('Login Successful')">Login</button>
-  </div>
-
-  <div id="detailModal">
-    <div id="detailModalContent">
-      <span id="closeModal" onclick="closeModal()">X</span>
-      <img id="modalImage" src="">
-      <h3 id="modalTitle"></h3>
-      <p id="modalPrice"></p>
-      <button class="buy-btn" onclick="addToCart()">Add to Cart</button>
-    </div>
+    <button onclick="hideLogin()">Login</button>
   </div>
 
   <script>
-    function showAbout() {
-      document.getElementById('about-content').style.display = 'block';
-      window.scrollTo(0, document.getElementById('about-content').offsetTop);
-    }
-
     function showLogin() {
-      document.getElementById('loginPopup').style.display = 'block';
+      document.getElementById("loginPopup").style.display = "block";
     }
 
-    let cartCount = 0;
-
-    function addToCart() {
-      cartCount++;
-      document.getElementById('cartCount').innerText = cartCount;
-    }
-
-    function showDetails(title, price, imageSrc) {
-      document.getElementById('modalTitle').innerText = title;
-      document.getElementById('modalPrice').innerText = price;
-      document.getElementById('modalImage').src = imageSrc;
-      document.getElementById('detailModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('detailModal').style.display = 'none';
+    function hideLogin() {
+      document.getElementById("loginPopup").style.display = "none";
     }
   </script>
+
 </body>
 </html>

@@ -193,6 +193,11 @@
       padding: 10px 15px;
       cursor: pointer;
     }
+
+    #error-message {
+      color: red;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
@@ -263,9 +268,10 @@
 
   <div id="loginPopup">
     <h2>Login</h2>
-    <input type="text" placeholder="Username">
-    <input type="password" placeholder="Password">
-    <button onclick="alert('Login Successful')">Login</button>
+    <input id="username" type="text" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
+    <div id="error-message"></div>
+    <button onclick="validateLogin()">Login</button>
   </div>
 
   <script>
@@ -273,8 +279,25 @@
       document.getElementById('about-content').style.display = 'block';
       window.scrollTo(0, document.getElementById('about-content').offsetTop);
     }
+
     function showLogin() {
       document.getElementById('loginPopup').style.display = 'block';
+    }
+
+    function validateLogin() {
+      const email = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorDiv = document.getElementById('error-message');
+
+      if (!email.includes('@gmail.com')) {
+        errorDiv.textContent = 'Invalid Gmail';
+      } else if (email && password) {
+        errorDiv.textContent = '';
+        alert('Login Successful');
+        document.getElementById('loginPopup').style.display = 'none';
+      } else {
+        errorDiv.textContent = 'Please enter all fields';
+      }
     }
   </script>
 </body>

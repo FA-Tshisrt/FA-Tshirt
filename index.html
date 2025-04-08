@@ -4,162 +4,301 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FA-Tshirt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    @font-face {
+      font-family: 'Snap ITC';
+      src: local('Snap ITC');
+    }
+
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Bahnschrift', sans-serif;
+      background: url('https://wallpapercave.com/wp/wp5128415.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
     }
 
     header {
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #f8f8f8;
-      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
     }
 
-    #logo {
+    .logo {
+      font-size: 32px;
+      font-family: 'Snap ITC';
+      font-weight: 700;
+      color: #e63946;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .nav-right {
       display: flex;
-      flex-direction: column;
       align-items: center;
-    }
-
-    #logo img {
-      height: 40px;
-    }
-
-    #search-bar {
-      flex-grow: 1;
-      margin: 0 20px;
-    }
-
-    #search-bar input {
-      width: 100%;
-      padding: 8px;
-      font-size: 16px;
-    }
-
-    #menu {
-      display: flex;
       gap: 15px;
+      flex-wrap: wrap;
     }
 
-    #menu button {
-      padding: 8px 12px;
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    .search-filter {
+      text-align: center;
+      margin: 20px auto;
+    }
+
+    .search-filter input[type="text"] {
+      padding: 8px;
+      width: 80%;
+      max-width: 300px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .category-bar {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .category-bar span {
+      color: black;
+      background: white;
+      padding: 5px 15px;
+      margin: 5px;
+      border-radius: 5px;
       cursor: pointer;
+      font-weight: bold;
     }
 
-    #sidebar {
-      position: fixed;
-      right: 0;
-      top: 60px;
-      width: 200px;
-      background-color: #f0f0f0;
-      padding: 10px;
-      height: calc(100% - 60px);
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: rgba(0,0,0,0.5);
     }
 
-    #sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    #sidebar ul li {
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-
-    main {
-      margin-right: 210px;
-      padding: 20px;
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      background: rgba(0,0,0,0.7);
     }
 
     .product {
-      border: 1px solid #ddd;
-      padding: 10px;
-      margin-bottom: 10px;
+      background: #fff;
+      color: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #000;
+    }
+
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .product-info {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .buy-btn {
+      background-color: #e63946;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      text-align: center;
+      color: white;
     }
 
     #about-content {
       padding: 20px;
-      background-color: #fafafa;
       display: none;
+      background: rgba(255, 255, 255, 0.9);
+      color: black;
     }
 
     #loginPopup {
       display: none;
       position: fixed;
-      top: 20%;
-      left: 40%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       background: white;
+      color: black;
       padding: 20px;
-      border: 1px solid black;
-      z-index: 1000;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #000;
+      z-index: 2000;
     }
 
-    footer {
-      text-align: center;
+    #loginPopup input {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
       padding: 10px;
-      background-color: #ddd;
+    }
+
+    #loginPopup button {
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    #detailModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 3000;
+    }
+
+    #detailModalContent {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 500px;
+      color: black;
+      position: relative;
+      text-align: center;
+    }
+
+    #detailModalContent img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    #detailModalContent h3 {
+      margin: 15px 0 5px;
+    }
+
+    #closeModal {
+      position: absolute;
+      top: 10px; right: 15px;
+      cursor: pointer;
+      font-size: 18px;
+      color: red;
+    }
+
+    .cart-count {
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      margin-left: 5px;
+    }
+
+    @media(max-width: 600px) {
+      .hero h1 { font-size: 28px; }
+      .hero p { font-size: 16px; }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <div id="logo">
-      <img src="logo.png" alt="FA-Tshirt Logo" />
-      <small>FA-Tshirt</small>
-    </div>
-    <div id="search-bar">
-      <input type="text" placeholder="Search for products" />
-    </div>
-    <div id="menu">
-      <button onclick="showLogin()">Login</button>
-      <button>Cart</button>
+    <div class="logo">FA-Tshirt</div>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about" onclick="showAbout()">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#" onclick="showLogin()" style="color:white">Login</a>
+      <a href="#" style="color:white">Cart <span class="cart-count" id="cartCount">0</span></a>
     </div>
   </header>
 
-  <div id="sidebar">
-    <ul>
-      <li>Home</li>
-      <li onclick="showAbout()">About</li>
-      <li>Men</li>
-      <li>Women</li>
-      <li>New Arrivals</li>
-    </ul>
+  <div class="search-filter">
+    <input type="text" placeholder="Search for t-shirts...">
   </div>
 
-  <main>
-    <div class="product">
-      <h3>Trendy Black T-shirt</h3>
-      <p>High quality cotton, only ₹299</p>
-      <button>Add to Cart</button>
-    </div>
-    <div class="product">
-      <h3>Minimal White T-shirt</h3>
-      <p>Premium fit, only ₹299</p>
-      <button>Add to Cart</button>
-    </div>
-  </main>
+  <div class="category-bar">
+    <span>Men</span>
+    <span>Women</span>
+    <span>Kids</span>
+  </div>
+
+  <section class="hero" id="home">
+    <h1>Welcome to FA-Tshirt</h1>
+    <p>Trendy | Comfortable | Affordable</p>
+  </section>
 
   <section id="about-content">
     <h2>Our Story</h2>
-    <p>FA-Tshirt is not just a brand, it's a dream. It started with a passion to create high-quality, stylish, and affordable fashion that represents youth and ambition. Our journey began with a single vision — to bring creativity, comfort, and confidence into every thread we stitch. Thank you for being a part of this journey.</p>
+    <p>FA-Tshirt is not just a brand, it's a dream. It started with a passion to create high-quality, stylish, and affordable fashion...</p>
   </section>
 
+  <section class="products" id="products">
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1618354691549-6d8b1b464986?auto=format&fit=crop&w=400&q=80" alt="Tshirt 1" onclick="showDetails('Black Round Neck','₹299', this.src)">
+      <div class="product-info">
+        <h3>Black Round Neck</h3>
+        <p>₹299</p>
+        <button class="buy-btn" onclick="addToCart()">Add to Cart</button>
+      </div>
+    </div>
+    <!-- Add more product blocks as needed -->
+  </section>
+
+  <footer>
+    &copy; 2025 FA-Tshirt. All rights reserved.
+  </footer>
+
   <div id="loginPopup">
-    <span onclick="closeLogin()" style="float:right;cursor:pointer;font-size:20px;">&times;</span>
     <h2>Login</h2>
     <input type="text" placeholder="Username">
     <input type="password" placeholder="Password">
     <button onclick="alert('Login Successful')">Login</button>
   </div>
 
-  <footer>
-    <p>&copy; 2025 FA-Tshirt. All rights reserved.</p>
-  </footer>
+  <div id="detailModal">
+    <div id="detailModalContent">
+      <span id="closeModal" onclick="closeModal()">X</span>
+      <img id="modalImage" src="">
+      <h3 id="modalTitle"></h3>
+      <p id="modalPrice"></p>
+      <button class="buy-btn" onclick="addToCart()">Add to Cart</button>
+    </div>
+  </div>
 
   <script>
     function showAbout() {
@@ -171,10 +310,23 @@
       document.getElementById('loginPopup').style.display = 'block';
     }
 
-    function closeLogin() {
-      document.getElementById('loginPopup').style.display = 'none';
+    let cartCount = 0;
+
+    function addToCart() {
+      cartCount++;
+      document.getElementById('cartCount').innerText = cartCount;
+    }
+
+    function showDetails(title, price, imageSrc) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('modalImage').src = imageSrc;
+      document.getElementById('detailModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('detailModal').style.display = 'none';
     }
   </script>
-
 </body>
 </html>

@@ -1,272 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FA-Tshirt</title>
-    <style>
-        /* Basic Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FA-Tshirt Store</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: url('https://i.ibb.co/BzZ7Lt8/dark-wallpaper.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
 
-        header {
-            background-color: #000;
-            color: #fff;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        header .logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    .logo {
+      font-family: 'SNAP ITC', fantasy;
+      font-size: 32px;
+      color: #ff5252;
+      text-shadow: 2px 2px 4px #000;
+    }
 
-        header .logo img {
-            height: 40px;
-        }
+    .search-bar input {
+      padding: 6px;
+      width: 300px;
+      border-radius: 20px;
+      border: none;
+      font-size: 16px;
+    }
 
-        header .logo span {
-            font-size: 12px;
-        }
+    .menu {
+      display: flex;
+      gap: 15px;
+    }
 
-        header .search-bar {
-            flex: 1;
-            text-align: center;
-        }
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-        header input[type="text"] {
-            width: 50%;
-            padding: 5px;
-        }
+    .sidebar {
+      width: 200px;
+      position: fixed;
+      top: 60px;
+      left: 0;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+    }
 
-        header .buttons {
-            display: flex;
-            gap: 10px;
-        }
+    .sidebar a {
+      display: block;
+      margin: 10px 0;
+      color: white;
+      text-decoration: none;
+    }
 
-        .sidebar {
-            width: 200px;
-            background-color: #333;
-            color: #fff;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding-top: 60px;
-        }
+    .product-list {
+      margin-left: 220px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
 
-        .sidebar a {
-            display: block;
-            padding: 15px;
-            color: #fff;
-            text-decoration: none;
-        }
+    .product {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+    }
 
-        .sidebar a:hover {
-            background-color: #444;
-        }
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
 
-        .main-content {
-            margin-left: 200px;
-            padding: 20px;
-        }
+    .product h3 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+      color: #ff9f43;
+    }
 
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+    .product p {
+      font-size: 14px;
+    }
 
-        .product {
-            background-color: #fff;
-            padding: 10px;
-            width: 200px;
-            border: 1px solid #ccc;
-        }
+    .product button {
+      padding: 8px 12px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-        .product img {
-            width: 100%;
-        }
+    .add-to-cart {
+      background-color: #2ecc71;
+      color: white;
+    }
 
-        .product h3, .product p {
-            margin: 10px 0;
-        }
+    .buy-now {
+      background-color: #e74c3c;
+      color: white;
+    }
 
-        .product button {
-            padding: 5px 10px;
-            background-color: red;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
+    .login-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
+    }
 
-        .product .buy-now {
-            background-color: green;
-            margin-left: 10px;
-        }
+    .login-popup.active {
+      display: flex;
+    }
 
-        .cart-page {
-            display: none;
-        }
+    .login-box {
+      background: #1e1e1e;
+      padding: 30px;
+      border-radius: 10px;
+      animation: popup 0.5s ease;
+      width: 300px;
+    }
 
-        #loginPopup {
-            display: none;
-            position: fixed;
-            top: 20%;
-            left: 40%;
-            background-color: white;
-            border: 2px solid #000;
-            padding: 20px;
-            z-index: 1000;
-        }
-    </style>
+    @keyframes popup {
+      from {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .cart-page {
+      margin-left: 220px;
+      padding: 20px;
+    }
+
+    .cart-item {
+      background: rgba(255, 255, 255, 0.05);
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .cart-item button {
+      background: #e67e22;
+      border: none;
+      padding: 5px 10px;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <div class="logo">
-            <img src="logo.png" alt="FA-Tshirt">
-            <span>FA-Tshirt</span>
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search for t-shirts...">
-        </div>
-        <div class="buttons">
-            <button onclick="showLoginPopup()">Login</button>
-            <button onclick="toggleCartPage()">Cart (<span id="cart-count">0</span>)</button>
-        </div>
-    </header>
-
-    <div class="sidebar">
-        <a href="#" onclick="filterCategory('all')">All</a>
-        <a href="#" onclick="filterCategory('men')">Men</a>
-        <a href="#" onclick="filterCategory('women')">Women</a>
-        <a href="#" onclick="filterCategory('kids')">Kids</a>
+  <header>
+    <div class="logo">FA-Tshirt</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search...">
     </div>
-
-    <div class="main-content">
-        <div class="products" id="product-list">
-            <!-- Products added dynamically here -->
-        </div>
-        <div class="cart-page" id="cart-page">
-            <h2>Your Cart</h2>
-            <div id="cart-items"></div>
-            <button onclick="checkout()">Checkout</button>
-        </div>
+    <div class="menu">
+      <a href="#" onclick="openLogin()">Login</a>
+      <a href="#cart">Cart</a>
     </div>
+  </header>
 
-    <div id="loginPopup">
-        <h3>Login with Email OTP</h3>
-        <input type="email" id="email" placeholder="Enter your email"><br><br>
-        <button onclick="sendOTP()">Send OTP</button><br><br>
-        <input type="text" id="otp" placeholder="Enter OTP"><br><br>
-        <button onclick="verifyOTP()">Verify</button>
+  <div class="sidebar">
+    <a href="#">Home</a>
+    <a href="#">Men</a>
+    <a href="#">Women</a>
+    <a href="#">New Arrivals</a>
+    <a href="#">Best Sellers</a>
+  </div>
+
+  <div class="product-list">
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/xl8rcxj1o5lq7ovijyf2m/1.jpg?rlkey=nkrpyb0mnvst1nyw6mgyoxn0h&raw=1" alt="Product 1">
+      <h3>FA Black Logo Tee</h3>
+      <p>Classic black t-shirt with FA logo in red.</p>
+      <p>₹299</p>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="buy-now">Buy Now</button>
     </div>
+    <!-- Repeat for 5 more products as needed -->
+  </div>
 
-    <script>
-        let cart = [];
-        let products = [
-            {id: 1, title: "Cool Black Tee", category: "men", price: 299, img: "https://www.dropbox.com/scl/fi/d31svz2gl8gfcqzk7eibz/black.png?rlkey=bsv7pm1nh9ohtv69p6f7oh6ey&dl=1"},
-            {id: 2, title: "Trendy Red Tee", category: "women", price: 299, img: "https://www.dropbox.com/scl/fi/qslhc8rlqgbdtltmllh6j/red.png?rlkey=k7rx0s3lmrc94f8b3v3uuw8cf&dl=1"},
-            {id: 3, title: "Funky Graphic Tee", category: "kids", price: 299, img: "https://www.dropbox.com/scl/fi/cipz3hxoplyjwkdl7phxq/graphic.png?rlkey=3ug0d8azxkeo5k3gfu2fkn4ty&dl=1"},
-            {id: 4, title: "Plain White Tee", category: "men", price: 299, img: "https://www.dropbox.com/scl/fi/v1ul8asbjyrlmr7k5i6h5/white.png?rlkey=83m4ksv0iyljr4cgpzq7q1qce&dl=1"},
-            {id: 5, title: "Yellow Summer Tee", category: "women", price: 299, img: "https://www.dropbox.com/scl/fi/tjla54jwxqoyk6y12ghz0/yellow.png?rlkey=rq4l4o2tch8z5w0ymgmknn4mm&dl=1"},
-            {id: 6, title: "Blue Chill Tee", category: "kids", price: 299, img: "https://www.dropbox.com/scl/fi/jgms3ws8p7asfqumz2gy6/blue.png?rlkey=ox59fexhe8tmdq2i7ggtynkrx&dl=1"},
-        ];
+  <div class="login-popup" id="loginPopup">
+    <div class="login-box">
+      <h3>Email Login</h3>
+      <input type="email" placeholder="Enter your email">
+      <button onclick="sendOTP()">Send OTP</button>
+      <input type="text" placeholder="Enter OTP">
+      <button>Login</button>
+    </div>
+  </div>
 
-        function displayProducts(productArray) {
-            const container = document.getElementById('product-list');
-            container.innerHTML = '';
-            productArray.forEach(product => {
-                const div = document.createElement('div');
-                div.className = 'product';
-                div.innerHTML = `
-                    <img src="${product.img}" alt="${product.title}">
-                    <h3>${product.title}</h3>
-                    <p>₹${product.price}</p>
-                    <button onclick="addToCart(${product.id})">Add to Cart</button>
-                    <button class="buy-now" onclick="buyNow(${product.id})">Buy Now</button>
-                `;
-                container.appendChild(div);
-            });
-        }
+  <div class="cart-page" id="cart">
+    <h2>Your Cart</h2>
+    <div class="cart-item">
+      <p>FA Black Logo Tee - ₹299</p>
+      <button>Remove</button>
+    </div>
+    <button class="buy-now">Checkout</button>
+  </div>
 
-        function addToCart(id) {
-            const product = products.find(p => p.id === id);
-            cart.push(product);
-            document.getElementById('cart-count').innerText = cart.length;
-            alert('Added to cart');
-        }
-
-        function toggleCartPage() {
-            const page = document.getElementById('cart-page');
-            page.style.display = page.style.display === 'block' ? 'none' : 'block';
-            updateCartView();
-        }
-
-        function updateCartView() {
-            const cartDiv = document.getElementById('cart-items');
-            cartDiv.innerHTML = '';
-            cart.forEach((item, index) => {
-                cartDiv.innerHTML += `<p>${item.title} - ₹${item.price} <button onclick="removeFromCart(${index})">Remove</button></p>`;
-            });
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            document.getElementById('cart-count').innerText = cart.length;
-            updateCartView();
-        }
-
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Cart is empty!');
-            } else {
-                alert('Order placed successfully!');
-                cart = [];
-                document.getElementById('cart-count').innerText = '0';
-                updateCartView();
-                toggleCartPage();
-            }
-        }
-
-        function filterCategory(cat) {
-            if (cat === 'all') displayProducts(products);
-            else displayProducts(products.filter(p => p.category === cat));
-        }
-
-        function buyNow(id) {
-            const product = products.find(p => p.id === id);
-            alert(`Proceeding to buy: ${product.title}`);
-        }
-
-        function showLoginPopup() {
-            document.getElementById('loginPopup').style.display = 'block';
-        }
-
-        function sendOTP() {
-            const email = document.getElementById('email').value;
-            alert(`OTP sent to ${email}`); // Simulated
-        }
-
-        function verifyOTP() {
-            const otp = document.getElementById('otp').value;
-            alert(`OTP Verified: ${otp}`); // Simulated
-            document.getElementById('loginPopup').style.display = 'none';
-        }
-
-        // Init load
-        displayProducts(products);
-    </script>
+  <script>
+    function openLogin() {
+      document.getElementById('loginPopup').classList.add('active');
+    }
+    function sendOTP() {
+      alert('OTP sent to email!');
+    }
+  </script>
 </body>
+
 </html>

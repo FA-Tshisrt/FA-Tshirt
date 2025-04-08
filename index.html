@@ -4,111 +4,141 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FA-Tshirt</title>
-  <link href="https://fonts.googleapis.com/css2?family=Snap+ITC&display=swap" rel="stylesheet">
   <style>
-    body {
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: Arial, sans-serif;
-      background: url('https://images.unsplash.com/photo-1603808033192-082d6919d7c1?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
     }
+
+    body {
+      background: url('https://images.unsplash.com/photo-1603252110482-3ba31c0b602b?auto=format&fit=crop&w=1740&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
-      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
     }
+
     .logo {
-      font-family: 'Snap ITC', cursive;
+      font-family: 'Orbitron', sans-serif;
       font-size: 32px;
       font-weight: bold;
-      text-shadow: 2px 2px 4px #ff0000;
+      color: red;
+      text-shadow: 2px 2px 4px #000;
     }
+
     .search-bar {
-      padding: 4px 8px;
-      font-size: 14px;
-      width: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
     }
+
+    .search-bar input {
+      padding: 8px 15px;
+      font-size: 16px;
+      width: 400px;
+      border-radius: 5px;
+      border: none;
+    }
+
     .categories {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      margin-top: 10px;
+      gap: 20px;
+      margin-top: 15px;
     }
+
     .category {
       cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.15);
       padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.2);
       border-radius: 8px;
+      backdrop-filter: blur(5px);
     }
+
     .popup {
       display: none;
       position: absolute;
-      top: 120px;
+      top: 100px;
       left: 50%;
       transform: translateX(-50%);
-      width: 60%;
-      height: 50vh;
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      padding: 20px;
-      font-size: 12px;
-      border-radius: 10px;
-      z-index: 1000;
-    }
-    footer {
-      background-color: rgba(0, 0, 0, 0.85);
-      color: #fff;
+      background-color: rgba(0, 0, 0, 0.7);
       padding: 30px;
-      font-size: 14px;
-      text-align: center;
+      width: 50%;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .category:hover + .popup,
+    .popup:hover {
+      display: block;
+    }
+
+    footer {
       margin-top: 100px;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.6);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .footer-about {
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.7;
+      font-size: 15px;
+      color: #ddd;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo">FA-Tshirt</div>
-    <input type="text" class="search-bar" placeholder="Search here..." />
     <div>
       <button>Login</button>
       <button>Cart</button>
     </div>
   </header>
 
-  <div class="categories">
-    <div class="category" onclick="togglePopup('menPopup')">Men's</div>
-    <div class="category" onclick="togglePopup('womenPopup')">Women's</div>
-    <div class="category" onclick="togglePopup('kidsPopup')">Kid's</div>
+  <div class="search-bar">
+    <input type="text" placeholder="Search for products..." />
+    <div class="categories">
+      <div class="category">Men</div>
+      <div class="category">Women</div>
+      <div class="category">Kids</div>
+    </div>
   </div>
 
-  <div id="menPopup" class="popup">
-    Explore latest Men's T-shirts in trendsetting styles!
-  </div>
-  <div id="womenPopup" class="popup">
-    Discover fashionable Women's collection crafted for comfort.
-  </div>
-  <div id="kidsPopup" class="popup">
-    Funky & cool Kid's wear for little champs!
-  </div>
+  <div class="popup">Men's Collection: Trendy, Comfortable & Budget-Friendly.</div>
+  <div class="popup">Women's Collection: Bold, Stylish & Everyday Wear.</div>
+  <div class="popup">Kid's Collection: Fun, Colorful & Durable for All Ages.</div>
 
   <footer>
-    <p><strong>About FA-Tshirt</strong><br>
-    FA-Tshirt is a dream turned into a startup. Started with a passion for fashion, design and creating a brand affordable for everyone — from low-income families to trend-savvy youth. The vision began when I saw that quality clothing is often overpriced, so I decided to change the game. With just ₹50,000 and huge determination, I began this journey. From watching YouTube tutorials to designing T-shirts better than big brands like Bewakoof.com, it’s all self-learned. I also manage trading on the side, and I’m deeply passionate about learning, MIS work, and growing my business through e-commerce.
-    <br><br>
-    The mission is simple: FA-Tshirt will be India’s No.1 clothing brand in quality, price, and swag. From New Ashok Nagar, Delhi — this brand was born not in a factory, but in a dream.
-    <br><br>
-    Snap it. Wear it. Flaunt it. 💥</p>
+    <div class="footer-about">
+      <p><strong>About FA-Tshirt:</strong></p>
+      <p>
+        FA-Tshirt is more than just a clothing brand — it's a dream turned into a mission.
+        Humne shuruat ek choti si soch se ki thi, ek aisi soch jisme har kisi ke liye stylish, quality, aur budget-friendly kapde available ho sakein.
+        Main khud e-commerce field me kaam karta hoon, MIS aur inventory ka solid experience hai, aur saath hi trading ka bhi deep interest hai.
+        Apna khud ka kuch karne ka junoon mujhe yahan tak le aaya.
+        
+        Design banaye humne khud, Bewakoof jaisi websites se behtar quality ka sapna lekar. Budget kam tha lekin himmat badi thi.
+        FA-Tshirt ka maksad hai ek aise brand ko banana jo har aam aadmi afford kar sake, bina quality ka compromise kiye.
+        Apna brand India ka No.1 quality brand banana hai — jisme har product me passion dikhe.
+        
+        Yeh sirf ek brand nahi, ek revolution hai, jisme aap sabka support chahiye.
+      </p>
+    </div>
   </footer>
-
-  <script>
-    function togglePopup(id) {
-      const popups = document.querySelectorAll('.popup');
-      popups.forEach(popup => popup.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-    }
-  </script>
 </body>
 </html>

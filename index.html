@@ -4,33 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FA-Tshirt</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Rubik', sans-serif;
-      background-image: url('https://images.unsplash.com/photo-1626816011174-4cf19138e3ed?auto=format&fit=crop&w=1950&q=80');
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: url('https://wallpapercave.com/wp/wp9268960.jpg') no-repeat center center fixed;
       background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
-      color: white;
+      color: #fff;
     }
     header {
-      background-color: rgba(0, 0, 0, 0.7);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      padding: 20px;
+      background: rgba(0,0,0,0.6);
     }
     .logo {
       font-size: 28px;
       font-weight: bold;
-      color: #ff414d;
-      font-family: 'Snap ITC', cursive;
-      text-shadow: 2px 2px #000000;
+      text-shadow: 2px 2px 4px #000;
     }
     .search-bar {
       flex: 1;
@@ -38,79 +34,70 @@
     }
     .search-bar input {
       width: 100%;
-      padding: 8px;
-      border-radius: 5px;
+      padding: 10px;
+      border-radius: 20px;
       border: none;
-      font-size: 16px;
     }
-    .nav-icons button {
-      margin-left: 10px;
-      padding: 8px 16px;
-      background-color: #ff414d;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    nav {
+    .nav-links {
       display: flex;
-      justify-content: center;
-      gap: 30px;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 10px 0;
+      gap: 20px;
     }
-    nav a {
-      color: white;
+    .nav-links a {
       text-decoration: none;
+      color: #fff;
       font-weight: bold;
     }
-    .products {
+    .menu {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.7);
+    }
+    .menu a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+    }
+    .product-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 20px;
       padding: 30px;
-      background-color: rgba(0,0,0,0.5);
     }
-    .product-card {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 20px;
+    .product {
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 10px;
+      overflow: hidden;
+      padding: 10px;
       text-align: center;
-      color: white;
     }
-    .product-card img {
+    .product img {
       width: 100%;
       border-radius: 10px;
     }
-    .product-card h3 {
-      margin: 10px 0 5px;
+    .product h4 {
+      margin-top: 10px;
+      color: #fff;
     }
-    .product-card p {
-      margin: 0 0 10px;
-      font-size: 14px;
-    }
-    .product-card button {
-      padding: 8px 16px;
-      background-color: #ff414d;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    footer {
-      background-color: rgba(0, 0, 0, 0.9);
-      padding: 30px;
+    .about-section {
       text-align: center;
+      padding: 40px;
     }
-    footer h2 {
-      margin-bottom: 10px;
-      color: #ff414d;
+    .about-toggle {
+      cursor: pointer;
+      font-weight: bold;
+      color: #fff;
+      background: rgba(0,0,0,0.6);
+      padding: 10px 20px;
+      border-radius: 8px;
     }
-    footer p {
-      color: #ccc;
-      font-size: 14px;
-      max-width: 600px;
-      margin: 0 auto;
+    #about-text {
+      margin-top: 20px;
+      display: none;
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -120,59 +107,86 @@
     <div class="search-bar">
       <input type="text" placeholder="Search for t-shirts...">
     </div>
-    <div class="nav-icons">
-      <button>Login</button>
-      <button>Cart</button>
+    <div class="nav-links">
+      <a href="#">Login</a>
+      <a href="#">Cart</a>
     </div>
   </header>
 
-  <nav>
+  <div class="menu">
     <a href="#">Men</a>
     <a href="#">Women</a>
     <a href="#">Kid</a>
-  </nav>
+  </div>
 
-  <section class="products">
-    <div class="product-card">
-      <img src="https://www.dropbox.com/scl/fi/f7z4oj1pvn8ef9sz75duv/1.png?rlkey=skpss4qp46jfs7nrpvv6ps44x&raw=1" alt="Tshirt1">
-      <h3>Wolf Oversize</h3>
-      <p>Black printed Wolf oversize t-shirt</p>
-      <p><strong>₹399</strong></p>
-      <button>Add to Cart</button>
+  <div class="product-container">
+    <!-- Repeat this block for each product -->
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/w35xp71onk4s5p9hqq40w/Oversized-Drop-Shoulder-T-Shirt-Charcoal-Grey-_-XXS.jfif?raw=1">
+      <h4>Charcoal Grey Oversized Tee</h4>
     </div>
-    <div class="product-card">
-      <img src="https://www.dropbox.com/scl/fi/jkwhzkh9r3tdc4eecrerf/2.png?rlkey=ckcqgp8t8x0puv3xg43qxu7np&raw=1" alt="Tshirt2">
-      <h3>Naruto Shadow</h3>
-      <p>Anime Naruto themed t-shirt for men</p>
-      <p><strong>₹399</strong></p>
-      <button>Add to Cart</button>
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/8imuntoe8pyurqcsjt16b/Oversized-T-Shirt-Short-Sleeve-Cotton-T-Shirt-In-Black.jfif?raw=1">
+      <h4>Black Cotton Tee</h4>
     </div>
-    <div class="product-card">
-      <img src="https://www.dropbox.com/scl/fi/5rfne1dv7kco0mdqz0r0b/3.png?rlkey=6r3fvrfwy5kwq9wsmduqk86m6&raw=1" alt="Tshirt3">
-      <h3>Gojo Aura</h3>
-      <p>Cool Gojo anime tee with blue aura</p>
-      <p><strong>₹399</strong></p>
-      <button>Add to Cart</button>
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/qg23nbgt17v3c1fjmz9yd/Top-Fashionista-__-Striped-Off-Shoulder-Tops-for-Nautical-Chic.jfif?raw=1">
+      <h4>Striped Off Shoulder</h4>
     </div>
-    <div class="product-card">
-      <img src="https://www.dropbox.com/scl/fi/18vjlzbhf8rgnljfxl6w9/4.png?rlkey=jsjuep40jpj07xqudrc8jhrbz&raw=1" alt="Tshirt4">
-      <h3>Jujutsu Sorcery</h3>
-      <p>Inspired by Jujutsu Kaisen anime</p>
-      <p><strong>₹399</strong></p>
-      <button>Add to Cart</button>
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/jtsaogqxtxzg5llso50j2/Vintage-Vertical-Painting-Over-Fit-T-Shirt.jfif?raw=1">
+      <h4>Vintage Paint Tee</h4>
     </div>
-    <div class="product-card">
-      <img src="https://www.dropbox.com/scl/fi/1oyajl7okz8du4xv21uln/5.png?rlkey=7yf9ozlf8n4cf3j2t5k55aq4t&raw=1" alt="Tshirt5">
-      <h3>Akatsuki Street</h3>
-      <p>Black t-shirt with red Akatsuki cloud print</p>
-      <p><strong>₹399</strong></p>
-      <button>Add to Cart</button>
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/uuigb0k9n6514zebl6h35/Women-s-Men-s-Clothing-Shop-Online-Fashion.jfif?raw=1">
+      <h4>Unisex Fashion Tee</h4>
     </div>
-  </section>
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/cwtirmbg8r2q76ed2oroq/LAINAR-BREN-oversize-tshirt-cream-color-for-men.jpg?raw=1">
+      <h4>Cream Oversize Tee</h4>
+    </div>
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/u18q134summdczn5e6bsw/Lainar-bren-oversize-tshirt-lainarbren.jpg?raw=1">
+      <h4>Relax Fit Lainar Tee</h4>
+    </div>
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/05vueisj2rz6bun4padbn/Men-Slogan-Graphic-Drop-Shoulder-Tee.jpg?raw=1">
+      <h4>Slogan Graphic Tee</h4>
+    </div>
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/z89esejm7iyp52fzqw6rq/ASOS-DESIGN-T-shirt-basique-ultra-oversize-Kaki-Vert.jpg?raw=1">
+      <h4>ASOS Oversize Tee</h4>
+    </div>
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/vjy6de58ier9dtry5jb72/River-Island-Japanese-Otaru-print-t-shirt-in-green.jpg?raw=1">
+      <h4>Otaru Print Green Tee</h4>
+    </div>
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/ahdwqs1tzbw4jypp0fe60/88-Arch-Logo-Oversized-Short-Sleeves-T-Shirt.jpg?raw=1">
+      <h4>88 Arch Oversize Tee</h4>
+    </div>
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/upm9gzcu1d30anyemlw7o/download.jpg?raw=1">
+      <h4>Classic Drop Tee</h4>
+    </div>
+    <div class="product">
+      <img src="https://www.dropbox.com/scl/fi/re6616r10pk1t9efc5tfe/Men-Drop-Shoulder-Solid-Tee.jpg?raw=1">
+      <h4>Drop Shoulder Solid Tee</h4>
+    </div>
+  </div>
 
-  <footer>
-    <h2>Our Story</h2>
-    <p>FA-Tshirt is your home for bold, anime-inspired streetwear fashion. Born from passion and built for fans who live and breathe style with a statement. Be different, wear FA-Tshirt.</p>
-  </footer>
+  <div class="about-section">
+    <div class="about-toggle" onclick="toggleAbout()">About</div>
+    <div id="about-text">
+      FA-Tshirt is a vision to make bold, quality fashion affordable for every Indian. Inspired by anime and urban culture, we aim to blend unique style with comfort. Whether it’s your first tee or tenth, each FA-Tshirt is designed to be memorable.
+    </div>
+  </div>
+
+  <script>
+    function toggleAbout() {
+      const about = document.getElementById("about-text");
+      about.style.display = about.style.display === "none" ? "block" : "none";
+    }
+  </script>
 </body>
 </html>

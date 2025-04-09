@@ -1,180 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FA-Tshirt Product Uploader</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FA-Tshirt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f1f2f4;
-    }
-
-    header {
-      background-color: #2874f0;
+      font-family: 'Rubik', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1626816011174-4cf19138e3ed?auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
       color: white;
+    }
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
       position: sticky;
       top: 0;
-      z-index: 999;
+      z-index: 1000;
     }
-
-    header .logo {
-      font-size: 24px;
+    .logo {
+      font-size: 28px;
       font-weight: bold;
+      color: #ff414d;
+      font-family: 'Snap ITC', cursive;
+      text-shadow: 2px 2px #000000;
     }
-
-    header .actions button {
-      background-color: white;
-      color: #2874f0;
+    .search-bar {
+      flex: 1;
+      margin: 0 20px;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
       border: none;
-      padding: 8px 12px;
+      font-size: 16px;
+    }
+    .nav-icons button {
       margin-left: 10px;
+      padding: 8px 16px;
+      background-color: #ff414d;
+      color: white;
+      border: none;
       border-radius: 5px;
       cursor: pointer;
     }
-
-    .container {
-      padding: 20px;
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px 0;
     }
-
-    .upload-box {
-      background: white;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .product-card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-      transition: transform 0.2s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .product-details {
-      padding: 15px;
-    }
-
-    .product-details h3 {
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-
-    .product-details p {
-      margin: 0 0 10px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    .price {
-      color: green;
+    nav a {
+      color: white;
+      text-decoration: none;
       font-weight: bold;
     }
-
-    footer {
-      text-align: center;
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      background-color: rgba(0,0,0,0.5);
+    }
+    .product-card {
+      background-color: rgba(255, 255, 255, 0.1);
       padding: 20px;
-      color: #555;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
     }
-
-    input[type="file"] {
-      margin-top: 10px;
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
     }
-
+    .product-card h3 {
+      margin: 10px 0 5px;
+    }
+    .product-card p {
+      margin: 0 0 10px;
+      font-size: 14px;
+    }
+    .product-card button {
+      padding: 8px 16px;
+      background-color: #ff414d;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    footer {
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 30px;
+      text-align: center;
+    }
+    footer h2 {
+      margin-bottom: 10px;
+      color: #ff414d;
+    }
+    footer p {
+      color: #ccc;
+      font-size: 14px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
   </style>
 </head>
 <body>
-
   <header>
     <div class="logo">FA-Tshirt</div>
-    <div class="actions">
+    <div class="search-bar">
+      <input type="text" placeholder="Search for t-shirts...">
+    </div>
+    <div class="nav-icons">
       <button>Login</button>
       <button>Cart</button>
     </div>
   </header>
 
-  <div class="container">
-    <div class="upload-box">
-      <h2>📦 Upload Your Product CSV</h2>
-      <input type="file" id="csvFile" accept=".csv" />
+  <nav>
+    <a href="#">Men</a>
+    <a href="#">Women</a>
+    <a href="#">Kid</a>
+  </nav>
+
+  <section class="products">
+    <div class="product-card">
+      <img src="https://www.dropbox.com/scl/fi/f7z4oj1pvn8ef9sz75duv/1.png?rlkey=skpss4qp46jfs7nrpvv6ps44x&raw=1" alt="Tshirt1">
+      <h3>Wolf Oversize</h3>
+      <p>Black printed Wolf oversize t-shirt</p>
+      <p><strong>₹399</strong></p>
+      <button>Add to Cart</button>
     </div>
-    <div class="products" id="productList"></div>
-  </div>
+    <div class="product-card">
+      <img src="https://www.dropbox.com/scl/fi/jkwhzkh9r3tdc4eecrerf/2.png?rlkey=ckcqgp8t8x0puv3xg43qxu7np&raw=1" alt="Tshirt2">
+      <h3>Naruto Shadow</h3>
+      <p>Anime Naruto themed t-shirt for men</p>
+      <p><strong>₹399</strong></p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="https://www.dropbox.com/scl/fi/5rfne1dv7kco0mdqz0r0b/3.png?rlkey=6r3fvrfwy5kwq9wsmduqk86m6&raw=1" alt="Tshirt3">
+      <h3>Gojo Aura</h3>
+      <p>Cool Gojo anime tee with blue aura</p>
+      <p><strong>₹399</strong></p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="https://www.dropbox.com/scl/fi/18vjlzbhf8rgnljfxl6w9/4.png?rlkey=jsjuep40jpj07xqudrc8jhrbz&raw=1" alt="Tshirt4">
+      <h3>Jujutsu Sorcery</h3>
+      <p>Inspired by Jujutsu Kaisen anime</p>
+      <p><strong>₹399</strong></p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="https://www.dropbox.com/scl/fi/1oyajl7okz8du4xv21uln/5.png?rlkey=7yf9ozlf8n4cf3j2t5k55aq4t&raw=1" alt="Tshirt5">
+      <h3>Akatsuki Street</h3>
+      <p>Black t-shirt with red Akatsuki cloud print</p>
+      <p><strong>₹399</strong></p>
+      <button>Add to Cart</button>
+    </div>
+  </section>
 
   <footer>
-    &copy; 2025 FA-Tshirt. All rights reserved.
+    <h2>Our Story</h2>
+    <p>FA-Tshirt is your home for bold, anime-inspired streetwear fashion. Born from passion and built for fans who live and breathe style with a statement. Be different, wear FA-Tshirt.</p>
   </footer>
-
-  <script>
-    document.getElementById('csvFile').addEventListener('change', function (e) {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        const text = e.target.result;
-        const lines = text.trim().split('\n');
-        const headers = lines[0].split(',');
-
-        const products = lines.slice(1).map(line => {
-          const values = line.split(',');
-          const product = {};
-          headers.forEach((header, i) => {
-            product[header.trim()] = values[i]?.trim();
-          });
-          return product;
-        });
-
-        displayProducts(products);
-      };
-      reader.readAsText(file);
-    });
-
-    function displayProducts(products) {
-      const container = document.getElementById('productList');
-      container.innerHTML = '';
-
-      products.forEach(prod => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
-          <img src="${prod.ImageURL}" alt="${prod.Title}" />
-          <div class="product-details">
-            <h3>${prod.Title}</h3>
-            <p>${prod.Description}</p>
-            <p class="price">₹${prod.Price}</p>
-            <p>Category: ${prod.Category}</p>
-            <p>Stock: ${prod.Stock}</p>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-  </script>
-
 </body>
 </html>

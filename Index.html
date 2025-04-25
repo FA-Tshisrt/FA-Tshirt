@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FA-Tshirt - Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+    header {
+      background: black;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+    header img {
+      height: 40px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .search-bar {
+      text-align: center;
+      margin: 10px auto;
+    }
+    .search-bar input {
+      width: 60%;
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .product-card {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .product-title {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .product-description {
+      font-size: 14px;
+      color: #555;
+    }
+    .product-price {
+      font-size: 18px;
+      color: #e91e63;
+      margin: 5px 0;
+    }
+    .add-to-cart {
+      background: #e91e63;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .add-to-cart:hover {
+      background: #c2185b;
+    }
+    .cart-popup {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      width: 300px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      padding: 15px;
+      display: none;
+      z-index: 1000;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+    .cart-item-name {
+      font-weight: bold;
+    }
+    .cart-total {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .btn {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .login-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 1001;
+    }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div>
+      <img src="https://via.placeholder.com/40" alt="FA-Tshirt Logo">
+      <div style="font-size: 10px;">FA-Tshirt</div>
+    </div>
+    <h1>FA-Tshirt</h1>
+    <div>
+      <button class="btn" onclick="openLogin()">Login</button>
+      <button class="btn" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
+    </div>
+  </header>
+
+  <!-- Search Bar -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search for products...">
+  </div>
+
+  <!-- Products Grid -->
+  <div class="product-grid" id="product-list">
+    <!-- Product Cards will be inserted here via JS -->
+  </div>
+
+  <!-- Cart Popup -->
+  <div class="cart-popup" id="cart-popup">
+    <h3>Your Cart</h3>
+    <div id="cart-items"></div>
+    <div class="cart-total" id="cart-total">Total: ₹0</div>
+  </div>
+
+  <!-- Login Popup -->
+  <div class="overlay" id="overlay" onclick="closeLogin()"></div>
+  <div class="login-popup" id="login-popup">
+    <h3>Login via Email OTP</h3>
+    <input type="email" id="email" placeholder="Enter email" style="width: 100%; padding: 10px; margin-bottom: 10px;" />
+    <button onclick="sendOTP()" class="btn" style="background: #2196F3; color: white;">Send OTP</button>
+    <input type="text" id="otp" placeholder="Enter OTP" style="width: 100%; padding: 10px; margin-top: 10px;" />
+    <button onclick="verifyOTP()" class="btn" style="background: #4CAF50; color: white; margin-top: 10px;">Verify</button>
+  </div>
+
+  <script>
+    const products = [
+      {
+        name: "Striped Off Shoulder Top",
+        desc: "Nautical Chic Style – Ideal for Trendy Looks",
+        price: 279,
+        img: "https://www.dropbox.com/scl/fi/qg23nbgt17v3c1fjmz9yd/Top-Fashionista-__-Striped-Off-Shoulder-Tops-for-Nautical-Chic.jfif?rlkey=bpy2gearchgh7q2qqn9wnb1jo&raw=1"
+      },
+      {
+        name: "Vintage Vertical Painting T-Shirt",
+        desc: "Bold & Artistic Design – Over Fit Style",
+        price: 299,
+        img: "https://www.dropbox.com/scl/fi/jtsaogqxtxzg5llso50j2/Vintage-Vertical-Painting-Over-Fit-T-Shirt.jfif?rlkey=if3qhrugq8p04uoawamc3uovl&raw=1"
+      },
+      {
+        name: "Unisex Fashion Combo",
+        desc: "Stylish Outfits for Both Men & Women",
+        price: 249,
+        img: "https://www.dropbox.com/scl/fi/uuigb0k9n6514zebl6h35/Women-s-Men-s-Clothing-Shop-Online-Fashion.jfif?rlkey=mlq1ccpq251z26z3c3ka0tp4r&raw=1"
+      },
+      {
+        name: "Oversized Cotton T-Shirt",
+        desc: "Black – Short Sleeve Comfort",
+        price: 269,
+        img: "https://www.dropbox.com/scl/fi/8imuntoe8pyurqcsjt16b/Oversized-T-Shirt-Short-Sleeve-Cotton-T-Shirt-In-Black.jfif?rlkey=55r3q8jh0u0qz1p3csz4o3sqo&raw=1"
+      },
+      {
+        name: "Drop Shoulders Delight",
+        desc: "Men's Best Outfits for Stylish Looks",
+        price: 289,
+        img: "https://www.dropbox.com/scl/fi/kbelphqsfmkatwno9zzbk/_Ultimate-Style_-Men-s-Best-Outfits-with-Drop-Shoulders_-_Drop-Shoulders-Delight_-Men-s-Best-Outfits.jfif?rlkey=vs6x7vfq3a3fm0iseultaobzg&raw=1"
+      },
+      {
+        name: "Drop Shoulder T-Shirt",
+        desc: "Charcoal Grey – XXS Oversized Fit",
+        price: 259,
+        img: "https://www.dropbox.com/scl/fi/w35xp71onk4s5p9hqq40w/Oversized-Drop-Shoulder-T-Shirt-Charcoal-Grey-_-XXS.jfif?rlkey=h56tbbgnasz6jdt2b9lsh405j&raw=1"
+      },
+    ];
+
+    const cart = [];
+
+    function renderProducts() {
+      const container = document.getElementById("product-list");
+      products.forEach((p, index) => {
+        container.innerHTML += `
+          <div class="product-card">
+            <img src="${p.img}" alt="${p.name}">
+            <div class="product-title">${p.name}</div>
+            <div class="product-description">${p.desc}</div>
+            <div class="product-price">₹${p.price}</div>
+            <button class="add-to-cart" onclick="addToCart(${index})">Add to Cart</button>
+          </div>
+        `;
+      });
+    }
+
+    function addToCart(index) {
+      cart.push(products[index]);
+      document.getElementById("cart-count").innerText = cart.length;
+      renderCart();
+    }
+
+    function toggleCart() {
+      const popup = document.getElementById("cart-popup");
+      popup.style.display = popup.style.display === "block" ? "none" : "block";
+    }
+
+    function renderCart() {
+      const items = document.getElementById("cart-items");
+      const total = document.getElementById("cart-total");
+      items.innerHTML = "";
+      let sum = 0;
+      cart.forEach((item, i) => {
+        items.innerHTML += `
+          <div class="cart-item">
+            <span class="cart-item-name">${item.name}</span>
+            <span>₹${item.price}</span>
+          </div>
+        `;
+        sum += item.price;
+      });
+      total.innerText = `Total: ₹${sum}`;
+    }
+
+    function openLogin() {
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("login-popup").style.display = "block";
+    }
+
+    function closeLogin() {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("login-popup").style.display = "none";
+    }
+
+    function sendOTP() {
+      alert("OTP sent to email (demo only)");
+    }
+
+    function verifyOTP() {
+      alert("OTP Verified! Login Successful");
+      closeLogin();
+    }
+
+    renderProducts();
+  </script>
+
+</body>
+</html>

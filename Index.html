@@ -2,283 +2,280 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FA-Tshirt - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FA-Tshirt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    @font-face {
+      font-family: 'Snap ITC';
+      src: local('Snap ITC');
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      background: #f5f5f5;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: 'Bahnschrift', sans-serif;
+      background: url('https://www.dropbox.com/scl/fi/6scs34cfiffalea8m5r6k/download.jfif?rlkey=9me88jua5fx4vxiizskj1lk3e&st=js2tc74z&raw=1') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
     header {
-      background: black;
-      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
-    }
-    header img {
-      height: 40px;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-    .search-bar {
-      text-align: center;
-      margin: 10px auto;
-    }
-    .search-bar input {
-      width: 60%;
-      padding: 10px;
-      border-radius: 20px;
-      border: 1px solid #ccc;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .product-card {
-      background: white;
-      padding: 10px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .product-card img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .product-title {
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    .product-description {
-      font-size: 14px;
-      color: #555;
-    }
-    .product-price {
-      font-size: 18px;
-      color: #e91e63;
-      margin: 5px 0;
-    }
-    .add-to-cart {
-      background: #e91e63;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-    .add-to-cart:hover {
-      background: #c2185b;
-    }
-    .cart-popup {
-      position: fixed;
-      top: 60px;
-      right: 20px;
-      width: 300px;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      padding: 15px;
-      display: none;
+      position: sticky;
+      top: 0;
       z-index: 1000;
     }
-    .cart-item {
+
+    .logo {
+      font-size: 32px;
+      font-family: 'Snap ITC';
+      font-weight: 700;
+      color: #e63946;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .nav-right {
       display: flex;
-      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      color: #ff6b6b;
+    }
+
+    .search-filter {
+      text-align: center;
+      margin: 20px auto 5px;
+    }
+
+    .search-filter input[type="text"] {
+      padding: 8px;
+      width: 300px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .category-bar {
+      text-align: center;
       margin: 10px 0;
     }
-    .cart-item-name {
-      font-weight: bold;
-    }
-    .cart-total {
-      font-size: 16px;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    .btn {
-      padding: 8px 12px;
-      border: none;
+
+    .category-bar span {
+      color: black;
+      background: rgba(255,255,255,0.8);
+      padding: 5px 15px;
+      margin: 0 5px;
       border-radius: 5px;
       cursor: pointer;
+      font-weight: bold;
     }
-    .login-popup {
+
+    .hero {
+      text-align: center;
+      padding: 80px 20px 40px;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      padding: 40px;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .product {
+      background: rgba(255,255,255,0.85);
+      color: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #000;
+    }
+
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .product-info h3 {
+      margin-bottom: 10px;
+    }
+
+    .buy-btn {
+      background-color: #e63946;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .buy-btn:hover {
+      background-color: #d90429;
+    }
+
+    #about-content {
+      padding: 20px;
+      margin-top: 40px;
+      background: rgba(255, 255, 255, 0.9);
+      color: black;
+      display: none;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    #loginPopup {
+      display: none;
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: white;
+      background: rgba(255,255,255,0.95);
+      color: black;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      display: none;
-      z-index: 1001;
+      box-shadow: 0 0 15px #000;
     }
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      z-index: 1000;
+
+    #loginPopup input {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+    }
+
+    #loginPopup button {
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header>
-    <div>
-      <img src="https://via.placeholder.com/40" alt="FA-Tshirt Logo">
-      <div style="font-size: 10px;">FA-Tshirt</div>
-    </div>
-    <h1>FA-Tshirt</h1>
-    <div>
-      <button class="btn" onclick="openLogin()">Login</button>
-      <button class="btn" onclick="toggleCart()">Cart (<span id="cart-count">0</span>)</button>
+    <div class="logo">FA-Tshirt</div>
+    <div class="nav-right">
+      <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about" onclick="showAbout()">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#" onclick="showLogin()" style="color:white">Login</a>
+      <a href="#" style="color:white">Cart</a>
     </div>
   </header>
 
-  <!-- Search Bar -->
-  <div class="search-bar">
-    <input type="text" placeholder="Search for products...">
+  <div class="search-filter">
+    <input type="text" placeholder="Search for t-shirts...">
   </div>
 
-  <!-- Products Grid -->
-  <div class="product-grid" id="product-list">
-    <!-- Product Cards will be inserted here via JS -->
+  <div class="category-bar">
+    <span>Men</span>
+    <span>Women</span>
+    <span>Kids</span>
   </div>
 
-  <!-- Cart Popup -->
-  <div class="cart-popup" id="cart-popup">
-    <h3>Your Cart</h3>
-    <div id="cart-items"></div>
-    <div class="cart-total" id="cart-total">Total: ₹0</div>
-  </div>
+  <section class="hero" id="home">
+    <h1>Welcome to FA-Tshirt</h1>
+    <p>Trendy | Comfortable | Affordable</p>
+  </section>
 
-  <!-- Login Popup -->
-  <div class="overlay" id="overlay" onclick="closeLogin()"></div>
-  <div class="login-popup" id="login-popup">
-    <h3>Login via Email OTP</h3>
-    <input type="email" id="email" placeholder="Enter email" style="width: 100%; padding: 10px; margin-bottom: 10px;" />
-    <button onclick="sendOTP()" class="btn" style="background: #2196F3; color: white;">Send OTP</button>
-    <input type="text" id="otp" placeholder="Enter OTP" style="width: 100%; padding: 10px; margin-top: 10px;" />
-    <button onclick="verifyOTP()" class="btn" style="background: #4CAF50; color: white; margin-top: 10px;">Verify</button>
+  <section class="products" id="products">
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1618354691549-6d8b1b464986?auto=format&fit=crop&w=400&q=80" alt="Tshirt 1">
+      <div class="product-info">
+        <h3>Black Round Neck</h3>
+        <p>₹299</p>
+        <button class="buy-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1598032894623-e81c3e5d7cda?auto=format&fit=crop&w=400&q=80" alt="Tshirt 2">
+      <div class="product-info">
+        <h3>White Graphic Tee</h3>
+        <p>₹349</p>
+        <button class="buy-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80" alt="Tshirt 3">
+      <div class="product-info">
+        <h3>Red Street Style</h3>
+        <p>₹399</p>
+        <button class="buy-btn">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="about-content">
+    <h2>Our Story</h2>
+    <p>FA-Tshirt is not just a brand, it's a dream. It started with a passion to create high-quality, stylish, and affordable fashion that represents youth and ambition. Our journey began with a single vision — to bring creativity, comfort, and confidence into every thread we stitch. Thank you for being a part of this journey.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 FA-Tshirt. All rights reserved.
+  </footer>
+
+  <div id="loginPopup">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username">
+    <input type="password" placeholder="Password">
+    <button onclick="alert('Login Successful')">Login</button>
   </div>
 
   <script>
-    const products = [
-      {
-        name: "Striped Off Shoulder Top",
-        desc: "Nautical Chic Style – Ideal for Trendy Looks",
-        price: 279,
-        img: "https://www.dropbox.com/scl/fi/qg23nbgt17v3c1fjmz9yd/Top-Fashionista-__-Striped-Off-Shoulder-Tops-for-Nautical-Chic.jfif?rlkey=bpy2gearchgh7q2qqn9wnb1jo&raw=1"
-      },
-      {
-        name: "Vintage Vertical Painting T-Shirt",
-        desc: "Bold & Artistic Design – Over Fit Style",
-        price: 299,
-        img: "https://www.dropbox.com/scl/fi/jtsaogqxtxzg5llso50j2/Vintage-Vertical-Painting-Over-Fit-T-Shirt.jfif?rlkey=if3qhrugq8p04uoawamc3uovl&raw=1"
-      },
-      {
-        name: "Unisex Fashion Combo",
-        desc: "Stylish Outfits for Both Men & Women",
-        price: 249,
-        img: "https://www.dropbox.com/scl/fi/uuigb0k9n6514zebl6h35/Women-s-Men-s-Clothing-Shop-Online-Fashion.jfif?rlkey=mlq1ccpq251z26z3c3ka0tp4r&raw=1"
-      },
-      {
-        name: "Oversized Cotton T-Shirt",
-        desc: "Black – Short Sleeve Comfort",
-        price: 269,
-        img: "https://www.dropbox.com/scl/fi/8imuntoe8pyurqcsjt16b/Oversized-T-Shirt-Short-Sleeve-Cotton-T-Shirt-In-Black.jfif?rlkey=55r3q8jh0u0qz1p3csz4o3sqo&raw=1"
-      },
-      {
-        name: "Drop Shoulders Delight",
-        desc: "Men's Best Outfits for Stylish Looks",
-        price: 289,
-        img: "https://www.dropbox.com/scl/fi/kbelphqsfmkatwno9zzbk/_Ultimate-Style_-Men-s-Best-Outfits-with-Drop-Shoulders_-_Drop-Shoulders-Delight_-Men-s-Best-Outfits.jfif?rlkey=vs6x7vfq3a3fm0iseultaobzg&raw=1"
-      },
-      {
-        name: "Drop Shoulder T-Shirt",
-        desc: "Charcoal Grey – XXS Oversized Fit",
-        price: 259,
-        img: "https://www.dropbox.com/scl/fi/w35xp71onk4s5p9hqq40w/Oversized-Drop-Shoulder-T-Shirt-Charcoal-Grey-_-XXS.jfif?rlkey=h56tbbgnasz6jdt2b9lsh405j&raw=1"
-      },
-    ];
-
-    const cart = [];
-
-    function renderProducts() {
-      const container = document.getElementById("product-list");
-      products.forEach((p, index) => {
-        container.innerHTML += `
-          <div class="product-card">
-            <img src="${p.img}" alt="${p.name}">
-            <div class="product-title">${p.name}</div>
-            <div class="product-description">${p.desc}</div>
-            <div class="product-price">₹${p.price}</div>
-            <button class="add-to-cart" onclick="addToCart(${index})">Add to Cart</button>
-          </div>
-        `;
-      });
+    function showAbout() {
+      document.getElementById('about-content').style.display = 'block';
+      window.scrollTo(0, document.getElementById('about-content').offsetTop);
     }
-
-    function addToCart(index) {
-      cart.push(products[index]);
-      document.getElementById("cart-count").innerText = cart.length;
-      renderCart();
+    function showLogin() {
+      document.getElementById('loginPopup').style.display = 'block';
     }
-
-    function toggleCart() {
-      const popup = document.getElementById("cart-popup");
-      popup.style.display = popup.style.display === "block" ? "none" : "block";
-    }
-
-    function renderCart() {
-      const items = document.getElementById("cart-items");
-      const total = document.getElementById("cart-total");
-      items.innerHTML = "";
-      let sum = 0;
-      cart.forEach((item, i) => {
-        items.innerHTML += `
-          <div class="cart-item">
-            <span class="cart-item-name">${item.name}</span>
-            <span>₹${item.price}</span>
-          </div>
-        `;
-        sum += item.price;
-      });
-      total.innerText = `Total: ₹${sum}`;
-    }
-
-    function openLogin() {
-      document.getElementById("overlay").style.display = "block";
-      document.getElementById("login-popup").style.display = "block";
-    }
-
-    function closeLogin() {
-      document.getElementById("overlay").style.display = "none";
-      document.getElementById("login-popup").style.display = "none";
-    }
-
-    function sendOTP() {
-      alert("OTP sent to email (demo only)");
-    }
-
-    function verifyOTP() {
-      alert("OTP Verified! Login Successful");
-      closeLogin();
-    }
-
-    renderProducts();
   </script>
-
 </body>
 </html>
